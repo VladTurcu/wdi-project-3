@@ -4,7 +4,13 @@ const users = require('../controllers/users');
 const auth = require('../controllers/auth');
 
 router.route('/places')
-  .get(places.index);
+  .get(places.index)
+  .post(places.create);
+
+router.route('/places/:id')
+  .get(places.show)
+  .put(places.update)
+  .delete(places.delete);
 
 router.route('/users')
   .get(users.show);
