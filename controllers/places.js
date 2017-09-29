@@ -16,7 +16,15 @@ function placesShow(req, res) {
     .catch(err => res.json(err));
 }
 
+function placesCreate(req, res) {
+  Place
+    .create(req.body)
+    .then(place => res.status(201).json(place))
+    .catch(err => res.json(err));
+}
+
 module.exports = {
   index: placesIndex,
-  show: placesShow
+  show: placesShow,
+  create: placesCreate
 };

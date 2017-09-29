@@ -17,6 +17,16 @@ const placeData = [{
   user: 'Vlad',
   image: 'https://media-cdn.tripadvisor.com/media/photo-s/08/a2/c3/48/2-brothers-bar-santorini.jpg',
   rating: 4.5
+}, {
+  name: 'Yosemite National Park',
+  address: 'California, USA',
+  lat: 37.8651011,
+  lng: -119.5383294,
+  description: 'This is a family mountain.',
+  category: 'Nature',
+  user: 'Josh',
+  image: 'https://www.nationalparks.org/sites/default/files/styles/wide_1x/public/shutterstock_142351951.jpg',
+  rating: 4.7
 }];
 
 Place
