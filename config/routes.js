@@ -6,6 +6,7 @@ router.route('/places')
   .post(places.create);
 
 router.route('/places/:id')
-  .get(places.show);
+  .get(places.show)
+  .put(places.update);
 
 module.exports = router;

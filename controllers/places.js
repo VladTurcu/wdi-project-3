@@ -23,8 +23,21 @@ function placesCreate(req, res) {
     .catch(err => res.json(err));
 }
 
+function placesUpdate(req, res) {
+  Place
+    .findById(req.params.id)
+    .exec()
+    .then(place => {
+      Object.assign(place, req.body);
+      return place.save();
+    })
+    .then(place => res.json(place))
+    .catch(err => console.log(err));
+}
+
 module.exports = {
   index: placesIndex,
   show: placesShow,
-  create: placesCreate
+  create: placesCreate,
+  update: placesUpdate
 };
