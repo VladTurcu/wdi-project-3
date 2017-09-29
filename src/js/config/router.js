@@ -26,6 +26,21 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       url: '/places/:id/edit',
       templateUrl: '/js/views/places/edit.html',
       controller: 'PlacesEditCtrl as placesEdit'
+    })
+    .state('userIndex', {
+      url: '/users',
+      templateUrl: '/js/views/users/index.html',
+      controller: 'UserShowCtrl as userShow'
+    })
+    .state('register', {
+      url: '/register',
+      templateUrl: '/js/views/auth/register.html'
+      // controller: 'UserRegister as userRegister'
+    })
+    .state('login', {
+      url: '/login',
+      templateUrl: '/js/views/auth/login.html'
+      // controller: 'UserRegister as userRegister'
     });
 
   $urlRouterProvider.otherwise('/places');
