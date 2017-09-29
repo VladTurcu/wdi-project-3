@@ -33,9 +33,6 @@ const placeData = [{
   rating: 4.7
 }];
 
-
-
-
 const userData = [{
   username: 'Vlad',
   email: 'vlad@turcu.me',
