@@ -1,11 +1,12 @@
-const express           = require('express');
-const app               = express();
-const mongoose          = require('mongoose');
-const bodyParser        = require('body-parser');
-mongoose.Promise        = require('bluebird');
-const morgan            = require('morgan');
-const { dbURI, port }   = require('./config/environment');
-const routes            = require('./config/routes');
+const express     = require('express');
+const app         = express();
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+mongoose.Promise = require('bluebird');
+mongoose.plugin(require('./lib/globalToJSON'));
+const morgan = require('morgan');
+const { dbURI, port }    = require('./config/environment');
+const routes      = require('./config/routes');
 
 mongoose.connect(dbURI);
 

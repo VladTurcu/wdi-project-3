@@ -2,11 +2,13 @@ const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 const { dbURI } = require('../config/environment');
 const Place = require('../models/place');
+const Story = require('../models/story');
 const User = require('../models/user');
 
 mongoose.connect(dbURI, { useMongoClient: true });
 
 Place.collection.drop();
+Story.collection.drop();
 User.collection.drop();
 
 const placeData = [{
@@ -31,15 +33,7 @@ const placeData = [{
   rating: 4.7
 }];
 
-Place
-  .create(placeData)
-  .then(places => console.log(`${places.length} places created!`))
-  .catch(err => console.log(err))
-  .finally(() => mongoose.connection.close());
-
-
-
-const userdata = [{
+const userData = [{
   username: 'Vlad',
   email: 'vlad@turcu.me',
   password: '1234567890abcd',
@@ -48,8 +42,35 @@ const userdata = [{
   image: 'https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAASSAAAAJDg1ZjlhYTIzLTQ4MmUtNDE1Yi05MWIzLTk2ZGZkYjFjODI0Mg.jpg',
   coverPicture: 'http://www.matthewwilliams-ellis.com/wp-content/uploads/2016/10/Romania-Transylvania-Travel-and-Landscape-Photography-Workshop-Holiday-Summer-2018-_011.jpg'
 }];
+
+Place
+  .create(placeData)
+  .then(places => {
+    console.log(`${places.length} places created!`);
+    const storyData =[{
+      name: 'Roadtrip',
+      text: 'And we drove, and we drove and we drove.  And we saw a big rock, and we went to Yosemite.',
+      createdBy: 'Vlad',
+      image: 'https://images.unsplash.com/photo-1476067897447-d0c5df27b5df',
+      places: [places[1], places[0]]
+    }, {
+      name: 'The Empire Strikes Back',
+      text: 'Luke visits Dagobah for cultural learnings from a wise guru.',
+      createdBy: 'Josh',
+      image: 'https://images.unsplash.com/uploads/14123277159177add8d0b/24a675f2',
+      places: [
+        '59ce29ad33ce109612d0859e'
+      ]
+    }];
+    return Story
+      .create(storyData)
+      .then(stories => console.log(`${stories.length} stories created!`));
+  })
+  .catch(err => console.log(err))
+  .finally(() => mongoose.connection.close());
+
 User
-  .create(userdata)
+  .create(userData)
   .then((users) => console.log(`${users.length} users created!`))
   .catch(err => console.log(err))
   .finally(() => mongoose.connection.close());
