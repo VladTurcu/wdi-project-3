@@ -66,7 +66,8 @@ Place
       ]
     }];
     return Story
-      .create(storyData);
+      .create(storyData)
+      .then(stories => console.log(`${stories.length} stories created!`));
   })
   .catch(err => console.log(err))
   .finally(() => mongoose.connection.close());
