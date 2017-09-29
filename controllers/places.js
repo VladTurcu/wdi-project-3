@@ -8,6 +8,15 @@ function placesIndex(req, res) {
     .catch(err => res.json(err));
 }
 
+function placesShow(req, res) {
+  Place
+    .findById(req.params.id)
+    .exec()
+    .then(place => res.json(place))
+    .catch(err => res.json(err));
+}
+
 module.exports = {
-  index: placesIndex
+  index: placesIndex,
+  show: placesShow
 };
