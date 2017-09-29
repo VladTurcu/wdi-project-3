@@ -53,6 +53,14 @@ Place
       createdBy: 'Vlad',
       image: 'https://images.unsplash.com/photo-1476067897447-d0c5df27b5df',
       places: [places[1], places[0]]
+    }, {
+      name: 'The Empire Strikes Back',
+      text: 'Luke visits Dagobah for cultural learnings from a wise guru.',
+      createdBy: 'Josh',
+      image: 'https://images.unsplash.com/uploads/14123277159177add8d0b/24a675f2',
+      places: [
+        '59ce29ad33ce109612d0859e'
+      ]
     }];
     return Story
       .create(storyData);

@@ -13,7 +13,13 @@ router.route('/places/:id')
   .delete(places.delete);
 
 router.route('/stories')
-  .get(stories.index);
+  .get(stories.index)
+  .post(stories.create);
+
+router.route('/stories/:id')
+  .get(stories.show)
+  .put(stories.update)
+  .delete(stories.delete);
 
 router.route('/users')
   .get(users.show);
