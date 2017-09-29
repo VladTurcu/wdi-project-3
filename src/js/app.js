@@ -2,4 +2,4 @@
 console.log('Das Bemo ist in Betrieb!');
 
 angular
-  .module('bemoApp', ['ui.router']);
+  .module('bemoApp', ['ui.router', 'satellizer']);

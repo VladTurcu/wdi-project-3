@@ -1,1 +1,11 @@
 <h1>user registration page</h1>
+
+
+<form  name="register.registerForm" ng-submit="register.submit()" method="post">
+
+  <input type="text" name="username" id="username" ng-model="register.user.username" placeholder="username">
+  <input type="text" name="email" id="email" ng-model="register.user.email" placeholder="email">
+  <input type="password" name="password" id="password" ng-model="register.user.password" placeholder="password">
+  <input type="password" name="passwordConfirmation" id="passwordConfirmation" ng-model="register.user.passwordConfirmation" placeholder="passwordConfirmation">
+  <input type="submit" name="" value="Submit">
+</form>
