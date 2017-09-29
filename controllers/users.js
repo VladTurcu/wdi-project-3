@@ -1,11 +1,11 @@
 const User = require('../models/user');
 
-function userShow(req, res){
+function userShow(req, res, next){
   User
     .find()
     .exec()
     .then((users) => res.json(users))
-    .catch((err) => res.json(err));
+    .catch(next);
 }
 
 module.exports = {

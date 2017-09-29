@@ -1,29 +1,29 @@
 const Story = require('../models/story');
 
-function storiesIndex(req, res) {
+function storiesIndex(req, res, next) {
   Story
     .find()
     .exec()
     .then(stories => res.json(stories))
-    .catch(err => res.json(err));
+    .catch(next);
 }
 
-function storiesShow(req, res) {
+function storiesShow(req, res, next) {
   Story
     .findById(req.params.id)
     .exec()
     .then(story => res.json(story))
-    .catch(err => res.json(err));
+    .catch(next);
 }
 
-function storiesCreate(req, res) {
+function storiesCreate(req, res, next) {
   Story
     .create(req.body)
     .then(story => res.status(201).json(story))
-    .catch(err => res.json(err));
+    .catch(next);
 }
 
-function storiesUpdate(req, res) {
+function storiesUpdate(req, res, next) {
   Story
     .findById(req.params.id)
     .exec()
@@ -32,10 +32,10 @@ function storiesUpdate(req, res) {
       return story.save();
     })
     .then(story => res.json(story))
-    .catch(err => console.log(err));
+    .catch(next);
 }
 
-function storiesDelete(req, res) {
+function storiesDelete(req, res, next) {
   Story
     .findById(req.params.id)
     .exec()
@@ -43,7 +43,7 @@ function storiesDelete(req, res) {
       return story.remove();
     })
     .then(() => res.status(204).end())
-    .catch(err => console.log(err));
+    .catch(next);
 }
 
 module.exports = {

@@ -1,29 +1,29 @@
 const Place = require('../models/place');
 
-function placesIndex(req, res) {
+function placesIndex(req, res, next) {
   Place
     .find()
     .exec()
     .then(places => res.json(places))
-    .catch(err => res.json(err));
+    .catch(next);
 }
 
-function placesShow(req, res) {
+function placesShow(req, res, next) {
   Place
     .findById(req.params.id)
     .exec()
     .then(place => res.json(place))
-    .catch(err => res.json(err));
+    .catch(next);
 }
 
-function placesCreate(req, res) {
+function placesCreate(req, res, next) {
   Place
     .create(req.body)
     .then(place => res.status(201).json(place))
-    .catch(err => res.json(err));
+    .catch(next);
 }
 
-function placesUpdate(req, res) {
+function placesUpdate(req, res, next) {
   Place
     .findById(req.params.id)
     .exec()
@@ -32,10 +32,10 @@ function placesUpdate(req, res) {
       return place.save();
     })
     .then(place => res.json(place))
-    .catch(err => console.log(err));
+    .catch(next);
 }
 
-function placesDelete(req, res) {
+function placesDelete(req, res, next) {
   Place
     .findById(req.params.id)
     .exec()
@@ -43,7 +43,7 @@ function placesDelete(req, res) {
       return place.remove();
     })
     .then(() => res.status(204).end())
-    .catch(err => console.log(err));
+    .catch(next);
 }
 
 module.exports = {
