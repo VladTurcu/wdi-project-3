@@ -1,1 +1,6 @@
 <h1>This is the place index page.</h1>
+<div ng-repeat="place in placesIndex.all">
+  <a ui-sref="placesShow({ id: place.id })">
+    {{ place }}
+  </a>
+</div>

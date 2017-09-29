@@ -12,18 +12,18 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       templateUrl: '/js/views/places/index.html',
       controller: 'PlacesIndexCtrl as placesIndex'
     })
-    .state('placesShow', {
-      url: '/places/:id',
-      templateUrl: '/js/views/places/show.html',
-      controller: 'PlacesShowCtrl as placesShow'
-    })
     .state('placesNew', {
       url: '/places/new',
       templateUrl: '/js/views/places/new.html',
       controller: 'PlacesNewCtrl as placesNew'
     })
+    .state('placesShow', {
+      url: '/places/:id',
+      templateUrl: '/js/views/places/show.html',
+      controller: 'PlacesShowCtrl as placesShow'
+    })
     .state('placesEdit', {
-      url: '/places/edit',
+      url: '/places/:id/edit',
       templateUrl: '/js/views/places/edit.html',
       controller: 'PlacesEditCtrl as placesEdit'
     });

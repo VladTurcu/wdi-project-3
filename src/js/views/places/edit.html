@@ -1,1 +1,12 @@
 <h1>This is the edit place page.</h1>
+<form name="placesEdit.form" ng-submit="placesEdit.update()">
+  <input type="text" name="name" ng-model="placesEdit.place.name" placeholder="name">
+  <input type="text" name="address" ng-model="placesEdit.place.address" placeholder="address">
+  <input type="text" name="lat" ng-model="placesEdit.place.lat" placeholder="lat">
+  <input type="text" name="lng" ng-model="placesEdit.place.lng" placeholder="lng">
+  <input type="text" name="description" ng-model="placesEdit.place.description" placeholder="description">
+  <input type="text" name="category" ng-model="placesEdit.place.category" placeholder="category">
+  <input type="text" name="image" ng-model="placesEdit.place.image" placeholder="image">
+  <input type="text" name="rating" ng-model="placesEdit.place.rating" placeholder="rating">
+  <button>Update Place</button>
+</form>
