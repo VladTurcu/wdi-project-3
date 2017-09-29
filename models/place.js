@@ -7,7 +7,7 @@ const placeSchema = new mongoose.Schema({
   lng: { type: Number },
   description: { type: String, required: true },
   category: { type: String, required: true },
-  user: { type: mongoose.Schema.ObjectId, ref: 'User' },
+  createdBy: { type: mongoose.Schema.ObjectId, ref: 'User' },
   image: { type: String, required: true },
   rating: { type: Number }
 });
