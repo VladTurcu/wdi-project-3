@@ -3,12 +3,14 @@ const app         = express();
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 const morgan = require('morgan');
+const bodyParser = require('body-parser');
 const { dbURI, port }    = require('./config/environment');
 const routes      = require('./config/routes');
 
 mongoose.connect(dbURI);
 
 app.use(morgan('dev'));
+app.use(bodyParser.json());
 
 app.use(express.static(`${__dirname}/public`));
 

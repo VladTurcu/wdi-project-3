@@ -27,10 +27,13 @@ Place
   .catch(err => console.log(err))
   .finally(() => mongoose.connection.close());
 
+
+
 const userdata = [{
   username: 'Vlad',
   email: 'vlad@turcu.me',
   password: '1234567890abcd',
+  passwordConfirmation: '1234567890abcd',
   countries: ['Grece'],
   image: 'https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAASSAAAAJDg1ZjlhYTIzLTQ4MmUtNDE1Yi05MWIzLTk2ZGZkYjFjODI0Mg.jpg',
   coverPicture: 'http://www.matthewwilliams-ellis.com/wp-content/uploads/2016/10/Romania-Transylvania-Travel-and-Landscape-Photography-Workshop-Holiday-Summer-2018-_011.jpg'
