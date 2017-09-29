@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 mongoose.Promise = require('bluebird');
 const morgan = require('morgan');
-const bodyParser = require('body-parser');
 const { dbURI, port }    = require('./config/environment');
 const routes      = require('./config/routes');
 
