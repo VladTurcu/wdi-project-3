@@ -35,9 +35,21 @@ function placesUpdate(req, res) {
     .catch(err => console.log(err));
 }
 
+function placesDelete(req, res) {
+  Place
+    .findById(req.params.id)
+    .exec()
+    .then(place => {
+      return place.remove();
+    })
+    .then(() => res.status(204).end())
+    .catch(err => console.log(err));
+}
+
 module.exports = {
   index: placesIndex,
   show: placesShow,
   create: placesCreate,
-  update: placesUpdate
+  update: placesUpdate,
+  delete: placesDelete
 };

@@ -7,6 +7,7 @@ router.route('/places')
 
 router.route('/places/:id')
   .get(places.show)
-  .put(places.update);
+  .put(places.update)
+  .delete(places.delete);
 
 module.exports = router;
