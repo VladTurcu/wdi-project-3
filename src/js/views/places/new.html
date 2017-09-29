@@ -1,1 +1,12 @@
 <h1>This is the new place page.</h1>
+<form name="placesNew.form" ng-submit="placesNew.create()">
+  <input type="text" name="name" ng-model="placesNew.place.name" placeholder="name">
+  <input type="text" name="address" ng-model="placesNew.place.address" placeholder="address">
+  <input type="text" name="lat" ng-model="placesNew.place.lat" placeholder="lat">
+  <input type="text" name="lng" ng-model="placesNew.place.lng" placeholder="lng">
+  <input type="text" name="description" ng-model="placesNew.place.description" placeholder="description">
+  <input type="text" name="category" ng-model="placesNew.place.category" placeholder="category">
+  <input type="text" name="image" ng-model="placesNew.place.image" placeholder="image">
+  <input type="text" name="rating" ng-model="placesNew.place.rating" placeholder="rating">
+  <button>Create Place</button>
+</form>

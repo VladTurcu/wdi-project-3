@@ -1,1 +1,4 @@
 <h1>This is the place show page.</h1>
+{{ placesShow.place }}
+<a ui-sref="placesEdit({ id: placesShow.place.id })">Edit</a>
+<button ng-click="placesShow.delete()">Delete {{ placesShow.place.name }}</button>
