@@ -12,7 +12,10 @@ function placesShow(req, res, next) {
   Place
     .findById(req.params.id)
     .exec()
-    .then(place => res.json(place))
+    .then(place => {
+      if(!place) res.notFound();
+      res.json(place);
+    })
     .catch(next);
 }
 
@@ -28,6 +31,7 @@ function placesUpdate(req, res, next) {
     .findById(req.params.id)
     .exec()
     .then(place => {
+      if(!place) res.notFound();
       Object.assign(place, req.body);
       return place.save();
     })
@@ -40,6 +44,7 @@ function placesDelete(req, res, next) {
     .findById(req.params.id)
     .exec()
     .then(place => {
+      if(!place) res.notFound();
       return place.remove();
     })
     .then(() => res.status(204).end())

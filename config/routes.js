@@ -3,6 +3,7 @@ const places = require('../controllers/places');
 const stories = require('../controllers/stories');
 const users = require('../controllers/users');
 const auth = require('../controllers/auth');
+// const secureRoute = require('../lib/secureRoute');
 
 router.route('/places')
   .get(places.index)
@@ -30,5 +31,7 @@ router.route('/register')
 
 router.route('/login')
   .post(auth.login);
+
+router.all('/*', (req, res) => res.notFound());
 
 module.exports = router;
