@@ -59,7 +59,7 @@ Place
       createdBy: 'Josh',
       image: 'https://images.unsplash.com/uploads/14123277159177add8d0b/24a675f2',
       places: [
-        '59ce29ad33ce109612d0859e'
+        places[1]
       ]
     }];
     return Story
