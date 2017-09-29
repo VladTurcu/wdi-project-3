@@ -2,15 +2,15 @@ const User = require('../models/user');
 const jwt = require('jsonwebtoken');
 const { secret } = require('../config/environment');
 
-function registration(req, res){
+function registration(req, res, next){
   User
     .create(req.body)
     .then(() => res.json({message: 'Registration succesfull'}))
-    .catch((err) => res.json(err));
+    .catch(next);
 }
 
 
-function login(req, res) {
+function login(req, res, next) {
   User
     .findOne({ email: req.body.email })
     .then((user) => {
@@ -19,7 +19,7 @@ function login(req, res) {
       const token = jwt.sign({ userId: user.id }, secret, { expiresIn: '1hr' });
       return res.json({ token, message: 'Hi buddy' });
     })
-    .catch((err) => res.json(err));
+    .catch(next);
 }
 
 
