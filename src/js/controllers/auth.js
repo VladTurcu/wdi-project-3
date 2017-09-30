@@ -13,9 +13,13 @@ function LoginCtrl($auth, $state) {
   function submit() {
     if (vm.loginForm.$valid) {
       $auth.login(vm.credentials)
+        .then((user) => {
+          console.log(user.config.data.email);
+        })
         .then(() => $state.go('placesIndex'))
         .catch(() => $state.go('login'));
     }
+
   }
 
   vm.submit = submit;

@@ -21,6 +21,7 @@ function PlacesShowCtrl($state, Place) {
   placesShow();
   function placesShow() {
     vm.place = Place.get($state.params);
+
   }
 
   function placesDelete(){

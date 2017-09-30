@@ -28,7 +28,7 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       controller: 'PlacesEditCtrl as placesEdit'
     })
     .state('userIndex', {
-      url: '/users',
+      url: '/users/:id',
       templateUrl: '/js/views/users/index.html',
       controller: 'UserShowCtrl as userShow'
     })
