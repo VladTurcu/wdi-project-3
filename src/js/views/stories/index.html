@@ -1,0 +1,6 @@
+<h1>Index stories</h1>
+<div ng-repeat="story in storiesIndex.all">
+  <a ui-sref="storiesShow({ id: story.id })">
+    {{ story }}
+  </a>
+</div>

@@ -1,0 +1,4 @@
+<h1>story show page</h1>
+{{ storiesShow.story }}
+<a ui-sref="storiesEdit({ id: storiesShow.story.id })">Edit</a>
+<button ng-click="storiesShow.delete()">Delete {{ storiesShow.story.name }}</button>
