@@ -31,6 +31,26 @@ const placeData = [{
   user: 'Josh',
   image: 'https://www.nationalparks.org/sites/default/files/styles/wide_1x/public/shutterstock_142351951.jpg',
   rating: 4.7
+}, {
+  name: 'Gunung Ijen',
+  address: 'Java, Indonesia',
+  lat: -8.0588232,
+  lng: 114.2352035,
+  description: 'Volcano bro',
+  category: 'Nature',
+  user: 'Josh',
+  image: 'https://images.unsplash.com/photo-1500100711100-fa7d55b8f658',
+  rating: 4.7
+}, {
+  name: 'Burano',
+  address: 'Venice, Italy',
+  lat: 45.4853441,
+  lng: 12.4128859,
+  description: 'Small island town',
+  category: 'Culture',
+  user: 'Josh',
+  image: 'https://images.unsplash.com/photo-1502727051360-3656ce291c5b',
+  rating: 4
 }];
 
 const userData = [{

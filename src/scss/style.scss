@@ -1,4 +1,20 @@
 // Import all of your scss files here
+body {
+  background-color: #406e8e;
+}
+
+.navbar {
+  background-color: #23395b;
+  a {
+    color: #8ea8c3;
+  }
+}
+
+.card {
+  border: 1px solid #23395b;
+  border-radius: 2px;
+  background-color: #8ea8c3;
+}
 
 .google-map {
   height: 60vh;
