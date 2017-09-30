@@ -1,6 +1,20 @@
 <h1>This is the place index page.</h1>
-<div ng-repeat="place in placesIndex.all">
-  <a ui-sref="placesShow({ id: place.id })">
-    {{ place }}
-  </a>
-</div>
+<google-map center="{ lat: 45, lng: 5 }"></google-map>
+<section class="columns is-multiline">
+  <div ng-repeat="place in placesIndex.all" class="column is-one-third">
+    <div class="card">
+      <div class="card-image">
+        <figure class="image is-4by3">
+          <img src="{{ place.image }}" alt="{{ place.name }}">
+        </figure>
+      </div>
+      <div class="card-content">
+        <div class="media-content">
+          <a ui-sref="placesShow({ id: place.id })">
+            <h2 class="title is-4">{{ place.name }}</h2>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
