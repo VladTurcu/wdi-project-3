@@ -41,6 +41,26 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       url: '/login',
       templateUrl: '/js/views/auth/login.html',
       controller: 'LoginCtrl as login'
+    })
+    .state('storiesIndex', {
+      url: '/stories',
+      templateUrl: '/js/views/stories/index.html',
+      controller: 'StoriesIndexCtrl as storiesIndex'
+    })
+    .state('storiesNew', {
+      url: '/stories/new',
+      templateUrl: '/js/views/stories/new.html',
+      controller: 'StoriesNewCtrl as storiesNew'
+    })
+    .state('storiesShow', {
+      url: '/stories/:id',
+      templateUrl: '/js/views/stories/show.html',
+      controller: 'StoriesShowCtrl as storiesShow'
+    })
+    .state('storiesEdit', {
+      url: '/stories/:id/edit',
+      templateUrl: '/js/views/stories/edit.html',
+      controller: 'StoriesEditCtrl as storiesEdit'
     });
 
   $urlRouterProvider.otherwise('/places');
