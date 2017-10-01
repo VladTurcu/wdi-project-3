@@ -28,7 +28,6 @@ function StoriesShowCtrl($state, Story) {
       .delete($state.params)
       .$promise
       .then(() => {
-        console.log('delete');
         $state.go('storiesIndex');
       });
   }
@@ -39,6 +38,7 @@ function StoriesNewCtrl($state, Story) {
   const vm  = this;
   vm.story = {};
   vm.create = storiesCreate;
+
 
   function storiesCreate(){
     Story

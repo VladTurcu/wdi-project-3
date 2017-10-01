@@ -3,8 +3,17 @@ angular
   .controller('UserShowCtrl', UserShowCtrl);
 
 
-UserShowCtrl.$inject = [];
-function UserShowCtrl() {
-  // const vm = this;
-  console.log('In UserShow Ctrl');
+UserShowCtrl.$inject = ['User', '$state'];
+function UserShowCtrl(User, $state) {
+  const vm = this;
+  vm.user = {};
+
+
+
+  userShow();
+  function userShow() {
+    vm.user = User.get($state.params);
+
+  }
+  console.log(vm.user);
 }

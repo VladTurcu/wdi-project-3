@@ -2,7 +2,7 @@ const User = require('../models/user');
 
 function userShow(req, res, next){
   User
-    .find()
+    .findById(req.params.id)
     .exec()
     .then((users) => res.json(users))
     .catch(next);

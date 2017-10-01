@@ -1,6 +1,21 @@
 <h1>Index stories</h1>
-<div ng-repeat="story in storiesIndex.all">
-  <a ui-sref="storiesShow({ id: story.id })">
-    {{ story }}
-  </a>
-</div>
+<section class="column">
+  <div class="columns is-multiline">
+    <div ng-repeat="story in storiesIndex.all" class="column is-one-third">
+      <div class="card">
+        <div class="card-image">
+          <figure class="image is-4by3">
+            <img src="{{ story.image }}" alt="{{ story.name }}">
+          </figure>
+        </div>
+        <div class="card-content">
+          <div class="media-content">
+            <a ui-sref="storiesShow({ id: story.id })">
+              <h2 class="title is-4">{{ story.name }}</h2>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
