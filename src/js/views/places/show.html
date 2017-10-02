@@ -18,6 +18,7 @@
 
              <p>{{ placesShow.place.description }}</p>
 
+             <img src="{{ placesShow.place.flag }}" alt="{{ placesShow.place.name }} flag">
            </div>
            <a class="button is-primary" ui-sref="placesEdit({ id: placesShow.place.id })">Edit</a>
            <button class="button is-danger" ng-click="placesShow.delete()">Delete {{ placesShow.place.name }}</button></p>

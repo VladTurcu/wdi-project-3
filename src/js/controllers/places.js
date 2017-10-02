@@ -52,18 +52,27 @@ function PlacesNewCtrl($state, Place, $http) {
         skipAuthorization: true
       })
         .then(data => {
-          console.log(data.data.results[0].address_components);
+          vm.place.country = data.data.results[0].address_components[data.data.results[0].address_components.length - 2].short_name;
           const latLng = (data.data.results[0].geometry.location);
           vm.place.lat = latLng.lat;
           vm.place.lng = latLng.lng;
           console.log('1', vm.place);
 
-          Place
-            .save(vm.place)
-            .$promise
-            .then(() => {
-              console.log('2', vm.place);
-              $state.go('placesIndex');
+          $http({
+            method: 'GET',
+            url: `https://restcountries.eu/rest/v2/alpha/${vm.place.country}`,
+            skipAuthorization: true
+          })
+            .then(countryData => {
+              vm.place.flag = countryData.data.flag;
+
+              Place
+                .save(vm.place)
+                .$promise
+                .then(() => {
+                  console.log('2', vm.place);
+                  $state.go('placesIndex');
+                });
             });
         });
     } else {

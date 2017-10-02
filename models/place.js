@@ -9,7 +9,9 @@ const placeSchema = new mongoose.Schema({
   category: { type: String, required: true },
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User' },
   image: { type: String, required: true },
-  rating: { type: Number }
+  rating: { type: Number },
+  country: { type: String },
+  flag: { type: String }
 });
 
 module.exports = mongoose.model('Place', placeSchema);
