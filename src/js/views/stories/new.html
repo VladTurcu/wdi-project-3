@@ -1,20 +1,17 @@
 <div class="form">
-<form name="storiesNew.form" ng-submit="storiesNew.create()">
-  <div class="field">
-  <label class="label">Name</label>
-  <input class="input" type="text" name="name" ng-model="storiesNew.story.name" storyholder="name" placeholder="name">
-  </div>
-  <div class="field">
-  <label class="label">Text</label>
-  <textarea class="textarea" type="text" name="text" ng-model="storiesNew.story.text" storyholder="text" rows="10"></textarea>
-</div>
-  <!-- <input class="input" type="text" name="places" ng-model="storiesNew.story.places" storyholder="category"> -->
-  <div class="field">
-  <label class="label">Image</label>
-  <input class="input" type="text" name="image" ng-model="storiesNew.story.image" storyholder="image" placeholder="image">
-  </div>
-<label>{{user.user.username}}</label>
-  <!-- <input class="input" type="createdBy" name="createdBy" ng-model="storiesNew.story.createdBy" storyholder="createdBy" placeholder="{{user.user.id}}" value="{{user.user.id}}"> -->
-  <button class="button is-primary">Create Place</button>
-</form>
+  <form name="storiesNew.form" ng-submit="storiesNew.create()">
+    <div class="field">
+      <label class="label">Name</label>
+      <input class="input" type="text" name="name" ng-model="storiesNew.story.name" storyholder="name" placeholder="name">
+    </div>
+    <div class="field">
+      <label class="label">Text</label>
+      <textarea class="textarea" type="text" name="text" ng-model="storiesNew.story.text" storyholder="text" rows="10"></textarea>
+    </div>
+    <div class="field">
+      <label class="label">Image</label>
+      <input class="input" type="text" name="image" ng-model="storiesNew.story.image" storyholder="image" placeholder="image">
+    </div>
+    <button class="button is-primary">Create Place</button>
+  </form>
 </div>
