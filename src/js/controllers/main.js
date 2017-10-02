@@ -9,7 +9,7 @@ function MainCtrl($state, $auth, User) {
   const { userId } = $auth.getPayload();
 
   if(userId) vm.user = User.get({ id: userId });
-  console.log(vm.user);
+  console.log(typeof(vm.user));
 
 
 }

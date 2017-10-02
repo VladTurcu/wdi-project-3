@@ -6,6 +6,7 @@ function register() {
   return {
     restrict: 'E',
     templateUrl: 'js/views/auth/register.html',
-    replace: true
+    replace: true,
+    controller: 'RegisterCtrl as register'
   };
 }
