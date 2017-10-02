@@ -1,10 +1,20 @@
-<h1>new story page</h1>
-
+<div class="form">
 <form name="storiesNew.form" ng-submit="storiesNew.create()">
-  <input type="text" name="name" ng-model="storiesNew.story.name" storyholder="name" placeholder="name">
-  <input type="text" name="text" ng-model="storiesNew.story.text" storyholder="text" placeholder="text">
-  <!-- <input type="text" name="places" ng-model="storiesNew.story.places" storyholder="category"> -->
-  <input type="text" name="image" ng-model="storiesNew.story.image" storyholder="image" placeholder="image">
-  <input type="createdBy" name="createdBy" ng-model="storiesNew.story.createdBy" storyholder="createdBy" placeholder="{{ storiesNew.user.username }}" value="{{ storiesNew.user.username }}">
-  <button>Create Place</button>
+  <div class="field">
+  <label class="label">Name</label>
+  <input class="input" type="text" name="name" ng-model="storiesNew.story.name" storyholder="name" placeholder="name">
+  </div>
+  <div class="field">
+  <label class="label">Text</label>
+  <textarea class="textarea" type="text" name="text" ng-model="storiesNew.story.text" storyholder="text" rows="10"></textarea>
+</div>
+  <!-- <input class="input" type="text" name="places" ng-model="storiesNew.story.places" storyholder="category"> -->
+  <div class="field">
+  <label class="label">Image</label>
+  <input class="input" type="text" name="image" ng-model="storiesNew.story.image" storyholder="image" placeholder="image">
+  </div>
+
+  <input class="input" type="createdBy" name="createdBy" ng-model="storiesNew.story.createdBy" storyholder="createdBy" placeholder="{{user.user.username}}" value="{{user.user.username}}">
+  <button class="button is-primary">Create Place</button>
 </form>
+</div>

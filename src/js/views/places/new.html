@@ -1,12 +1,48 @@
-<h1>This is the new place page.</h1>
+<div class="form">
 <form name="placesNew.form" ng-submit="placesNew.create()">
-  <input type="text" name="name" ng-model="placesNew.place.name" placeholder="name">
-  <input type="text" name="address" ng-model="placesNew.place.address" placeholder="address">
-  <input type="text" name="lat" ng-model="placesNew.place.lat" placeholder="lat">
-  <input type="text" name="lng" ng-model="placesNew.place.lng" placeholder="lng">
-  <input type="text" name="description" ng-model="placesNew.place.description" placeholder="description">
-  <input type="text" name="category" ng-model="placesNew.place.category" placeholder="category">
-  <input type="text" name="image" ng-model="placesNew.place.image" placeholder="image">
-  <input type="text" name="rating" ng-model="placesNew.place.rating" placeholder="rating">
-  <button>Create Place</button>
+  <div class="field">
+  <label class="label">Name</label>
+  <input class="input" type="text" name="name" ng-model="placesNew.place.name" placeholder="name">
+  </div>
+  <div class="field">
+  <label class="label">Address</label>
+  <input class="input" type="text" name="address" ng-model="placesNew.place.address" placeholder="address">
+  </div>
+  <div class="field latlng">
+
+  <input class="input" type="text" name="lat" ng-model="placesNew.place.lat" placeholder="Latitude">
+
+
+  <input class="input" type="text" name="lng" ng-model="placesNew.place.lng" placeholder="Longitude">
+  </div>
+  <div class="field">
+  <label class="label">Description</label>
+  <textarea class="textarea" type="text" name="description" ng-model="placesNew.place.description" placeholder="description" rows="5"></textarea>
+</div>
+<div class="select">
+
+  <select class="select"  type="text" name="category" ng-model="placesNew.place.category" placeholder="category">
+    <label class="label">Category</label>
+    <option value="">Sports</option>
+    <option value="">Nightlife</option>
+    <option value="">Outdoors</option>
+  </select>
+</div>
+<div class="field">
+<label class="label">Image</label>
+  <input class="input" type="text" name="image" ng-model="placesNew.place.image" placeholder="image">
+</div>
+<label class="label">Rating</label>
+<div class="select">
+  <select type="text" name="rating" ng-model="placesNew.place.rating" placeholder="rating">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select>
+</div>
+
+  <button class="button is-primary">Create Place</button>
 </form>
+</div>

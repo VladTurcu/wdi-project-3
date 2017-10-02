@@ -1,6 +1,11 @@
 // Import all of your scss files here
+html, body {
+    height:100%;
+}
+
 body {
   background-color: #406e8e;
+  height: 100%;
 }
 
 .navbar {
@@ -20,4 +25,30 @@ body {
   height: 60vh;
   width: 100%;
   display: block;
+}
+
+
+.blog{
+  background-color: #ffffff;
+  width: 80%;
+  margin: 10px auto;
+}
+
+.form {
+  background-color: #ffffff;
+  width: 50%;
+  margin: 10px auto;
+  padding: 20px;
+}
+
+.input{
+  margin: 10px auto;
+}
+
+.latlng{
+  display: flex;
+}
+
+.latlng .input{
+  width: 50%;
 }

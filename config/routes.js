@@ -29,8 +29,12 @@ router.route('/register')
 router.route('/login')
   .post(auth.login);
 
+router.route('/users')
+  .get(users.index);
+
 router.route('/users/:id')
   .get(users.show);
+
 router.all('/*', (req, res) => res.notFound());
 
 module.exports = router;

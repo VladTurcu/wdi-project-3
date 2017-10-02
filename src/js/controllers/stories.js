@@ -40,6 +40,7 @@ function StoriesNewCtrl($state, Story) {
   vm.create = storiesCreate;
 
 
+
   function storiesCreate(){
     Story
       .save(vm.story)

@@ -1,9 +1,19 @@
-<h1>Edit page</h1>
+<div class="form">
 <form name="storiesEdit.form" ng-submit="storiesEdit.update()">
-  <input type="text" name="name" ng-model="storiesEdit.story.name" storyholder="name">
-  <input type="text" name="text" ng-model="storiesEdit.story.text" storyholder="text">
+  <div class="field">
+  <label class="label">Name</label>
+  <input class="input" type="text" name="name" ng-model="storiesEdit.story.name" storyholder="name">
+  </div>
+  <div class="field">
+  <label class="label">Text</label>
+  <textarea class="textarea" type="text" name="text" ng-model="storiesEdit.story.text" storyholder="text" rows="10"></textarea>
+</div>
   <!-- <input type="text" name="places" ng-model="storiesEdit.story.places" storyholder="category"> -->
-  <input type="text" name="image" ng-model="storiesEdit.story.image" storyholder="image">
+  <div class="field">
+  <label class="label">Image</label>
+  <input class="input" type="text" name="image" ng-model="storiesEdit.story.image" storyholder="image">
+</div>
   <!-- <input type="createdBy" name="createdBy" ng-model="storiesEdit.story.createdBy" storyholder="createdBy"> -->
-  <button>Create Place</button>
+  <button class="button is-primary">Create Place</button>
 </form>
+</div>

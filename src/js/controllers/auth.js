@@ -8,12 +8,14 @@ angular
 LoginCtrl.$inject = ['$auth', '$state'];
 function LoginCtrl($auth, $state) {
   const vm = this;
-  vm.credentials = {};
+  // vm.user = {};
+  // vm.credentials = {};
 
   function submit() {
     if (vm.loginForm.$valid) {
       $auth.login(vm.credentials)
         .then((user) => {
+          // vm.user = user.data.email;
           console.log(user.config.data.email);
         })
         .then(() => $state.go('placesIndex'))

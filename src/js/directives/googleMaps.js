@@ -12,14 +12,20 @@ function googleMap($window) {
       center: '='
     },
     link(scope, element) {
-      new $window.google.maps.Map(element[0], {
+      const map = new $window.google.maps.Map(element[0], {
         zoom: 3,
         center: scope.center,
         styles: mapStyle
       });
+      return new $window.google.maps.Marker({
+        position: { lat: 45, lng: 5 },
+        map: map
+      });
     }
   };
 }
+
+
 
 const mapStyle = [
   {
