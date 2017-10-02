@@ -9,13 +9,16 @@ function MainCtrl($state, $auth, User) {
   vm.registerHidden = true;
   vm.registerShow = registerShow;
 
-  vm.userId = $auth.getPayload();
+
+
+  vm.userId = $auth.getPayload().userId;
   if(vm.userId) vm.user = User.get({ id: vm.userId });
+  console.log(vm.user);
   vm.isAuthenticated = $auth.isAuthenticated;
 
   function registerShow() {
     vm.registerHidden = !vm.registerHidden;
-    console.log(vm.registerHidden);
+    // console.log(vm.registerHidden);
   }
 
 }

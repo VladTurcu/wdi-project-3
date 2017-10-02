@@ -1,14 +1,6 @@
 angular
   .module('bemoApp')
-  .controller('UserShowCtrl', UserShowCtrl)
-  .controller('UserIndexCtrl', UserIndexCtrl);
-
-UserIndexCtrl.$inject = ['User'];
-function UserIndexCtrl(User) {
-  const vm = this;
-  vm.all = User.query();
-}
-
+  .controller('UserShowCtrl', UserShowCtrl);
 
 UserShowCtrl.$inject = ['User', '$state'];
 function UserShowCtrl(User, $state) {

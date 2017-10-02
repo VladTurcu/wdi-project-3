@@ -1,0 +1,43 @@
+<section class="hero is-medium" style="background-image: url('{{user.user.coverPicture}}'); background-size: cover">
+
+  <div class="hero-body">
+    <div class="profile-media has-text-centered">
+    </div>
+  </div>
+
+  <div class="hero-foot">
+    <div class="profile-media has-text-centered">
+      <img class="profile-img" src="{{ user.user.image }}" alt="">
+      <div class="container has-text-centered">
+        <h1 class="title is-3">
+          {{ user.user.username }}
+        </h1>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="blog">
+
+
+
+
+<div class="user-stories box" ng-repeat="story in userShow.user.stories">
+  <article class="media">
+    <figure class="media-left">
+      <p class="image is-128x128">
+        <img src="{{ story.image }}">
+      </p>
+    </figure>
+    <div class="media-content">
+      <strong class="title is-4">{{ story.name }}</strong><br>
+    </div>
+    <div class="media-right">
+      <button class="delete"></button>
+    </div>
+  </article>
+
+</div>
+</section>

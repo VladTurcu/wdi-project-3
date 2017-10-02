@@ -10,6 +10,8 @@ const placeSchema = new mongoose.Schema({
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User' },
   image: { type: String, required: true },
   rating: { type: Number }
+},{
+  timestamps: true
 });
 
 module.exports = mongoose.model('Place', placeSchema);

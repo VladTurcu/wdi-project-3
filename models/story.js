@@ -6,6 +6,8 @@ const storySchema = new mongoose.Schema({
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User' },
   image: { type: String, required: true },
   places: [{ type: mongoose.Schema.ObjectId, ref: 'Place' }]
+},{
+  timestamps: true
 });
 
 module.exports = mongoose.model('Story', storySchema);

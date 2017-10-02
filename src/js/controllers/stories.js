@@ -23,6 +23,7 @@ function StoriesShowCtrl($state, Story) {
     vm.story = Story.get($state.params);
   }
 
+
   function storiesDelete(){
     Story
       .delete($state.params)
@@ -38,7 +39,6 @@ function StoriesNewCtrl($state, Story) {
   const vm  = this;
   vm.story = {};
   vm.create = storiesCreate;
-
 
 
   function storiesCreate(){

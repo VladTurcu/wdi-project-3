@@ -11,6 +11,15 @@ const userSchema = new mongoose.Schema({
   coverPicture: { type: String }
 });
 
+
+userSchema
+  .virtual('stories', { //posts is the name of the virtual
+    ref: 'Story',  //Post is the name of the model
+    localField: '_id', // use the _id field from this schema
+    foreignField: 'createdBy'//to match up with the createdBy field in the Post schema
+  });
+
+
 userSchema
   .virtual('passwordConfirmation')
   .set(function setPasswordConfirmation(passwordConfirmation) {

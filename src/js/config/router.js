@@ -27,15 +27,10 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       templateUrl: '/js/views/places/edit.html',
       controller: 'PlacesEditCtrl as placesEdit'
     })
-    .state('userIndex', {
+    .state('userPage', {
       url: '/users/:id',
       templateUrl: '/js/views/users/show.html',
       controller: 'UserShowCtrl as userShow'
-    })
-    .state('user', {
-      url: '/users',
-      templateUrl: '/js/views/users/index.html',
-      controller: 'UserIndexCtrl as userIndex'
     })
     .state('register', {
       url: '/register',
