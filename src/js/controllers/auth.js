@@ -14,10 +14,6 @@ function LoginCtrl($auth, $state) {
   function submit() {
     if (vm.loginForm.$valid) {
       $auth.login(vm.credentials)
-        .then((user) => {
-          // vm.user = user.data.email;
-          console.log(user.config.data.email);
-        })
         .then(() => $state.go('placesIndex'))
         .catch(() => $state.go('login'));
     }
@@ -25,7 +21,6 @@ function LoginCtrl($auth, $state) {
   }
 
   vm.submit = submit;
-
 }
 
 

@@ -42,6 +42,7 @@ function StoriesNewCtrl($state, Story) {
 
 
   function storiesCreate(){
+    const vm = this;
     Story
       .save(vm.story)
       .$promise

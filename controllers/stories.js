@@ -11,16 +11,18 @@ function storiesIndex(req, res, next) {
 function storiesShow(req, res, next) {
   Story
     .findById(req.params.id)
-    .populate('users')
     .exec()
     .then(story => res.json(story))
     .catch(next);
 }
 
 function storiesCreate(req, res, next) {
+  req.body.createdBy = req.currentUser;
   Story
     .create(req.body)
-    .then(story => res.status(201).json(story))
+    .then((story) => {
+      res.status(201).json(story);
+    })
     .catch(next);
 }
 
