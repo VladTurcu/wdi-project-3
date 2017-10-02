@@ -1,12 +1,11 @@
 <nav class="navbar">
   <div class="navbar-brand">
     <h1 class="navbar-item">Bemo</h1>
-    <a class="navbar-item" ui-sref="placesIndex">Home</a>
-    <a class="navbar-item" ui-sref="placesNew">New Place</a>
+    <a class="navbar-item"  ui-sref="placesIndex">Home</a>
+    <a class="navbar-item" ng-if="user.isAuthenticated()" ui-sref="placesNew">New Place</a>
     <a class="navbar-item" ui-sref="storiesIndex">Stories</a>
-    <a class="navbar-item" ui-sref="storiesNew">New Story</a>
-    <a class="navbar-item" ng-click="user.registerShow()">Register</a>
-    <a class="navbar-item" ui-sref="login">Login</a>
-    <a class="navbar-item" ui-sref="login">{{ user.user.username}}</a>
+    <a class="navbar-item" ng-if="user.isAuthenticated()" ui-sref="storiesNew">New Story</a>
+    <a class="navbar-item" ng-if="!user.isAuthenticated()" ng-click="user.registerShow()">Register</a>
+    <a class="navbar-item" ng-if="!user.isAuthenticated()" ui-sref="login">Login</a>
   </div>
 </nav>

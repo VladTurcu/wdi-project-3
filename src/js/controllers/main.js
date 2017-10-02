@@ -7,10 +7,10 @@ function MainCtrl($state, $auth, User) {
   const vm = this;
   vm.registerHidden = true;
   vm.registerShow = registerShow;
-  // vm.user = {};
-  const { userId } = $auth.getPayload();
 
-  if(userId) vm.user = User.get({ id: userId });
+  vm.userId = $auth.getPayload();
+  if(vm.userId) vm.user = User.get({ id: vm.userId });
+  vm.isAuthenticated = $auth.isAuthenticated;
 
   function registerShow() {
     vm.registerHidden = !vm.registerHidden;

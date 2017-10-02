@@ -48,7 +48,8 @@ function PlacesNewCtrl($state, Place, $http) {
       console.log(address);
       $http({
         method: 'GET',
-        url: `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyAKoE_jY6PNxyupg_GsKz80YLv0wfChnGs`
+        url: `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyAKoE_jY6PNxyupg_GsKz80YLv0wfChnGs`,
+        skipAuthorization: true
       })
         .then(data => {
           console.log(data.data.results[0].address_components);
