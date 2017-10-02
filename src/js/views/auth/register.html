@@ -1,11 +1,39 @@
-<h1>user registration page</h1>
-
-
 <form  name="register.registerForm" ng-submit="register.submit()" method="post">
 
-  <input type="text" name="username" id="username" ng-model="register.user.username" placeholder="username">
-  <input type="text" name="email" id="email" ng-model="register.user.email" placeholder="email">
-  <input type="password" name="password" id="password" ng-model="register.user.password" placeholder="password">
-  <input type="password" name="passwordConfirmation" id="passwordConfirmation" ng-model="register.user.passwordConfirmation" placeholder="passwordConfirmation">
-  <input type="submit" name="" value="Submit">
+  <h1>Register</h1>
+
+  <div class="field">
+    <label class="label">Username</label>
+    <div class="control">
+      <input type="text" class="input" name="username" id="username" ng-model="register.user.username" placeholder="username">
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Email</label>
+    <div class="control">
+      <input type="text" class="input" name="email" id="email" ng-model="register.user.email" placeholder="email">
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Password</label>
+    <div class="control">
+      <input type="password" class="input" name="password" id="password" ng-model="register.user.password" placeholder="password">
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Confirm Password</label>
+    <div class="control">
+      <input type="password" class="input" name="passwordConfirmation" id="passwordConfirmation" ng-model="register.user.passwordConfirmation" placeholder="passwordConfirmation">
+    </div>
+  </div>
+
+  <div class="field is-grouped">
+    <div class="control is-expanded">
+      <input type="submit" name="" value="Submit" class="button is-primary is-fullwidth">
+    </div>
+  </div>
+
 </form>
