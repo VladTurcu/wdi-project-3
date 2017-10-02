@@ -2,8 +2,8 @@ angular
   .module('bemoApp')
   .directive('googleMap', googleMap);
 
-googleMap.$inject = ['$window'];
-function googleMap($window) {
+googleMap.$inject = ['$window', '$anchorScroll', '$location'];
+function googleMap($window, $anchorScroll, $location) {
   return {
     restrict: 'E',
     replace: true,
@@ -26,13 +26,18 @@ function googleMap($window) {
         if(scope.places.length === 0) return false;
 
         markers = scope.places.map(place => {
-          return new $window.google.maps.Marker({
+          const marker = new $window.google.maps.Marker({
             position: { lat: place.lat, lng: place.lng },
             map: map,
             icon: {
               url: 'http://simpleicon.com/wp-content/uploads/map-marker-15-256x256.png',
               scaledSize: new $window.google.maps.Size(20, 20)
             }
+          });
+          marker.addListener('click', () => {
+            console.log('clicked', place.name);
+            $location.hash(place.id);
+            $anchorScroll();
           });
         });
 

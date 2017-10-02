@@ -10,6 +10,7 @@ PlacesIndexCtrl.$inject = ['Place'];
 function PlacesIndexCtrl(Place) {
   const vm = this;
   vm.all = Place.query();
+
 }
 
 PlacesShowCtrl.$inject = ['$state', 'Place'];

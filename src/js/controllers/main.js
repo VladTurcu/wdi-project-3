@@ -9,7 +9,7 @@ function MainCtrl($state, $auth, User) {
   vm.registerHidden = true;
   vm.registerShow = registerShow;
 
-  vm.userId = $auth.getPayload();
+  vm.userId = $auth.getPayload().userId;
   if(vm.userId) vm.user = User.get({ id: vm.userId });
   vm.isAuthenticated = $auth.isAuthenticated;
 
@@ -41,6 +41,18 @@ function MainIndexCtrl($state, Place, Story) {
             vm.all = stories.concat(places);
 
             console.log(vm.all);
+
+            vm.countries = [];
+            vm.all.forEach(place => {
+              if (place.country) {
+                vm.countries.push(place.country);
+              }
+            });
+            // vm.countries = vm.countries
+            //   .sort()
+            //   .filter((item, pos) => vm.abvList.indexOf(item) === pos);
+
+            console.log(vm.countries);
           });
       });
   }
