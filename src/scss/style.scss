@@ -17,6 +17,7 @@ aside {
   margin: 10px;
   border-radius: 3%;
   right: 0;
+  transition: 1s;
   &.hidden {
     right: -50%;
   }
