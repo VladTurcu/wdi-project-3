@@ -16,12 +16,9 @@ function googleMap($window) {
       let markers = [];
       const map = new $window.google.maps.Map(element[0], {
         zoom: 3,
+        minZoom: 1,
         center: scope.center,
         styles: mapStyle
-      });
-      new $window.google.maps.Marker({
-        position: scope.center,
-        map: map
       });
 
       scope.$watch('places', () => {
@@ -31,7 +28,11 @@ function googleMap($window) {
         markers = scope.places.map(place => {
           return new $window.google.maps.Marker({
             position: { lat: place.lat, lng: place.lng },
-            map: map
+            map: map,
+            icon: {
+              url: 'http://simpleicon.com/wp-content/uploads/map-marker-15-256x256.png',
+              scaledSize: new $window.google.maps.Size(20, 20)
+            }
           });
         });
 
