@@ -3,7 +3,7 @@ const places = require('../controllers/places');
 const stories = require('../controllers/stories');
 const users = require('../controllers/users');
 const auth = require('../controllers/auth');
-// const secureRoute = require('../lib/secureRoute');
+const secureRoute = require('../lib/secureRoute');
 
 router.route('/places')
   .get(places.index)
@@ -16,7 +16,7 @@ router.route('/places/:id')
 
 router.route('/stories')
   .get(stories.index)
-  .post(stories.create);
+  .post(secureRoute, stories.create);
 
 router.route('/stories/:id')
   .get(stories.show)
