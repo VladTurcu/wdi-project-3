@@ -25,6 +25,6 @@
     </div>
   </div>
   <div class="nav-right">
-  <a class="navbar-item" ui-sref="userPage({ id: user.user.id })"><img class="profile-img" src="{{ user.user.image }}">  Hi {{user.user.username}}!  </a>
+  <a class="navbar-item" ng-if="user.isAuthenticated()" ui-sref="userPage({ id: user.user.id })"><img class="profile-img" src="{{ user.user.image }}">  Hi {{user.user.username}}!  </a>
 </div>
 </nav>

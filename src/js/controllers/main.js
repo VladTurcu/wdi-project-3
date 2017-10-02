@@ -16,7 +16,6 @@ function MainCtrl($state, $auth, User) {
 
   function registerShow() {
     vm.registerHidden = !vm.registerHidden;
-    // console.log(vm.registerHidden);
   }
 
 }

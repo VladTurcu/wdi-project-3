@@ -12,6 +12,7 @@ function userShow(req, res, next){
   User
     .findById(req.params.id)
     .populate('stories')
+    .populate('places')
     .exec()
     .then((user) => res.json(user))
     .catch(next);
