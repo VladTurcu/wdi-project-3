@@ -9,18 +9,33 @@ function googleMap($window) {
     replace: true,
     template: '<div class="google-map">There should be a map here</div>',
     scope: {
-      center: '='
+      center: '=',
+      places: '='
     },
     link(scope, element) {
+      let markers = [];
       const map = new $window.google.maps.Map(element[0], {
         zoom: 3,
         center: scope.center,
         styles: mapStyle
       });
-      return new $window.google.maps.Marker({
-        position: { lat: 45, lng: 5 },
+      new $window.google.maps.Marker({
+        position: scope.center,
         map: map
       });
+
+      scope.$watch('places', () => {
+        markers.forEach(marker => marker.setMap(null));
+        if(scope.places.length === 0) return false;
+
+        markers = scope.places.map(place => {
+          return new $window.google.maps.Marker({
+            position: { lat: place.lat, lng: place.lng },
+            map: map
+          });
+        });
+
+      }, true);
     }
   };
 }

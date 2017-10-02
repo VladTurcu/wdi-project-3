@@ -6,6 +6,7 @@ function navbar() {
   return {
     restrict: 'E',
     templateUrl: 'js/views/directives/_navbar.html',
-    replace: true
+    replace: true,
+    controller: 'MainCtrl as user'
   };
 }
