@@ -51,6 +51,7 @@ function PlacesNewCtrl($state, Place, $http) {
         url: `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyAKoE_jY6PNxyupg_GsKz80YLv0wfChnGs`
       })
         .then(data => {
+          console.log(data.data.results[0].address_components);
           const latLng = (data.data.results[0].geometry.location);
           vm.place.lat = latLng.lat;
           vm.place.lng = latLng.lng;
