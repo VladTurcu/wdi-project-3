@@ -42,7 +42,9 @@ User
       category: 'Nightlife',
       createdBy: users[0],
       image: 'https://media-cdn.tripadvisor.com/media/photo-s/08/a2/c3/48/2-brothers-bar-santorini.jpg',
-      rating: 4.5
+      rating: 4.5,
+      country: 'GR',
+      flag: 'https://restcountries.eu/data/grc.svg'
     }, {
       name: 'Yosemite National Park',
       address: 'California, USA',
@@ -52,7 +54,9 @@ User
       category: 'Nature',
       createdBy: users[1],
       image: 'https://www.nationalparks.org/sites/default/files/styles/wide_1x/public/shutterstock_142351951.jpg',
-      rating: 4.7
+      rating: 4.7,
+      country: 'US',
+      flag: 'https://restcountries.eu/data/usa.svg'
     }, {
       name: 'Gunung Ijen',
       address: 'Java, Indonesia',
@@ -62,7 +66,9 @@ User
       category: 'Nature',
       createdBy: users[1],
       image: 'https://images.unsplash.com/photo-1500100711100-fa7d55b8f658',
-      rating: 4.7
+      rating: 4.7,
+      country: 'ID',
+      flag: 'https://restcountries.eu/data/idn.svg'
     }, {
       name: 'Burano',
       address: 'Venice, Italy',
@@ -72,7 +78,9 @@ User
       category: 'Culture',
       createdBy: users[1],
       image: 'https://images.unsplash.com/photo-1502727051360-3656ce291c5b',
-      rating: 4
+      rating: 4,
+      country: 'IT',
+      flag: 'https://restcountries.eu/data/ita.svg'
     }];
     return Place
       .create(placeData)

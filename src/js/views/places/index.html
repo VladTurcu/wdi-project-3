@@ -1,18 +1,47 @@
 <google-map center="{ lat: 45, lng: 5 }" places="placesIndex.all"></google-map>
+
 <section class="column" ng-controller="MainIndexCtrl as mainIndex">
+
+  <section>
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <label class="label">Search by Country</label>
+      </div>
+      <div class="field-body">
+        <div class="field is-narrow">
+          <div class="control">
+            <div class="select is-fullwidth">
+              <select ng-model="mainIndex.locations" ng-options="country as country for country in mainIndex.countries">
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <div class="columns is-multiline">
-    <div ng-repeat="place in mainIndex.all | orderBy:'-name.length'" class="column is-one-third">
-      <div class="card">
+    <div ng-repeat="place in mainIndex.all" class="column is-one-third">
+      <div class="card" id="{{ place.id }}">
         <div class="card-image">
           <figure class="image is-4by3">
             <img src="{{ place.image }}" alt="{{ place.name }}">
           </figure>
         </div>
         <div class="card-content">
-          <div class="media-content">
-            <a ui-sref="placesShow({ id: place.id })">
-              <h2 class="title is-4">{{ place.name }}</h2>
-            </a>
+
+          <div class="media">
+            <div class="media-left">
+              <figure class="image is-48x48">
+                <img src="{{ place.flag }}" alt="">
+              </figure>
+            </div>
+
+            <div class="media-content">
+              <a ui-sref="placesShow({ id: place.id })">
+                <h2 class="title is-4">{{ place.name }}</h2>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -22,7 +51,7 @@
 
 
 <!-- <div ng-controller="MainIndexCtrl as mainIndex">
-  <div ng-repeat="item in mainIndex.all">
-    Story: {{ item }}
-  </div>
+<div ng-repeat="item in mainIndex.all">
+Story: {{ item }}
+</div>
 </div> -->
