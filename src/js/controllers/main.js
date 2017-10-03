@@ -38,11 +38,12 @@ function MainIndexCtrl($state, $scope, filterFilter, Place, Story) {
       .query()
       .$promise
       .then(places => {
+        vm.places = places;
         Story
           .query()
           .$promise
           .then(stories => {
-            vm.stories = stories
+            vm.stories = stories;
             vm.all = stories.concat(places);
             vm.filtered = stories.concat(places);
             console.log(vm.all);
@@ -71,10 +72,13 @@ function MainIndexCtrl($state, $scope, filterFilter, Place, Story) {
 
   function filterPlaces() {
     const params = {};
+    let searchData = vm.all;
 
     if (vm.contentSearch === 'stories') {
       console.log('storrrrrries');
-      return vm.filtered = vm.stories;
+      searchData = vm.stories;
+    } else if (vm.contentSearch === 'places') {
+      searchData = vm.places;
     }
 
     if (vm.countrySearch) {
@@ -85,17 +89,22 @@ function MainIndexCtrl($state, $scope, filterFilter, Place, Story) {
       params.category = vm.categorySearch;
     }
 
-    vm.filtered = filterFilter(vm.all, params);
-    if (vm.countrySearch === null && vm.categorySearch === null) {
+    if (vm.nameSearch) {
+      params.name = vm.nameSearch;
+    }
+
+    vm.filtered = filterFilter(searchData, params);
+    if (vm.countrySearch === null && vm.categorySearch === null && vm.nameSearch === null) {
       console.log('shit be null');
-      vm.filtered = vm.all;
+      vm.filtered = searchData;
     }
   }
 
   $scope.$watchGroup([
     () => vm.countrySearch,
     () => vm.categorySearch,
-    () => vm.contentSearch
+    () => vm.contentSearch,
+    () => vm.nameSearch
   ], filterPlaces);
 
   //
