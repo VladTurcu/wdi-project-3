@@ -47,12 +47,20 @@ function MainIndexCtrl($state, $scope, filterFilter, Place, Story) {
             console.log(vm.all);
 
             vm.countries = [];
+            vm.categories = [];
+            vm.countrySearch = null;
+            vm.categorySearch = null;
             vm.all.forEach(place => {
               if (place.country && !vm.countries.includes(place.country)) {
                 vm.countries.push(place.country);
               }
+              if (place.category && !vm.categories.includes(place.category)) {
+                vm.categories.push(place.category);
+              }
             });
             vm.countries = vm.countries
+              .sort();
+            vm.categories = vm.categories
               .sort();
 
             console.log(vm.countries);
@@ -60,15 +68,22 @@ function MainIndexCtrl($state, $scope, filterFilter, Place, Story) {
       });
   }
 
-  function filterByCountry() {
-    const params = { country: vm.countrySearch };
+  function filterPlaces() {
+    const params = {
+      country: vm.countrySearch,
+      category: vm.categorySearch
+    };
     vm.filtered = filterFilter(vm.all, params);
-    if (vm.countrySearch === null) vm.filtered = vm.all;
+    if (vm.countrySearch === null && vm.categorySearch === null) {
+      console.log('shit be null');
+      vm.filtered = vm.all;
+    }
   }
 
   $scope.$watchGroup([
-    () => vm.countrySearch
-  ], filterByCountry);
+    () => vm.countrySearch,
+    () => vm.categorySearch
+  ], filterPlaces);
 
   //
   // mix(vm.all);
