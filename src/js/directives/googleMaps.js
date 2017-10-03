@@ -25,7 +25,7 @@ function googleMap($window, $anchorScroll, $location) {
 
       scope.$watch('places', () => {
         markers.forEach(marker => marker.setMap(null));
-        if(scope.places.length === 0) return false;
+        if(!scope.places || scope.places.length === 0) return false;
 
         markers = scope.places.map(place => {
           console.log('this thing logs in markers');
@@ -48,7 +48,7 @@ function googleMap($window, $anchorScroll, $location) {
 
       scope.$watch('stories', () => {
         routes.forEach(route => route.setMap(null));
-        if(scope.stories.length === 0) return false;
+        if(!scope.stories || scope.stories.length === 0) return false;
 
         routes = scope.stories.map(story => {
           console.log('this thing logs in routes');
@@ -66,21 +66,21 @@ function googleMap($window, $anchorScroll, $location) {
         });
       });
 
-  //     var flightPlanCoordinates = [
-  //   {lat: 37.772, lng: -122.214},
-  //   {lat: 21.291, lng: -157.821},
-  //   {lat: -18.142, lng: 178.431},
-  //   {lat: -27.467, lng: 153.027}
-  // ];
-  // var flightPath = new $window.google.maps.Polyline({
-  //   path: flightPlanCoordinates,
-  //   geodesic: true,
-  //   strokeColor: '#FFFFFF',
-  //   strokeOpacity: 1.0,
-  //   strokeWeight: 2
-  // });
-  //
-  // flightPath.setMap(map);
+    //     var flightPlanCoordinates = [
+    //   {lat: 37.772, lng: -122.214},
+    //   {lat: 21.291, lng: -157.821},
+    //   {lat: -18.142, lng: 178.431},
+    //   {lat: -27.467, lng: 153.027}
+    // ];
+    // var flightPath = new $window.google.maps.Polyline({
+    //   path: flightPlanCoordinates,
+    //   geodesic: true,
+    //   strokeColor: '#FFFFFF',
+    //   strokeOpacity: 1.0,
+    //   strokeWeight: 2
+    // });
+    //
+    // flightPath.setMap(map);
 
     }
   };
