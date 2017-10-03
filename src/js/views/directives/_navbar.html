@@ -1,7 +1,5 @@
 <nav class="navbar">
-  <a class="navbar-item"  ui-sref="placesIndex">Home</a>
-
-
+  <a class="navbar-item" ui-sref="placesIndex">Home</a>
 
   <div class="dropdown is-hoverable">
     <a class="navbar-item" ui-sref="placesIndex" aria-haspopup="true" aria-controls="dropdown-menu4">Places</a>
@@ -25,7 +23,7 @@
     </div>
   </div>
   <div class="nav-right" ng-if="main.isAuthenticated()">
-  <a class="navbar-item" ui-sref="userPage({ id: main.user.id })"><img class="profile-img" src="{{ main.user.image }}">  Hi {{main.user.username}}!  </a>
+  <a class="navbar-item" ui-sref="userPage({ id: main.user.id })"><img class="profile-img" src="{{ main.user.imageSRC }}">  Hi {{main.user.username}}!  </a>
   <a class="navbar-item" ng-click="main.logout()" href="#">Logout</a>
 </div>
   <div class="nav-right" ng-if="!main.isAuthenticated()">

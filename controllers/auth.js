@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const { secret } = require('../config/environment');
 
 function registration(req, res, next){
+  if(req.file) req.body.image = req.file.filename;
   User
     .create(req.body)
     .then(() => res.json({message: 'Registration succesfull'}))

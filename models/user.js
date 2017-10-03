@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const s3 = require('../lib/s3');
 
 
 const userSchema = new mongoose.Schema({
@@ -50,5 +51,38 @@ userSchema.pre('save', function hashPassword(next) {
 userSchema.methods.validatePassword = function validatePassword(password) {
   return bcrypt.compareSync(password, this.password);
 };
+
+
+
+
+
+
+
+
+userSchema
+  .path('image')
+  .set(function getPreviousImage(image) {
+    this._image = this.image;
+    return image;
+  });
+
+userSchema
+  .virtual('imageSRC')
+  .get(function getImageSRC() {
+    if(!this.image) return null;
+    return `https://s3-eu-west-1.amazonaws.com/${process.env.AWS_BUCKET_NAME}/${this.image}`;
+  });
+
+userSchema.pre('save', function checkPreviousImage(next) {
+  if(this.isModified('image') && this._image) {
+    return s3.deleteObject({ Key: this._image }, next);
+  }
+  next();
+});
+
+userSchema.pre('remove', function removeImage(next) {
+  if(this.image) s3.deleteObject({ Key: this.image }, next);
+  next();
+});
 
 module.exports = mongoose.model('User', userSchema);

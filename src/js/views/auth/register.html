@@ -2,8 +2,6 @@
 
 <form  name="register.registerForm" ng-submit="register.submit()" method="post">
 
-  <h1>Register</h1>
-
   <div class="field">
     <label class="label">Username</label>
     <div class="control">
@@ -19,6 +17,16 @@
     <div class="control">
       <input type="text" class="input" name="email" id="email" ng-model="register.user.email" placeholder="email" required>
       <div class="form-validation"  ng-messages="register.registerForm.email.$error" role="alert" ng-show="(register.registerForm.$submitted || register.registerForm.email.$touched) && register.registerForm.email.$invalid">
+        <div ng-message="required">Please enter a value for this field.</div>
+      </div>
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Image</label>
+    <div class="control">
+      <input base64 type="file" class="input" name="base64" id="image" ng-model="register.user.base64" placeholder="Image" required>
+
+      <div class="form-validation"  ng-messages="register.registerForm.image.$error" role="alert" ng-show="(register.registerForm.$submitted || register.registerForm.image.$touched) && register.registerForm.image.$invalid">
         <div ng-message="required">Please enter a value for this field.</div>
       </div>
     </div>
