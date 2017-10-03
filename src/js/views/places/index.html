@@ -1,6 +1,8 @@
-<google-map center="{ lat: 45, lng: 5 }" places="placesIndex.all"></google-map>
+<div  ng-controller="MainIndexCtrl as mainIndex">
 
-<section class="column" ng-controller="MainIndexCtrl as mainIndex">
+<google-map center="{ lat: 45, lng: 5 }" places="placesIndex.all" stories="mainIndex.stories"></google-map>
+
+<section class="column">
 
   <section class="filter-bar">
     <div class="field is-horizontal">
@@ -67,3 +69,5 @@
     </div>
   </div>
 </section>
+
+</div>

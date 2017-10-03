@@ -42,6 +42,7 @@ function MainIndexCtrl($state, $scope, filterFilter, Place, Story) {
           .query()
           .$promise
           .then(stories => {
+            vm.stories = stories
             vm.all = stories.concat(places);
             vm.filtered = stories.concat(places);
             console.log(vm.all);

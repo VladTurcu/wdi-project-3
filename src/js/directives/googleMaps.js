@@ -10,10 +10,12 @@ function googleMap($window, $anchorScroll, $location) {
     template: '<div class="google-map">There should be a map here</div>',
     scope: {
       center: '=',
-      places: '='
+      places: '=',
+      stories: '='
     },
     link(scope, element) {
       let markers = [];
+      let routes = [];
       const map = new $window.google.maps.Map(element[0], {
         zoom: 3,
         minZoom: 1,
@@ -26,6 +28,7 @@ function googleMap($window, $anchorScroll, $location) {
         if(scope.places.length === 0) return false;
 
         markers = scope.places.map(place => {
+          console.log('this thing logs in markers');
           const marker = new $window.google.maps.Marker({
             position: { lat: place.lat, lng: place.lng },
             map: map,
@@ -42,7 +45,43 @@ function googleMap($window, $anchorScroll, $location) {
         });
 
       }, true);
-      
+
+      scope.$watch('stories', () => {
+        routes.forEach(route => route.setMap(null));
+        if(scope.stories.length === 0) return false;
+
+        routes = scope.stories.map(story => {
+          console.log('this thing logs in routes');
+          const route = new $window.google.maps.Polyline({
+            path: story.route,
+            geodesic: true,
+            strokeColor: '#FFFFFF',
+            strokeOpacity: 1,
+            strokeWeight: 3
+          });
+          route.setMap(map);
+          route.addListener('click', () => {
+            console.log(story.name);
+          });
+        });
+      });
+
+  //     var flightPlanCoordinates = [
+  //   {lat: 37.772, lng: -122.214},
+  //   {lat: 21.291, lng: -157.821},
+  //   {lat: -18.142, lng: 178.431},
+  //   {lat: -27.467, lng: 153.027}
+  // ];
+  // var flightPath = new $window.google.maps.Polyline({
+  //   path: flightPlanCoordinates,
+  //   geodesic: true,
+  //   strokeColor: '#FFFFFF',
+  //   strokeOpacity: 1.0,
+  //   strokeWeight: 2
+  // });
+  //
+  // flightPath.setMap(map);
+
     }
   };
 }
