@@ -24,7 +24,6 @@ function googleMap($window, $anchorScroll, $location) {
         styles: mapStyle
       });
 
-
       scope.$watch('places', () => {
         markers.forEach(marker => marker.setMap(null));
         if(!scope.places || scope.places.length === 0) return false;
@@ -81,7 +80,8 @@ function mapClick($window) {
     replace: true,
     template: '<div class="google-map">There should be a map here</div>',
     scope: {
-      center: '='
+      center: '=',
+      route: '='
     },
     link(scope, element) {
       const map = new $window.google.maps.Map(element[0], {
@@ -102,10 +102,27 @@ function mapClick($window) {
         scope.$apply();
       });
 
+      scope.$watch('route', () => {
+        console.log(scope.route[scope.route.length - 1]);
+        new $window.google.maps.Marker({
+          position: scope.route[scope.route.length - 1],
+          map: map,
+          icon: {
+            url: 'http://simpleicon.com/wp-content/uploads/map-marker-15-256x256.png',
+            scaledSize: new $window.google.maps.Size(20, 20)
+          }
+        });
 
+        new $window.google.maps.Polyline({
+          path: scope.route,
+          geodesic: true,
+          strokeColor: '#406e8e',
+          strokeOpacity: 1,
+          strokeWeight: 2,
+          map: map
+        });
 
-
-
+      }, true);
 
     }
   };

@@ -34,12 +34,28 @@ function StoriesShowCtrl($state, Story) {
   }
 }
 
-StoriesNewCtrl.$inject = ['$state', 'Story'];
-function StoriesNewCtrl($state, Story) {
+StoriesNewCtrl.$inject = ['$state', '$scope', 'Story'];
+function StoriesNewCtrl($state, $scope, Story) {
   const vm  = this;
   vm.story = {};
+  vm.story.route = [];
   vm.create = storiesCreate;
+  vm.center = {lat: 51.5264476, lng: -0.0969805};
+  vm.nextLeg = nextLeg;
 
+  $scope.$watch(() => vm.center, () => {
+    vm.story.testLat = vm.center.lat;
+    vm.story.testLng = vm.center.lng;
+  }, true);
+
+  function nextLeg() {
+    vm.story.route.push({ lat: vm.story.testLat, lng: vm.story.testLng });
+
+
+    console.log(vm.story.route);
+
+
+  }
 
   function storiesCreate(){
     const vm = this;

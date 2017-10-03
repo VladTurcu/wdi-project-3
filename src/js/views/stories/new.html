@@ -12,6 +12,16 @@
       <label class="label">Image</label>
       <input class="input" type="text" name="image" ng-model="storiesNew.story.image" storyholder="image" placeholder="image">
     </div>
+
+    <div class="field latlng">
+      <label class="label">Route Points</label>
+      <input class="input" type="text"  data-method="ctrlFn"  name="testLat" ng-model="storiesNew.story.testLat" placeholder="Latitude">
+      <input class="input" type="text" name="testLng" ng-model="storiesNew.story.testLng" placeholder="Longitude">
+      <a class="button route-button" ng-click="storiesNew.nextLeg()">+</a>
+    </div>
+
+    <map-click center="storiesNew.center" route="storiesNew.story.route"></map-click>
+
     <button class="button is-primary">Create Place</button>
   </form>
 </div>

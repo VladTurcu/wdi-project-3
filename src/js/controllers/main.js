@@ -9,7 +9,7 @@ function MainCtrl($state, $auth, User) {
   vm.registerHidden = true;
   vm.registerShow = registerShow;
 
-  if ($auth.getPayload.userId) vm.userId = $auth.getPayload().userId;
+  vm.userId = $auth.getPayload().userId;
   if(vm.userId) vm.user = User.get({ id: vm.userId });
 
   vm.isAuthenticated = $auth.isAuthenticated;
