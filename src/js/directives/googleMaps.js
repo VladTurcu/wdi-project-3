@@ -42,6 +42,7 @@ function googleMap($window, $anchorScroll, $location) {
         });
 
       }, true);
+      
     }
   };
 }
