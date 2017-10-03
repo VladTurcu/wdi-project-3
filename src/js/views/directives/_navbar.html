@@ -28,4 +28,8 @@
   <a class="navbar-item" ng-if="main.isAuthenticated()" ui-sref="userPage({ id: main.user.id })"><img class="profile-img" src="{{ main.user.image }}">  Hi {{main.user.username}}!  </a>
   <a class="navbar-item" ng-click="main.logout()" href="#">Logout</a>
 </div>
+
+  <div class="nav-right" ng-if="!main.isAuthenticated()">
+<login></login>
+</div>
 </nav>
