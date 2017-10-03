@@ -4,14 +4,15 @@ const stories = require('../controllers/stories');
 const users = require('../controllers/users');
 const auth = require('../controllers/auth');
 const secureRoute = require('../lib/secureRoute');
+const imageUpload = require('../lib/imageUpload');
 
 router.route('/places')
   .get(places.index)
-  .post(places.create);
+  .post(imageUpload, places.create);
 
 router.route('/places/:id')
   .get(places.show)
-  .put(places.update)
+  .put(imageUpload, places.update)
   .delete(places.delete);
 
 router.route('/stories')
@@ -24,13 +25,10 @@ router.route('/stories/:id')
   .delete(stories.delete);
 
 router.route('/register')
-  .post(auth.register);
+  .post(imageUpload, auth.register);
 
 router.route('/login')
   .post(auth.login);
-
-router.route('/users')
-  .get(users.index);
 
 router.route('/users/:id')
   .get(users.show);

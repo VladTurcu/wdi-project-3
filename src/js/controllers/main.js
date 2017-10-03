@@ -3,14 +3,17 @@ angular
   .controller('MainCtrl', MainCtrl)
   .controller('MainIndexCtrl', MainIndexCtrl);
 
-MainCtrl.$inject = ['$state', '$auth', 'User'];
-function MainCtrl($state, $auth, User) {
+MainCtrl.$inject = ['$state', '$auth', 'User', '$rootScope'];
+function MainCtrl($state, $auth, User, $rootScope) {
   const vm = this;
   vm.registerHidden = true;
   vm.registerShow = registerShow;
 
-  if ($auth.getPayload.userId) vm.userId = $auth.getPayload().userId;
-  if(vm.userId) vm.user = User.get({ id: vm.userId });
+  $rootScope.$on('loggedIn', () => {
+    console.log('user has logged in!');
+    vm.user = User.get({ id: $auth.getPayload().userId });
+    console.log(vm.user);
+  });
 
   vm.isAuthenticated = $auth.isAuthenticated;
 
@@ -18,8 +21,11 @@ function MainCtrl($state, $auth, User) {
     vm.registerHidden = !vm.registerHidden;
   }
 
+
+
   function logout() {
     $auth.logout();
+    vm.user = null;
     $state.go('placesIndex');
   }
   vm.logout = logout;

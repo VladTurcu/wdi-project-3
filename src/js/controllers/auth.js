@@ -2,16 +2,19 @@ angular
   .module('bemoApp')
   .controller('LoginCtrl', LoginCtrl)
   .controller('RegisterCtrl', RegisterCtrl);
-  // .controller('Register2Ctrl', Register2Ctrl);
+// .controller('Register2Ctrl', Register2Ctrl);
 
-LoginCtrl.$inject = ['$auth', '$state'];
-function LoginCtrl($auth, $state) {
+LoginCtrl.$inject = ['$auth', '$state', '$rootScope'];
+function LoginCtrl($auth, $state, $rootScope) {
   const vm = this;
 
   function submit() {
     if (vm.loginForm.$valid) {
       $auth.login(vm.credentials)
-        .then(() => $state.go('placesIndex'))
+        .then(() => {
+          $rootScope.$broadcast('loggedIn');
+          $state.go('placesIndex');
+        })
         .catch(() => $state.go('login'));
     }
   }
@@ -28,7 +31,7 @@ function RegisterCtrl($auth, $state) {
     if (vm.registerForm.$valid) {
       $auth.signup(vm.user)
         .then(() => $state.go('login'))
-        .catch(() => $state.go('register'));
+        .catch(() => $state.go('placesIndex'));
     }
   }
 
