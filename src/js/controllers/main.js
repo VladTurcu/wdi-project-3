@@ -72,6 +72,11 @@ function MainIndexCtrl($state, $scope, filterFilter, Place, Story) {
   function filterPlaces() {
     const params = {};
 
+    if (vm.contentSearch === 'stories') {
+      console.log('storrrrrries');
+      return vm.filtered = vm.stories;
+    }
+
     if (vm.countrySearch) {
       params.country = vm.countrySearch;
     }
@@ -89,7 +94,8 @@ function MainIndexCtrl($state, $scope, filterFilter, Place, Story) {
 
   $scope.$watchGroup([
     () => vm.countrySearch,
-    () => vm.categorySearch
+    () => vm.categorySearch,
+    () => vm.contentSearch
   ], filterPlaces);
 
   //

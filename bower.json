@@ -19,7 +19,8 @@
     "angular": "^1.5.8",
     "angular-ui-router": "^1.0.6",
     "satellizer": "^0.15.5",
-    "angular-resource": "^1.6.6"
+    "angular-resource": "^1.6.6",
+    "angular-datamaps": "^0.1.2"
   },
   "resolutions": {
     "angular": "1.6.6"

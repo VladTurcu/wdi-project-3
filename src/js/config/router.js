@@ -37,6 +37,11 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       templateUrl: '/js/views/auth/register.html',
       controller: 'RegisterCtrl as register'
     })
+    // .state('register2', {
+    //   url: '/register2',
+    //   templateUrl: '/js/views/auth/register2.html',
+    //   controller: 'Register2Ctrl as register2'
+    // })
     .state('login', {
       url: '/login',
       templateUrl: '/js/views/auth/login.html',

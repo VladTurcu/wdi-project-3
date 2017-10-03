@@ -32,9 +32,17 @@
           </div>
         </div>
         <div class="field-label is-normal">
+          <label class="label">Search by Content</label>
         </div>
         <div class="field is-narrow">
           <div class="control">
+            <div class="select is-fullwidth">
+              <select ng-model="mainIndex.contentSearch">
+                <option value="" selected>Anything</option>
+                <option value="places">Places</option>
+                <option value="stories">Stories</option>
+              </select>
+            </div>
           </div>
         </div>
       </div>
@@ -43,29 +51,7 @@
 
   <div class="columns is-multiline">
     <div ng-repeat="place in mainIndex.filtered" class="column is-one-third">
-      <div class="card" id="{{ place.id }}">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img src="{{ place.image }}" alt="{{ place.name }}">
-          </figure>
-        </div>
-        <div class="card-content">
-
-          <div class="media">
-            <div class="media-left">
-              <figure class="image is-48x48">
-                <img src="{{ place.flag }}" alt="">
-              </figure>
-            </div>
-
-            <div class="media-content">
-              <a ui-sref="placesShow({ id: place.id })">
-                <h2 class="title is-4">{{ place.name }}</h2>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+      <card item="place"></card>
     </div>
   </div>
 </section>
