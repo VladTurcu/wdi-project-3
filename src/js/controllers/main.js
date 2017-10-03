@@ -69,10 +69,16 @@ function MainIndexCtrl($state, $scope, filterFilter, Place, Story) {
   }
 
   function filterPlaces() {
-    const params = {
-      country: vm.countrySearch,
-      category: vm.categorySearch
-    };
+    const params = {};
+
+    if (vm.countrySearch) {
+      params.country = vm.countrySearch;
+    }
+
+    if (vm.categorySearch) {
+      params.category = vm.categorySearch;
+    }
+
     vm.filtered = filterFilter(vm.all, params);
     if (vm.countrySearch === null && vm.categorySearch === null) {
       console.log('shit be null');
