@@ -1,6 +1,5 @@
 // Import all of your scss files here
 html, body {
-
 }
 
 body {
@@ -97,4 +96,15 @@ h1 {
 
 .data:hover{
   background-color: #F9F9F9;
+}
+
+.login{
+  display: flex;
+  .lgn {
+      margin-left: 10px;
+  }
+  .button{
+    margin: 10px 10px;
+
+  }
 }
