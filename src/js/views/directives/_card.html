@@ -4,7 +4,7 @@
       <img src="{{ item.image }}" alt="{{ item.name }}">
     </figure>
   </div>
-  <div class="card-content">
+  <div class="card-content" ng-class="{'story-card' : !item.lat}">
 
     <div class="media">
       <div class="media-left" ng-if="item.flag">
