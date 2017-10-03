@@ -17,6 +17,8 @@
          <div class="column is-8 is-offset-2">
            <div class="content blog-post section">
 
+             {{ storiesShow.story.route }}
+
              <p>{{ storiesShow.story.text }}</p>
            </div>
            <a class="button is-primary" ui-sref="storiesEdit({ id: storiesShow.story.id })">Edit</a>

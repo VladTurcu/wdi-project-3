@@ -5,7 +5,8 @@ const storySchema = new mongoose.Schema({
   text: { type: String, required: true },
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User' },
   image: { type: String, required: true },
-  places: [{ type: mongoose.Schema.ObjectId, ref: 'Place' }]
+  places: [{ type: mongoose.Schema.ObjectId, ref: 'Place' }],
+  route: []
 },{
   timestamps: true
 });

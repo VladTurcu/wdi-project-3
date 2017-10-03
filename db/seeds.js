@@ -227,14 +227,24 @@ User
           text: lorem2,
           createdBy: users[0],
           image: 'https://images.unsplash.com/photo-1476067897447-d0c5df27b5df',
-          places: [places[1], places[0]]
+          places: [places[1], places[4], places[7]],
+          route: [
+            {lat: places[1].lat, lng: places[1].lng},
+            {lat: places[4].lat, lng: places[4].lng},
+            {lat: places[7].lat, lng: places[7].lng}
+          ]
         }, {
           name: 'The Empire Strikes Back',
           text: lorem2,
           createdBy: users[1],
           image: 'https://images.unsplash.com/uploads/14123277159177add8d0b/24a675f2',
           places: [
-            places[1]
+            places[3], places[8], places[9]
+          ],
+          route: [
+            {lat: places[3].lat, lng: places[3].lng},
+            {lat: places[8].lat, lng: places[8].lng},
+            {lat: places[9].lat, lng: places[9].lng}
           ]
         }, {
           name: 'Lost in USA',
@@ -243,6 +253,9 @@ User
           image: 'https://www.cartalk.com/sites/default/files/blogs/Picture%20Panthers%20012016_html_4c235dcc.jpg',
           places: [
             places[1], places[4]
+          ],
+          route: [
+
           ]
         }, {
           name: 'Bill and Ted\'s Bogus Adventure',
@@ -250,7 +263,11 @@ User
           createdBy: users[0],
           image: 'http://storage0.dms.mpinteractiv.ro/media/401/321/5386/10792743/1/erik-cover.jpg',
           places: [
-            places[3], places[11]
+            places[2], places[5]
+          ],
+          route: [
+            {lat: places[2].lat, lng: places[2].lng},
+            {lat: places[5].lat, lng: places[5].lng},
           ]
         }, {
           name: 'Rocky Rapids',
@@ -259,6 +276,12 @@ User
           image: 'http://ichef.bbci.co.uk/wwfeatures/wm/live/1280_640/images/live/p0/51/v6/p051v6vn.jpg',
           places: [
             places[7]
+          ],
+          route: [
+            {lat: -33.9239941, lng: 18.4998116},
+            {lat: -25.7582737, lng: 28.0578642},
+            {lat: -17.9316393, lng: 25.8092289},
+            {lat: -6.7692302, lng: 39.1142033},
           ]
         }, {
           name: 'Storytime',
@@ -266,7 +289,12 @@ User
           createdBy: users[1],
           image: 'http://rome.mrdonn.org/romanmasks.jpg',
           places: [
-            places[9], places[14]
+            places[6], places[14], places[13]
+          ],
+          route: [
+            {lat: places[14].lat, lng: places[14].lng},
+            {lat: places[6].lat, lng: places[6].lng},
+            {lat: places[13].lat, lng: places[13].lng}
           ]
         }];
         return Story
