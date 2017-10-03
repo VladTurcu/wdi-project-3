@@ -1,14 +1,14 @@
 <nav class="navbar">
   <a class="navbar-item"  ui-sref="placesIndex">Home</a>
-  <a class="navbar-item" ng-if="!user.isAuthenticated()" ng-click="user.registerShow()">Register</a>
-  <a class="navbar-item" ng-if="!user.isAuthenticated()" ui-sref="login">Login</a>
+  <a class="navbar-item" ng-if="!main.isAuthenticated()" ng-click="main.registerShow()">Register</a>
+  <a class="navbar-item" ng-if="!main.isAuthenticated()" ui-sref="login">Login</a>
 
   <div class="dropdown is-hoverable">
     <a class="navbar-item" ui-sref="placesIndex" aria-haspopup="true" aria-controls="dropdown-menu4">Places</a>
     <div class="dropdown-menu" id="dropdown-menu4" role="menu">
       <div class="dropdown-content">
         <div class="dropdown-item">
-          <a class="navbar-item" ng-if="user.isAuthenticated()" ui-sref="placesNew">Add Place</a>
+          <a class="navbar-item" ng-if="main.isAuthenticated()" ui-sref="placesNew">Add Place</a>
         </div>
       </div>
     </div>
@@ -19,12 +19,13 @@
     <div class="dropdown-menu" id="dropdown-menu4" role="menu">
       <div class="dropdown-content">
         <div class="dropdown-item">
-          <a class="navbar-item" ng-if="user.isAuthenticated()" ui-sref="storiesNew">Add Story</a>
+          <a class="navbar-item" ng-if="main.isAuthenticated()" ui-sref="storiesNew">Add Story</a>
         </div>
       </div>
     </div>
   </div>
-  <div class="nav-right">
-  <a class="navbar-item" ng-if="user.isAuthenticated()" ui-sref="userPage({ id: user.user.id })"><img class="profile-img" src="{{ user.user.image }}">  Hi {{user.user.username}}!  </a>
+  <div class="nav-right" ng-if="main.isAuthenticated()">
+  <a class="navbar-item" ng-if="main.isAuthenticated()" ui-sref="userPage({ id: main.user.id })"><img class="profile-img" src="{{ main.user.image }}">  Hi {{main.user.username}}!  </a>
+  <a class="navbar-item" ng-click="main.logout()" href="#">Logout</a>
 </div>
 </nav>

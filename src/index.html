@@ -12,9 +12,9 @@
   <!-- inject:css -->
   <!-- endinject -->
 </head>
-<body ng-controller="MainCtrl as user">
+<body ng-controller="MainCtrl as main">
   <navbar></navbar>
-  <aside ng-class="{ hidden: user.registerHidden }">
+  <aside ng-class="{ hidden: main.registerHidden }">
     <register></register>
   </aside>
   <main ui-view></main>
