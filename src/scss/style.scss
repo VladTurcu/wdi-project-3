@@ -1,6 +1,5 @@
 // Import all of your scss files here
 html, body {
-
 }
 
 body {
@@ -32,6 +31,10 @@ h1 {
   a {
     color: #8ea8c3;
   }
+}
+
+.filter-bar {
+  height: 60px;
 }
 
 .card {
@@ -99,10 +102,13 @@ h1 {
   background-color: #F9F9F9;
 }
 
-.login {
+.login{
   display: flex;
-}
+  .lgn {
+      margin-left: 10px;
+  }
+  .button{
+    margin: 10px 10px;
 
-.lgn{
-  margin: 10px 5px;
+  }
 }
