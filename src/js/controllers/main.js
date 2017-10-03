@@ -23,9 +23,8 @@ function MainCtrl($state, $auth, User) {
     $state.go('placesIndex');
   }
   vm.logout = logout;
+
 }
-
-
 
 
 MainIndexCtrl.$inject = ['$state', '$scope', 'filterFilter', 'Place', 'Story'];
@@ -59,6 +58,12 @@ function MainIndexCtrl($state, $scope, filterFilter, Place, Story) {
           });
       });
   }
+
+
+
+
+
+
 
   function filterByCountry() {
     const params = { country: vm.countrySearch };

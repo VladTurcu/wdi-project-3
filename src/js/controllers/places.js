@@ -36,13 +36,24 @@ function PlacesShowCtrl($state, Place) {
   }
 }
 
-PlacesNewCtrl.$inject = ['$state', 'Place', '$http'];
-function PlacesNewCtrl($state, Place, $http) {
+
+PlacesNewCtrl.$inject = ['$state', 'Place', '$http', '$scope'];
+function PlacesNewCtrl($state, Place, $http, $scope) {
   const vm  = this;
   vm.place = {};
   vm.create = placesCreate;
 
+
+
+  vm.center = { lat: 45, lng: 5 };
+
+  $scope.$watch(() => vm.center, () => {
+    vm.place.lat = vm.center.lat;
+    vm.place.lng = vm.center.lng;
+  }, true);
+
   function placesCreate(){
+
     if (vm.place.address) {
       let address = vm.place.address;
       address = address.split(' ').join('+');
@@ -86,6 +97,14 @@ function PlacesNewCtrl($state, Place, $http) {
         });
     }
   }
+
+
+
+
+
+
+
+
 }
 
 PlacesEditCtrl.$inject = ['$state', 'Place'];

@@ -1,26 +1,55 @@
 <div class="form">
-<form name="placesNew.form" ng-submit="placesNew.create()">
+<form name="placesNew.form" ng-submit="placesNew.create()" novalidate>
+
   <div class="field">
   <label class="label">Name</label>
-  <input class="input" type="text" name="name" ng-model="placesNew.place.name" placeholder="name">
+  <input class="input" type="text" name="name" ng-model="placesNew.place.name" placeholder="name" required>
+  <div class="form-validation"  ng-messages="placesNew.form.name.$error" role="alert" ng-show="(placesNew.form.$submitted || placesNew.form.name.$touched) && placesNew.form.name.$invalid">
+    <div ng-message="required">Please enter a value for this field.</div>
   </div>
+  </div>
+
+
+
+
+
   <div class="field">
   <label class="label">Address</label>
   <input class="input" type="text" name="address" ng-model="placesNew.place.address" placeholder="address">
+  <div class="form-validation"  ng-messages="placesNew.form.address.$error" role="alert" ng-show="(placesNew.form.$submitted || placesNew.form.address.$touched) && placesNew.form.address.$invalid">
+    <div ng-message="required">Please enter a value for this field.</div>
   </div>
+  </div>
+
   <div class="field latlng">
+  <input class="input" type="text"  data-method="ctrlFn"  name="lat" ng-model="placesNew.place.lat" placeholder="Latitude" ng-required="(placesNew.place.address || placesNew.place.lat && placesNew.place.lng)" required>
+  <input class="input" type="text" name="lng" ng-model="placesNew.place.lng" placeholder="Longitude" ng-required="(placesNew.place.address || placesNew.place.lat && placesNew.place.lng)" required>
 
-  <input class="input" type="text" name="lat" ng-model="placesNew.place.lat" placeholder="Latitude">
 
 
-  <input class="input" type="text" name="lng" ng-model="placesNew.place.lng" placeholder="Longitude">
+  <div class="form-validation"  ng-messages="placesNew.form.lat.$error" role="alert" ng-show="(placesNew.form.$submitted || placesNew.form.lat.$touched) && placesNew.form.lat.$invalid">
+    <div ng-message="required">Please enter a latitude or longitude</div>
   </div>
+  <div class="form-validation"  ng-messages="placesNew.form.lng.$error" role="alert" ng-show="(placesNew.form.$submitted || placesNew.form.lng.$touched) && placesNew.form.lng.$invalid">
+    <div ng-message="required">Please enter a latitude or longitude</div>
+  </div>
+  </div>
+
+
+  <map-click center="placesNew.center"></map-click>
+
+
+
+
   <div class="field">
   <label class="label">Description</label>
-  <textarea class="textarea" type="text" name="description" ng-model="placesNew.place.description" placeholder="description" rows="5"></textarea>
+  <textarea class="textarea" type="text" name="description" ng-model="placesNew.place.description" placeholder="description" rows="5" required></textarea>
+  <div class="form-validation"  ng-messages="placesNew.form.description.$error" role="alert" ng-show="(placesNew.form.$submitted || placesNew.form.description.$touched) && placesNew.form.description.$invalid">
+    <div ng-message="required">Please enter a value for this field.</div>
+  </div>
 </div>
-<div class="select">
 
+<div class="select">
   <select class="select"  type="text" name="category" ng-model="placesNew.place.category" placeholder="category">
     <label class="label">Category</label>
     <option value="Sports">Sports</option>
@@ -29,10 +58,15 @@
     <option value="Outdoors">Culture</option>
   </select>
 </div>
+
 <div class="field">
 <label class="label">Image</label>
-  <input class="input" type="text" name="image" ng-model="placesNew.place.image" placeholder="image">
+  <input class="input" type="text" name="image" ng-model="placesNew.place.image" placeholder="image" required>
+  <div class="form-validation"  ng-messages="placesNew.form.image.$error" role="alert" ng-show="(placesNew.form.$submitted || placesNew.form.image.$touched) && placesNew.form.image.$invalid">
+    <div ng-message="required">Please enter a value for this field.</div>
+  </div>
 </div>
+
 <label class="label">Rating</label>
 <div class="select">
   <select type="text" name="rating" ng-model="placesNew.place.rating" placeholder="rating">

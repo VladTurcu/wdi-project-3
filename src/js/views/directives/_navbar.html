@@ -1,7 +1,7 @@
 <nav class="navbar">
   <a class="navbar-item"  ui-sref="placesIndex">Home</a>
-  <a class="navbar-item" ng-if="!main.isAuthenticated()" ng-click="main.registerShow()">Register</a>
-  <a class="navbar-item" ng-if="!main.isAuthenticated()" ui-sref="login">Login</a>
+
+
 
   <div class="dropdown is-hoverable">
     <a class="navbar-item" ui-sref="placesIndex" aria-haspopup="true" aria-controls="dropdown-menu4">Places</a>
@@ -30,5 +30,6 @@
 </div>
   <div class="nav-right" ng-if="!main.isAuthenticated()">
   <login></login>
+  <a class="button is-seccondary btn" ng-if="!main.isAuthenticated()" ng-click="main.registerShow()">Register</a>
 </div>
 </nav>

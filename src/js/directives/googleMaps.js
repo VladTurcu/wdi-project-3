@@ -1,6 +1,7 @@
 angular
   .module('bemoApp')
-  .directive('googleMap', googleMap);
+  .directive('googleMap', googleMap)
+  .directive('mapClick', mapClick);
 
 googleMap.$inject = ['$window', '$anchorScroll', '$location'];
 function googleMap($window, $anchorScroll, $location) {
@@ -21,9 +22,10 @@ function googleMap($window, $anchorScroll, $location) {
         styles: mapStyle
       });
 
+
       scope.$watch('places', () => {
         markers.forEach(marker => marker.setMap(null));
-        if(scope.places.length === 0) return false;
+        if(!scope.places || scope.places.length === 0) return false;
 
         markers = scope.places.map(place => {
           const marker = new $window.google.maps.Marker({
@@ -45,6 +47,53 @@ function googleMap($window, $anchorScroll, $location) {
     }
   };
 }
+
+
+
+
+mapClick.$inject = ['$window'];
+function mapClick($window) {
+  return {
+    restrict: 'E',
+    replace: true,
+    template: '<div class="google-map">There should be a map here</div>',
+    scope: {
+      center: '='
+    },
+    link(scope, element) {
+      const map = new $window.google.maps.Map(element[0], {
+        zoom: 3,
+        minZoom: 1,
+        center: scope.center,
+        styles: mapStyle
+      });
+      const marker = new $window.google.maps.Marker({
+        position: scope.center,
+        map: map,
+        draggable: true,
+        title: 'Click to zoom'
+      });
+
+      marker.addListener('dragend', (e) => {
+        scope.center = e.latLng.toJSON();
+        scope.$apply();
+      });
+
+
+
+
+
+
+    }
+  };
+}
+
+
+
+
+
+
+
 
 
 

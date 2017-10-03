@@ -7,28 +7,40 @@
   <div class="field">
     <label class="label">Username</label>
     <div class="control">
-      <input type="text" class="input" name="username" id="username" ng-model="register.user.username" placeholder="username">
+      <input type="text" class="input" name="username" id="username" ng-model="register.user.username" placeholder="username" required>
+      <div class="form-validation" ng-messages="register.registerForm.username.$error" role="alert" ng-show="(register.registerForm.$submitted || register.registerForm.username.$touched) && register.registerForm.username.$invalid">
+      <div ng-message="required">Please enter a value for this field.</div>
+    </div>
     </div>
   </div>
 
   <div class="field">
     <label class="label">Email</label>
     <div class="control">
-      <input type="text" class="input" name="email" id="email" ng-model="register.user.email" placeholder="email">
+      <input type="text" class="input" name="email" id="email" ng-model="register.user.email" placeholder="email" required>
+      <div class="form-validation"  ng-messages="register.registerForm.email.$error" role="alert" ng-show="(register.registerForm.$submitted || register.registerForm.email.$touched) && register.registerForm.email.$invalid">
+        <div ng-message="required">Please enter a value for this field.</div>
+      </div>
     </div>
   </div>
 
   <div class="field">
     <label class="label">Password</label>
     <div class="control">
-      <input type="password" class="input" name="password" id="password" ng-model="register.user.password" placeholder="password">
+      <input type="password" class="input" name="password" id="password" ng-model="register.user.password" placeholder="password" required>
+      <div class="form-validation"  ng-messages="register.registerForm.password.$error" role="alert" ng-show="(register.registerForm.$submitted || register.registerForm.password.$touched) && register.registerForm.password.$invalid">
+        <div ng-message="required">Please enter a value for this field.</div>
+      </div>
     </div>
   </div>
 
   <div class="field">
     <label class="label">Confirm Password</label>
     <div class="control">
-      <input type="password" class="input" name="passwordConfirmation" id="passwordConfirmation" ng-model="register.user.passwordConfirmation" placeholder="passwordConfirmation">
+      <input type="password" class="input" name="passwordConfirmation" id="passwordConfirmation" ng-model="register.user.passwordConfirmation" placeholder="passwordConfirmation" required>
+      <div class="form-validation"  ng-messages="register.registerForm.passwordConfirmation.$error" role="alert" ng-show="(register.registerForm.$submitted || register.registerForm.passwordConfirmation.$touched) && register.registerForm.passwordConfirmation.$invalid">
+        <div ng-message="required">Please enter a value for this field.</div>
+      </div>
     </div>
   </div>
 
