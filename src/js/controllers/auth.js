@@ -3,13 +3,9 @@ angular
   .controller('LoginCtrl', LoginCtrl)
   .controller('RegisterCtrl', RegisterCtrl);
 
-
-
 LoginCtrl.$inject = ['$auth', '$state'];
 function LoginCtrl($auth, $state) {
   const vm = this;
-  // vm.user = {};
-  // vm.credentials = {};
 
   function submit() {
     if (vm.loginForm.$valid) {
@@ -17,9 +13,7 @@ function LoginCtrl($auth, $state) {
         .then(() => $state.go('placesIndex'))
         .catch(() => $state.go('login'));
     }
-
   }
-
   vm.submit = submit;
 }
 

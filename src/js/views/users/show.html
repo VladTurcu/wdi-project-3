@@ -1,4 +1,4 @@
-<section class="hero is-medium" style="background-image: url('{{user.user.coverPicture}}'); background-size: cover">
+<section class="hero is-medium" style="background-image: url('{{main.user.coverPicture}}'); background-size: cover">
 
   <div class="hero-body">
     <div class="profile-media has-text-centered">
@@ -7,10 +7,10 @@
 
   <div class="hero-foot">
     <div class="profile-media has-text-centered">
-      <img class="profile-img" src="{{ user.user.image }}" alt="">
+      <img class="profile-img" src="{{ main.user.image }}" alt="">
       <div class="container has-text-centered">
         <h1 class="title is-3">
-          {{ user.user.username }}
+          {{ main.user.username }}
         </h1>
       </div>
     </div>
@@ -18,26 +18,48 @@
 </section>
 
 
-
 <section class="blog">
+  <div class="columns">
+    <div class="column is-half">
+      <h1>Stories</h1><br>
+      <div class="user-stories data" ng-repeat="story in userShow.user.stories">
+        <article class="media related-card">
+          <div class="media-left">
+            <figure class="image">
+              <img src="{{ story.image }}" alt="Image">
+            </figure>
+          </div>
+          <div class="media-content">
+            <strong class="title is-4">{{ story.name }}</strong><br>
+          </div>
+          <div class="media-right">
+            <button class="delete"></button>
+          </div>
+        </article>
+      </div>
 
-
-
-
-<div class="user-stories box" ng-repeat="story in userShow.user.stories">
-  <article class="media">
-    <figure class="media-left">
-      <p class="image is-128x128">
-        <img src="{{ story.image }}">
-      </p>
-    </figure>
-    <div class="media-content">
-      <strong class="title is-4">{{ story.name }}</strong><br>
     </div>
-    <div class="media-right">
-      <button class="delete"></button>
-    </div>
-  </article>
 
-</div>
+
+
+    <div class="column">
+      <h1>Places</h1><br>
+      <div class="user-places data" ng-repeat="place in userShow.user.places">
+        <article class="media related-card">
+          <div class="media-left">
+            <figure class="image">
+              <img src="{{ place.image }}" alt="Image">
+            </figure>
+          </div>
+          <div class="media-content">
+            <strong class="title is-4">{{ place.name }}</strong><br>
+          </div>
+          <div class="media-right">
+            <button class="delete"></button>
+          </div>
+        </article>
+      </div>
+    </div>
+
+  </div>
 </section>

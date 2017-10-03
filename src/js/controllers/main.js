@@ -11,14 +11,18 @@ function MainCtrl($state, $auth, User) {
 
   vm.userId = $auth.getPayload().userId;
   if(vm.userId) vm.user = User.get({ id: vm.userId });
-  console.log(vm.user);
+
   vm.isAuthenticated = $auth.isAuthenticated;
 
   function registerShow() {
     vm.registerHidden = !vm.registerHidden;
-    // console.log(vm.registerHidden);
   }
 
+  function logout() {
+    $auth.logout();
+    $state.go('placesIndex');
+  }
+  vm.logout = logout;
 }
 
 
@@ -27,7 +31,6 @@ function MainCtrl($state, $auth, User) {
 MainIndexCtrl.$inject = ['$state', '$scope', 'filterFilter', 'Place', 'Story'];
 function MainIndexCtrl($state, $scope, filterFilter, Place, Story) {
   const vm = this;
-
 
   placesPush();
   function placesPush() {
