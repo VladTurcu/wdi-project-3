@@ -25,8 +25,11 @@ function MainCtrl($state, $auth, User) {
   vm.logout = logout;
 }
 
-MainIndexCtrl.$inject = ['$state', 'Place', 'Story'];
-function MainIndexCtrl($state, Place, Story) {
+
+
+
+MainIndexCtrl.$inject = ['$state', '$scope', 'filterFilter', 'Place', 'Story'];
+function MainIndexCtrl($state, $scope, filterFilter, Place, Story) {
   const vm = this;
 
   placesPush();
@@ -40,18 +43,54 @@ function MainIndexCtrl($state, Place, Story) {
           .$promise
           .then(stories => {
             vm.all = stories.concat(places);
+            vm.filtered = stories.concat(places);
+            console.log(vm.all);
+
             vm.countries = [];
             vm.all.forEach(place => {
-              if (place.country) {
+              if (place.country && !vm.countries.includes(place.country)) {
                 vm.countries.push(place.country);
               }
             });
-            // vm.countries = vm.countries
-            //   .sort()
-            //   .filter((item, pos) => vm.abvList.indexOf(item) === pos);
+            vm.countries = vm.countries
+              .sort();
 
             console.log(vm.countries);
           });
       });
   }
+
+  function filterByCountry() {
+    const params = { country: vm.countrySearch };
+    vm.filtered = filterFilter(vm.all, params);
+    if (vm.countrySearch === null) vm.filtered = vm.all;
+  }
+
+  $scope.$watchGroup([
+    () => vm.countrySearch
+  ], filterByCountry);
+
+  //
+  // mix(vm.all);
+  //
+  // function mix(alli) {
+  //   var m = alli.length, t, i;
+  //
+  //   // While there remain elements to shuffle
+  //   while (m) {
+  //     // Pick a remaining element…
+  //     i = Math.floor(Math.random() * m--);
+  //
+  //     // And swap it with the current element.
+  //     t = alli[m];
+  //     alli[m] = alli[i];
+  //     alli[i] = t;
+  //   }
+  //
+  //   return alli;
+  // }
+  //
+
+
+  // console.log(vm.all);
 }
