@@ -88,7 +88,11 @@ function mapDrag($window) {
       const marker = new $window.google.maps.Marker({
         position: scope.center,
         map: map,
-        draggable: true
+        draggable: true,
+        icon: {
+          url: 'images/bemo-pointer1.png',
+          scaledSize: new $window.google.maps.Size(100, 40)
+        }
       });
 
       marker.addListener('dragend', (e) => {
