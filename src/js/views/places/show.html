@@ -1,5 +1,4 @@
 <section class="hero is-primary is-medium" style="background-image: url('{{placesShow.place.image}}'); background-size: cover; background-position: center">
-
      <div class="hero-body">
        <div class="container has-text-centered">
          <h1 class="title is-2">
@@ -7,7 +6,6 @@
          </h1>
        </div>
      </div>
-
    </section>
 
    <section class="section blog">
@@ -17,9 +15,12 @@
            <div class="content blog-post section">
              <p>{{ placesShow.place.description }}</p>
            </div>
-           <a class="button is-primary" ui-sref="placesEdit({ id: placesShow.place.id })">Edit</a>
-           <button class="button is-danger" ng-click="placesShow.delete()">Delete {{ placesShow.place.name }}</button>
+           <div ng-if="main.isAuthenticated() && main.user.id === placesShow.place.createdBy">
+            <a class="button is-primary" ui-sref="placesEdit({ id: placesShow.place.id })">Edit</a>
+            <button class="button is-danger" ng-click="placesShow.delete()">Delete {{ placesShow.place.name }}</button>
+           </div>
          </div>
        </div>
      </div>
    </section>
+<!-- Created by Username link -->

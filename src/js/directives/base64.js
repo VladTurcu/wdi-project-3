@@ -2,7 +2,6 @@ angular
   .module('bemoApp')
   .directive('base64', base64);
 
-
 function base64() {
 
   const fileReader = new FileReader();

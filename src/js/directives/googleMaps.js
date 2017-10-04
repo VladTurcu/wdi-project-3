@@ -1,7 +1,7 @@
 angular
   .module('bemoApp')
   .directive('googleMap', googleMap)
-  .directive('mapClick', mapClick);
+  .directive('mapDrag', mapDrag);
 
 googleMap.$inject = ['$window', '$anchorScroll', '$location'];
 function googleMap($window, $anchorScroll, $location) {
@@ -15,8 +15,6 @@ function googleMap($window, $anchorScroll, $location) {
       stories: '='
     },
     link(scope, element) {
-      let markers = [];
-      let routes = [];
       const map = new $window.google.maps.Map(element[0], {
         zoom: 3,
         minZoom: 1,
@@ -24,13 +22,13 @@ function googleMap($window, $anchorScroll, $location) {
         styles: mapStyle
       });
 
+      let markers = [];
+
       scope.$watch('places', () => {
-        console.log('Scope.places = ', scope.places);
         markers.forEach(marker => marker.setMap(null));
         if(!scope.places || scope.places.length === 0) return false;
 
         markers = scope.places.map(place => {
-          // console.log('this thing logs in markers');
           const marker = new $window.google.maps.Marker({
             position: { lat: place.lat, lng: place.lng },
             map: map,
@@ -40,21 +38,22 @@ function googleMap($window, $anchorScroll, $location) {
             }
           });
           marker.addListener('click', () => {
-            console.log('clicked', place.name);
             $location.hash(place.id);
             $anchorScroll();
           });
+
+          return markers;
         });
 
       }, true);
 
+      let routes = [];
+
       scope.$watch('stories', () => {
-        console.log('Scope.stories = ', scope.stories);
         routes.forEach(route => route.setMap(null));
         if(!scope.stories || scope.stories.length === 0) return false;
 
         routes = scope.stories.map(story => {
-          // console.log('this thing logs in routes');
           const route = new $window.google.maps.Polyline({
             path: story.route,
             geodesic: true,
@@ -64,19 +63,20 @@ function googleMap($window, $anchorScroll, $location) {
           });
           route.setMap(map);
           route.addListener('click', () => {
-            console.log(story.name);
+            $location.hash(story.id);
+            $anchorScroll();
           });
+
+          return route;
         });
       });
     }
   };
 }
 
-
-
-
-mapClick.$inject = ['$window'];
-function mapClick($window) {
+// Map for new place and story pages
+mapDrag.$inject = ['$window'];
+function mapDrag($window) {
   return {
     restrict: 'E',
     replace: true,
@@ -95,8 +95,7 @@ function mapClick($window) {
       const marker = new $window.google.maps.Marker({
         position: scope.center,
         map: map,
-        draggable: true,
-        title: 'Click to zoom'
+        draggable: true
       });
 
       marker.addListener('dragend', (e) => {
@@ -105,40 +104,32 @@ function mapClick($window) {
       });
 
       scope.$watch('route', () => {
-        console.log(scope.route[scope.route.length - 1]);
-        new $window.google.maps.Marker({
-          position: scope.route[scope.route.length - 1],
-          map: map,
-          icon: {
-            url: 'http://simpleicon.com/wp-content/uploads/map-marker-15-256x256.png',
-            scaledSize: new $window.google.maps.Size(20, 20)
-          }
-        });
+        if (scope.route.length <= 1) {
+          new $window.google.maps.Marker({
+            position: scope.route[scope.route.length - 1],
+            map: map,
+            icon: {
+              url: 'http://simpleicon.com/wp-content/uploads/map-marker-15-256x256.png',
+              scaledSize: new $window.google.maps.Size(20, 20)
+            }
+          });
+        }
 
         new $window.google.maps.Polyline({
           path: scope.route,
+          map: map,
           geodesic: true,
           strokeColor: '#406e8e',
           strokeOpacity: 1,
-          strokeWeight: 2,
-          map: map
+          strokeWeight: 2
         });
 
       }, true);
-
     }
   };
 }
 
-
-
-
-
-
-
-
-
-
+// Nothing but styles below this point
 const mapStyle = [
   {
     featureType: 'administrative.country',

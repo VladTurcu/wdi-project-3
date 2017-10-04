@@ -13,7 +13,6 @@ function PlacesShowCtrl($state, Place) {
   placesShow();
   function placesShow() {
     vm.place = Place.get($state.params);
-
   }
 
   function placesDelete(){
@@ -21,21 +20,15 @@ function PlacesShowCtrl($state, Place) {
       .delete($state.params)
       .$promise
       .then(() => {
-        console.log('delete');
-        $state.go('placesIndex');
+        $state.go('index');
       });
   }
 }
-
 
 PlacesNewCtrl.$inject = ['$state', 'Place', '$http', '$scope'];
 function PlacesNewCtrl($state, Place, $http, $scope) {
   const vm  = this;
   vm.place = {};
-  vm.create = placesCreate;
-
-
-
   vm.center = { lat: 45, lng: 5 };
 
   $scope.$watch(() => vm.center, () => {
@@ -43,80 +36,71 @@ function PlacesNewCtrl($state, Place, $http, $scope) {
     vm.place.lng = vm.center.lng;
   }, true);
 
-  function placesCreate(){
-
+  vm.create = placesCreate;
+  function placesCreate() {
     if (vm.place.address) {
-      let address = vm.place.address;
-      address = address.split(' ').join('+');
-      console.log(address);
-      $http({
-        method: 'GET',
-        url: `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyAKoE_jY6PNxyupg_GsKz80YLv0wfChnGs`,
-        skipAuthorization: true
-      })
-        .then(data => {
-          vm.place.country = data.data.results[0].address_components[data.data.results[0].address_components.length - 2].short_name;
-          const latLng = (data.data.results[0].geometry.location);
-          vm.place.lat = latLng.lat;
-          vm.place.lng = latLng.lng;
-          console.log('1', vm.place);
-
-          $http({
-            method: 'GET',
-            url: `https://restcountries.eu/rest/v2/alpha/${vm.place.country}`,
-            skipAuthorization: true
-          })
-            .then(countryData => {
-              vm.place.flag = countryData.data.flag;
-
-              Place
-                .save(vm.place)
-                .$promise
-                .then(() => {
-                  console.log('2', vm.place);
-                  $state.go('placesIndex');
-                });
-            });
-        });
+      geocode(vm.place.address)
+        .then(savePlace);
     } else {
-      console.log('1', vm.place);
-      Place
-        .save(vm.place)
-        .$promise
-        .then(() => {
-          $state.go('placesIndex');
-        });
+      savePlace();
     }
   }
 
+  function savePlace() {
+    return Place
+      .save(vm.place)
+      .$promise
+      .then(() => $state.go('index'));
+  }
 
+  function geocode(address) {
+    return $http({
+      method: 'GET',
+      url: 'https://maps.googleapis.com/maps/api/geocode/json',
+      params: {
+        address: address,
+        key: 'AIzaSyAKoE_jY6PNxyupg_GsKz80YLv0wfChnGs'
+      },
+      skipAuthorization: true
+    })
+      .then(data => {
+        console.log(data);
+        vm.place.country = data.data.results[0].address_components.reverse()[1].short_name;
+        vm.place.lat = data.data.results[0].geometry.location.lat;
+        vm.place.lng = data.data.results[0].geometry.location.lng;
+        return getCountryData();
+      });
+  }
 
-
-
-
-
-
+  function getCountryData() {
+    return $http({
+      method: 'GET',
+      url: `https://restcountries.eu/rest/v2/alpha/${vm.place.country}`,
+      skipAuthorization: true
+    })
+      .then(countryData => {
+        vm.place.flag = countryData.data.flag;
+      });
+  }
 }
 
 PlacesEditCtrl.$inject = ['$state', 'Place'];
 function PlacesEditCtrl($state, Place) {
   const vm = this;
   vm.place = {};
-  vm.update = placesUpdate;
 
   placesShow();
-
   function placesShow(){
     vm.place = Place.get($state.params);
   }
 
-  function placesUpdate(){
+  vm.update = placesUpdate;
+  function placesUpdate() {
     Place
       .update($state.params, vm.place)
       .$promise
       .then(() => {
-        $state.go('placesIndex');
+        $state.go('placesShow', $state.params);
       });
   }
-
 }

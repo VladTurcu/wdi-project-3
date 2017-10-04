@@ -20,6 +20,7 @@ function placesShow(req, res, next) {
 }
 
 function placesCreate(req, res, next) {
+  req.body.createdBy = req.currentUser;
   Place
     .create(req.body)
     .then(place => res.status(201).json(place))

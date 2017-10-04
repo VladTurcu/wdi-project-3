@@ -4,7 +4,7 @@ angular
 
 Place.$inject = ['$resource', 'API'];
 function Place($resource, API){
-  return $resource(`${API}/places/:id`, { id: '@_id'}, {
+  return $resource(`${API}/places/:id`, { id: '@id'}, {
     'update': { method: 'PUT' }
   });
 }

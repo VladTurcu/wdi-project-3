@@ -3,7 +3,7 @@
 
   <div class="dropdown is-hoverable">
     <a class="navbar-item" ui-sref="placesIndex" aria-haspopup="true" aria-controls="dropdown-menu4">Places</a>
-    <div class="dropdown-menu" id="dropdown-menu3" role="menu">
+    <div class="dropdown-menu" id="dropdown-menu3" role="menu" ng-if="main.isAuthenticated()">
       <div class="dropdown-content">
         <div class="dropdown-item">
           <a class="navbar-item" ng-if="main.isAuthenticated()" ui-sref="placesNew">Add Place</a>
@@ -14,7 +14,7 @@
 
   <div class="dropdown is-hoverable">
     <a class="navbar-item" ui-sref="placesIndex" aria-haspopup="true" aria-controls="dropdown-menu4">Stories</a>
-    <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+    <div class="dropdown-menu" id="dropdown-menu4" role="menu" ng-if="main.isAuthenticated()">
       <div class="dropdown-content">
         <div class="dropdown-item">
           <a class="navbar-item" ng-if="main.isAuthenticated()" ui-sref="storiesNew">Add Story</a>
@@ -22,12 +22,14 @@
       </div>
     </div>
   </div>
+
   <div class="nav-right" ng-if="main.isAuthenticated()">
-  <a class="navbar-item" ui-sref="userPage({ id: main.user.id })"><img class="profile-img" src="{{ main.user.imageSRC }}">  Hi {{main.user.username}}!  </a>
-  <a class="navbar-item" ng-click="main.logout()" href="#">Logout</a>
-</div>
+    <a class="navbar-item" ui-sref="userPage({ id: main.user.id })"><img class="profile-img" src="{{ main.user.imageSRC }}">  Hi {{main.user.username}}!  </a>
+    <a class="navbar-item" ng-click="main.logout()" href="#">Logout</a>
+  </div>
+
   <div class="nav-right" ng-if="!main.isAuthenticated()">
-  <login></login>
-  <a class="button is-secondary btn" ng-if="!main.isAuthenticated()" ng-click="main.registerShow()">Register</a>
-</div>
+    <login></login>
+    <a class="button is-secondary btn" ng-if="!main.isAuthenticated()" ng-click="main.registerShow()">Register</a>
+  </div>
 </nav>

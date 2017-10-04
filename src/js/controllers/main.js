@@ -16,10 +16,9 @@ function MainCtrl($state, $auth, User, $rootScope) {
 
   // Responds to users login/logout
   vm.isAuthenticated = $auth.isAuthenticated;
-  $rootScope.$on('loggedIn', () => {
-    vm.user = User.get({ id: $auth.getPayload().userId });
-    console.log(`${vm.user.username} has logged in!`);  // logs undefined?
-  });
+  $rootScope.$on('loggedIn', () => vm.user = User.get({ id: $auth.getPayload().userId }));
+
+  if($auth.isAuthenticated()) vm.user = User.get({ id: $auth.getPayload().userId });
 
   vm.logout = logout;
   function logout() {
@@ -30,26 +29,19 @@ function MainCtrl($state, $auth, User, $rootScope) {
 
 }
 
-MainIndexCtrl.$inject = ['$state', '$scope', 'filterFilter', 'Place', 'Story'];
-function MainIndexCtrl($state, $scope, filterFilter, Place, Story) {
+MainIndexCtrl.$inject = ['$state', '$scope', 'filterFilter', 'Place', 'Story', '$q'];
+function MainIndexCtrl($state, $scope, filterFilter, Place, Story, $q) {
   const vm = this;
 
-  getPlaces();
-  function getPlaces() {
-    Place
-      .query()
-      .$promise
-      .then(places => vm.places = places)
-      .then(getStories);
-  }
-
-  function getStories() {
-    Story
-      .query()
-      .$promise
-      .then(stories => vm.stories = stories)
-      .then(concatCollections);
-  }
+  $q.all({
+    places: Place.query().$promise,
+    stories: Story.query().$promise
+  })
+    .then(data => {
+      vm.places = data.places;
+      vm.stories = data.stories;
+      return concatCollections();
+    });
 
   function concatCollections() {
     vm.all = vm.stories.concat(vm.places);
@@ -58,28 +50,14 @@ function MainIndexCtrl($state, $scope, filterFilter, Place, Story) {
     createCategoryFilter();
   }
 
-  vm.countries = [];
   vm.countrySearch = null;
   function createCountryFilter() {
-    vm.all.forEach(item => {
-      if (item.country && !vm.countries.includes(item.country)) {
-        vm.countries.push(item.country);
-      }
-    });
-    vm.countries = vm.countries
-      .sort();
+    vm.countries = Array.from(new Set(vm.places.map(item => item.country).sort()));
   }
 
-  vm.categories = [];
   vm.categorySearch = null;
   function createCategoryFilter() {
-    vm.all.forEach(item => {
-      if (item.category && !vm.categories.includes(item.category)) {
-        vm.categories.push(item.category);
-      }
-    });
-    vm.categories = vm.categories
-      .sort();
+    vm.categories = Array.from(new Set(vm.places.map(item => item.category).sort()));
   }
 
   function filter() {

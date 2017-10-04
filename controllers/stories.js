@@ -45,6 +45,7 @@ function storiesDelete(req, res, next) {
     .findById(req.params.id)
     .exec()
     .then(story => {
+      if(!story) return res.notFound();
       return story.remove();
     })
     .then(() => res.status(204).end())

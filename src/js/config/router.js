@@ -8,7 +8,7 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
 
   $stateProvider
     .state('index', {
-      url: '/home',
+      url: '/',
       templateUrl: '/js/views/home/index.html',
       controller: 'MainIndexCtrl as mainIndex'
     })
@@ -58,5 +58,5 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       controller: 'StoriesEditCtrl as storiesEdit'
     });
 
-  $urlRouterProvider.otherwise('/home');
+  $urlRouterProvider.otherwise('/');
 }

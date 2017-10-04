@@ -1,58 +1,60 @@
 <div class="form">
+  <form name="placesEdit.form" ng-submit="placesEdit.update()">
 
+    <div class="field">
+      <label class="label">Name</label>
+      <input class="input" type="text" name="name" ng-model="placesEdit.place.name" placeholder="name">
+    </div>
 
-<form name="placesEdit.form" ng-submit="placesEdit.update()">
+    <div class="field">
+      <label class="label">Address</label>
+      <input class="input" type="text" name="address" ng-model="placesEdit.place.address" placeholder="address">
+    </div>
 
-  <div class="field">
-  <label class="label">Name</label>
-  <input class="input" type="text" name="name" ng-model="placesEdit.place.name" placeholder="name">
+    <div class="field">
+      <div class="field latlng">
+        <input class="input" type="text" name="lat" ng-model="placesEdit.place.lat" placeholder="Latitude">
+        <input class="input" type="text" name="lng" ng-model="placesEdit.place.lng" placeholder="Longitude">
+      </div>
+
+    <map-drag center="placesEdit.place.center"></map-drag>
+
+      <div class="field">
+        <label class="label">Description</label>
+        <textarea class="textarea" type="text" name="description" ng-model="placesEdit.place.description" placeholder="description" rows="5"></textarea>
+      </div>
+
+      <label class="label">Image</label>
+      <input class="input" type="text" name="image" ng-model="placesEdit.place.image" placeholder="image">
+    </div>
+
+    <label class="label">Category</label>
+    <div class="select">
+      <select class="select"  type="text" name="category" ng-model="placesEdit.place.category" placeholder="category">
+        <label class="label">Category</label>
+        <option value="Sports">Sports</option>
+        <option value="Nightlife">Nightlife</option>
+        <option value="Outdoors">Nature</option>
+        <option value="Outdoors">Culture</option>
+      </select>
+    </div>
+
+    <label class="label">Rating</label>
+    <div class="select">
+      <select type="text" name="rating" ng-model="placesEdit.place.rating" placeholder="rating">
+        <label class="label">Rating</label>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+    </div>
+
+    <button class="button is-primary">Update Place</button>
+
+  </form>
 </div>
-<div class="field">
-<label class="label">Address</label>
-  <input class="input" type="text" name="address" ng-model="placesEdit.place.address" placeholder="address">
-</div>
-<div class="field">
-  <div class="field latlng">
-  <input class="input" type="text" name="lat" ng-model="placesEdit.place.lat" placeholder="Latitude">
-  <input class="input" type="text" name="lng" ng-model="placesEdit.place.lng" placeholder="Longitude">
-  </div>
 
-  <div class="field">
-  <label class="label">Description</label>
-  <textarea class="textarea" type="text" name="description" ng-model="placesEdit.place.description" placeholder="description" rows="5"></textarea>
-</div>
-<label class="label">Image</label>
-  <input class="input" type="text" name="image" ng-model="placesEdit.place.image" placeholder="image">
-</div>
-
-
-
-<label class="label">Category</label>
-  <div class="select">
-
-    <select class="select"  type="text" name="category" ng-model="placesEdit.place.category" placeholder="category">
-  <label class="label">Category</label>
-      <option value="">Sports</option>
-      <option value="">Nightlife</option>
-      <option value="">Outdoors</option>
-    </select>
-  </div>
-
-
-  <label class="label">Rating</label>
-  <div class="select">
-
-    <select type="text" name="rating" ng-model="placesEdit.place.rating" placeholder="rating">
-      <label class="label">Rating</label>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-    </select>
-  </div>
-
-
-  <button class="button is-primary">Update Place</button>
-</form>
-</div>
+<!-- add validation -->
+<!-- add map and fix map center -->

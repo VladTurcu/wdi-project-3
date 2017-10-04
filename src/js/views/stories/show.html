@@ -1,29 +1,27 @@
-
 <section class="hero is-primary is-medium" style="background-image: url('{{storiesShow.story.image}}'); background-size: cover">
-
-     <div class="hero-body">
-       <div class="container has-text-centered">
-         <h1 class="title is-2">
-           {{ storiesShow.story.name }}
-         </h1>
-       </div>
-     </div>
-
-   </section>
-
-   <section class="section blog">
-     <div class="container">
-       <div class="columns is-mobile">
-         <div class="column is-8 is-offset-2">
-           <div class="content blog-post section">
-
-             {{ storiesShow.story.route }}
-
-             <p>{{ storiesShow.story.text }}</p>
-           </div>
-           <a class="button is-primary" ui-sref="storiesEdit({ id: storiesShow.story.id })">Edit</a>
-           <button class="button is-danger" ng-click="storiesShow.delete()">Delete {{ storiesShow.story.name }}</button>
-         </div>
-       </div>
-     </div>
-   </section>
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title is-2">
+        {{ storiesShow.story.name }}
+      </h1>
+    </div>
+  </div>
+</section>
+<section class="section blog">
+  <div class="container">
+    <div class="columns is-mobile">
+      <div class="column is-8 is-offset-2">
+        <div class="content blog-post section">
+          <p>{{ storiesShow.story.text }}</p>
+        </div>
+        <a class="button is-primary" ui-sref="storiesEdit({ id: storiesShow.story.id })">Edit</a>
+        <button class="button is-danger" ng-click="storiesShow.delete()">Delete {{ storiesShow.story.name }}</button>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- add referenced places -->
+<!-- add created By user -->
+<!-- add map with places route  -->
+<!-- hide and show buttons if user  -->
+<!-- move style to style.css -->

@@ -1,70 +1,68 @@
-<div>
+<google-map center="{ lat: 45, lng: 5 }" places="mainIndex.places" stories="mainIndex.stories"></google-map>
 
-  <google-map center="{ lat: 45, lng: 5 }" places="mainIndex.places" stories="mainIndex.stories"></google-map>
-
-  <section class="column">
-    <section class="filter-bar">
-      <div class="field is-horizontal">
-        <div class="field-label is-normal">
-          <label class="label">Search by Name</label>
-        </div>
-        <div class="field-body">
-          <div class="field">
-            <div class="control">
-              <input class="input" type="text" placeholder="..." ng-model="mainIndex.nameSearch">
-            </div>
+<section class="column">
+  <section class="filter-bar">
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <label class="label">Search by Name</label>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <div class="control">
+            <input class="input" type="text" placeholder="Search..." ng-model="mainIndex.nameSearch">
           </div>
         </div>
       </div>
-      <div class="field is-horizontal">
-        <div class="field-label is-normal">
-          <label class="label">Search by Country</label>
-        </div>
-        <div class="field-body">
-          <div class="field is-narrow">
-            <div class="control">
-              <div class="select is-fullwidth">
-                <select ng-model="mainIndex.countrySearch" ng-options="country as country for country in mainIndex.countries">
-                  <option value="" selected>Anywhere</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="field-label is-normal">
-            <label class="label">Search by Category</label>
-          </div>
-          <div class="field is-narrow">
-            <div class="control">
-              <div class="select is-fullwidth">
-                <select ng-model="mainIndex.categorySearch" ng-options="category as category for category in mainIndex.categories">
-                  <option value="" selected>Anything</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="field-label is-normal">
-            <label class="label">Search by Content</label>
-          </div>
-          <div class="field is-narrow">
-            <div class="control">
-              <div class="select is-fullwidth">
-                <select ng-model="mainIndex.contentSearch">
-                  <option value="" selected>Anything</option>
-                  <option value="places">Places</option>
-                  <option value="stories">Stories</option>
-                </select>
-              </div>
-            </div>
-          </div>
-        </div>
+    </div>
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <label class="label">Search by Country</label>
       </div>
-    </section>
-
-    <div class="columns is-multiline">
-      <div ng-repeat="place in mainIndex.filtered" class="column is-one-third">
-        <card item="place"></card>
+      <div class="field-body">
+        <div class="field is-narrow">
+          <div class="control">
+            <div class="select is-fullwidth">
+              <select ng-model="mainIndex.countrySearch" ng-options="country as country for country in mainIndex.countries">
+                <option value="" selected>Anywhere</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="field-label is-normal">
+          <label class="label">Search by Category</label>
+        </div>
+        <div class="field is-narrow">
+          <div class="control">
+            <div class="select is-fullwidth">
+              <select ng-model="mainIndex.categorySearch" ng-options="category as category for category in mainIndex.categories">
+                <option value="" selected>Anything</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="field-label is-normal">
+          <label class="label">Search by Content</label>
+        </div>
+        <div class="field is-narrow">
+          <div class="control">
+            <div class="select is-fullwidth">
+              <select ng-model="mainIndex.contentSearch">
+                <option value="" selected>Anything</option>
+                <option value="places">Places</option>
+                <option value="stories">Stories</option>
+              </select>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-</div>
+  <div class="columns is-multiline">
+    <div ng-repeat="item in mainIndex.filtered" class="column is-one-third">
+      <card item="item"></card>
+    </div>
+  </div>
+</section>
+
+<!-- Animate show and hide of filter tools -->
