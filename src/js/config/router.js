@@ -7,10 +7,10 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
   $locationProvider.html5Mode(true);
 
   $stateProvider
-    .state('placesIndex', {
-      url: '/places',
-      templateUrl: '/js/views/places/index.html',
-      controller: 'PlacesIndexCtrl as placesIndex'
+    .state('index', {
+      url: '/home',
+      templateUrl: '/js/views/home/index.html',
+      controller: 'MainIndexCtrl as mainIndex'
     })
     .state('placesNew', {
       url: '/places/new',
@@ -37,20 +37,10 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       templateUrl: '/js/views/auth/register.html',
       controller: 'RegisterCtrl as register'
     })
-    // .state('register2', {
-    //   url: '/register2',
-    //   templateUrl: '/js/views/auth/register2.html',
-    //   controller: 'Register2Ctrl as register2'
-    // })
     .state('login', {
       url: '/login',
       templateUrl: '/js/views/auth/login.html',
       controller: 'LoginCtrl as login'
-    })
-    .state('storiesIndex', {
-      url: '/stories',
-      templateUrl: '/js/views/stories/index.html',
-      controller: 'StoriesIndexCtrl as storiesIndex'
     })
     .state('storiesNew', {
       url: '/stories/new',
@@ -68,5 +58,5 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       controller: 'StoriesEditCtrl as storiesEdit'
     });
 
-  $urlRouterProvider.otherwise('/places');
+  $urlRouterProvider.otherwise('/home');
 }

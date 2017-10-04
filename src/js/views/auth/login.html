@@ -2,12 +2,6 @@
 
 <form class="login" name="login.loginForm" ng-submit="login.submit()" method="post">
   <input class="input lgn" type="text" name="email" id="email" ng-model="login.credentials.email" required>
-  <div class="form-validation"  ng-messages="login.loginForm.email.$error" role="alert" ng-show="(login.loginForm.$submitted || login.loginForm.email.$touched) && login.loginForm.email.$invalid">
-    <div ng-message="required">Please enter a value for this field.</div>
-  </div>
   <input class="input lgn" type="password" name="password" id="password" ng-model="login.credentials.password">
-  <div class="form-validation"  ng-messages="login.loginForm.password.$error" role="alert" ng-show="(login.loginForm.$submitted || login.loginForm.password.$touched) && login.loginForm.password.$invalid">
-    <div ng-message="required">Please enter a value for this field.</div>
-  </div>
   <input class="button is-primary lgn btn" type="submit" name="" value="Login">
 </form>

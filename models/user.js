@@ -17,14 +17,14 @@ userSchema
   .virtual('stories', { //posts is the name of the virtual
     ref: 'Story',  //Post is the name of the model
     localField: '_id', // use the _id field from this schema
-    foreignField: 'createdBy'//to match up with the createdBy field in the Post schema
+    foreignField: 'createdBy'//to match up with the createdBy field in the Story schema
   });
 
 userSchema
   .virtual('places', { //posts is the name of the virtual
     ref: 'Place',  //Post is the name of the model
     localField: '_id', // use the _id field from this schema
-    foreignField: 'createdBy'//to match up with the createdBy field in the Post schema
+    foreignField: 'createdBy'//to match up with the createdBy field in the Place schema
   });
 
 
@@ -52,13 +52,7 @@ userSchema.methods.validatePassword = function validatePassword(password) {
   return bcrypt.compareSync(password, this.password);
 };
 
-
-
-
-
-
-
-
+//Image uploading virtuals
 userSchema
   .path('image')
   .set(function getPreviousImage(image) {

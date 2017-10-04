@@ -25,11 +25,12 @@ function googleMap($window, $anchorScroll, $location) {
       });
 
       scope.$watch('places', () => {
+        console.log('Scope.places = ', scope.places);
         markers.forEach(marker => marker.setMap(null));
         if(!scope.places || scope.places.length === 0) return false;
 
         markers = scope.places.map(place => {
-          console.log('this thing logs in markers');
+          // console.log('this thing logs in markers');
           const marker = new $window.google.maps.Marker({
             position: { lat: place.lat, lng: place.lng },
             map: map,
@@ -48,11 +49,12 @@ function googleMap($window, $anchorScroll, $location) {
       }, true);
 
       scope.$watch('stories', () => {
+        console.log('Scope.stories = ', scope.stories);
         routes.forEach(route => route.setMap(null));
         if(!scope.stories || scope.stories.length === 0) return false;
 
         routes = scope.stories.map(story => {
-          console.log('this thing logs in routes');
+          // console.log('this thing logs in routes');
           const route = new $window.google.maps.Polyline({
             path: story.route,
             geodesic: true,

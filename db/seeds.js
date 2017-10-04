@@ -255,7 +255,7 @@ User
             places[1], places[4]
           ],
           route: [
-
+            
           ]
         }, {
           name: 'Bill and Ted\'s Bogus Adventure',
@@ -267,7 +267,7 @@ User
           ],
           route: [
             {lat: places[2].lat, lng: places[2].lng},
-            {lat: places[5].lat, lng: places[5].lng},
+            {lat: places[5].lat, lng: places[5].lng}
           ]
         }, {
           name: 'Rocky Rapids',
@@ -281,7 +281,7 @@ User
             {lat: -33.9239941, lng: 18.4998116},
             {lat: -25.7582737, lng: 28.0578642},
             {lat: -17.9316393, lng: 25.8092289},
-            {lat: -6.7692302, lng: 39.1142033},
+            {lat: -6.7692302, lng: 39.1142033}
           ]
         }, {
           name: 'Storytime',

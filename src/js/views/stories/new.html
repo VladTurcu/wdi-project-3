@@ -2,15 +2,24 @@
   <form name="storiesNew.form" ng-submit="storiesNew.create()">
     <div class="field">
       <label class="label">Name</label>
-      <input class="input" type="text" name="name" ng-model="storiesNew.story.name" storyholder="name" placeholder="name">
+      <input class="input" type="text" name="name" ng-model="storiesNew.story.name" storyholder="name" placeholder="name" required>
+      <div class="form-validation"  ng-messages="storiesNew.form.name.$error" role="alert" ng-show="(storiesNew.form.$submitted || storiesNew.form.name.$touched) && storiesNew.form.name.$invalid">
+        <div ng-message="required">Please enter a value for this field.</div>
+      </div>
     </div>
     <div class="field">
       <label class="label">Text</label>
-      <textarea class="textarea" type="text" name="text" ng-model="storiesNew.story.text" storyholder="text" rows="10"></textarea>
+      <textarea class="textarea" type="text" name="text" ng-model="storiesNew.story.text" storyholder="text" rows="10" required></textarea>
+      <div class="form-validation"  ng-messages="storiesNew.form.text.$error" role="alert" ng-show="(storiesNew.form.$submitted || storiesNew.form.text.$touched) && storiesNew.form.text.$invalid">
+        <div ng-message="required">Please enter a value for this field.</div>
+      </div>
     </div>
     <div class="field">
       <label class="label">Image</label>
-      <input class="input" type="text" name="image" ng-model="storiesNew.story.image" storyholder="image" placeholder="image">
+      <input class="input"  base64 type="file" name="base64" id="image" ng-model="storiesNew.story.base64" storyholder="image" placeholder="image" required>
+      <div class="form-validation"  ng-messages="storiesNew.form.image.$error" role="alert" ng-show="(storiesNew.form.$submitted || storiesNew.form.image.$touched) && storiesNew.form.image.$invalid">
+        <div ng-message="required">Please enter a value for this field.</div>
+      </div>
     </div>
 
     <div class="field latlng">

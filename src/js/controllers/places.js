@@ -1,17 +1,8 @@
 angular
   .module('bemoApp')
-  .controller('PlacesIndexCtrl', PlacesIndexCtrl)
   .controller('PlacesShowCtrl', PlacesShowCtrl)
   .controller('PlacesNewCtrl', PlacesNewCtrl)
   .controller('PlacesEditCtrl', PlacesEditCtrl);
-
-
-PlacesIndexCtrl.$inject = ['Place'];
-function PlacesIndexCtrl(Place) {
-  const vm = this;
-  vm.all = Place.query();
-
-}
 
 PlacesShowCtrl.$inject = ['$state', 'Place'];
 function PlacesShowCtrl($state, Place) {

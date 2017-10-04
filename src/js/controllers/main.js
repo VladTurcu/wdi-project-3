@@ -6,103 +6,95 @@ angular
 MainCtrl.$inject = ['$state', '$auth', 'User', '$rootScope'];
 function MainCtrl($state, $auth, User, $rootScope) {
   const vm = this;
+
+  // Function to show/hide registration form
   vm.registerHidden = true;
   vm.registerShow = registerShow;
-
-  $rootScope.$on('loggedIn', () => {
-    console.log('user has logged in!');
-    vm.user = User.get({ id: $auth.getPayload().userId });
-    console.log(vm.user);
-  });
-
-  vm.isAuthenticated = $auth.isAuthenticated;
-
   function registerShow() {
     vm.registerHidden = !vm.registerHidden;
   }
 
+  // Responds to users login/logout
+  vm.isAuthenticated = $auth.isAuthenticated;
+  $rootScope.$on('loggedIn', () => {
+    vm.user = User.get({ id: $auth.getPayload().userId });
+    console.log(`${vm.user.username} has logged in!`);  // logs undefined?
+  });
 
-
+  vm.logout = logout;
   function logout() {
     $auth.logout();
     vm.user = null;
-    $state.go('placesIndex');
+    $state.go('index');
   }
-  vm.logout = logout;
 
 }
-
 
 MainIndexCtrl.$inject = ['$state', '$scope', 'filterFilter', 'Place', 'Story'];
 function MainIndexCtrl($state, $scope, filterFilter, Place, Story) {
   const vm = this;
 
-  placesPush();
-  function placesPush() {
-    return Place
+  getPlaces();
+  function getPlaces() {
+    Place
       .query()
       .$promise
-      .then(places => {
-        vm.places = places;
-        Story
-          .query()
-          .$promise
-          .then(stories => {
-            vm.stories = stories;
-            vm.all = stories.concat(places);
-            vm.filtered = stories.concat(places);
-            console.log(vm.all);
-
-            vm.countries = [];
-            vm.categories = [];
-            vm.countrySearch = null;
-            vm.categorySearch = null;
-            vm.all.forEach(place => {
-              if (place.country && !vm.countries.includes(place.country)) {
-                vm.countries.push(place.country);
-              }
-              if (place.category && !vm.categories.includes(place.category)) {
-                vm.categories.push(place.category);
-              }
-            });
-            vm.countries = vm.countries
-              .sort();
-            vm.categories = vm.categories
-              .sort();
-
-            console.log(vm.countries);
-          });
-      });
+      .then(places => vm.places = places)
+      .then(getStories);
   }
 
-  function filterPlaces() {
+  function getStories() {
+    Story
+      .query()
+      .$promise
+      .then(stories => vm.stories = stories)
+      .then(concatCollections);
+  }
+
+  function concatCollections() {
+    vm.all = vm.stories.concat(vm.places);
+    vm.filtered = vm.all;
+    createCountryFilter();
+    createCategoryFilter();
+  }
+
+  vm.countries = [];
+  vm.countrySearch = null;
+  function createCountryFilter() {
+    vm.all.forEach(item => {
+      if (item.country && !vm.countries.includes(item.country)) {
+        vm.countries.push(item.country);
+      }
+    });
+    vm.countries = vm.countries
+      .sort();
+  }
+
+  vm.categories = [];
+  vm.categorySearch = null;
+  function createCategoryFilter() {
+    vm.all.forEach(item => {
+      if (item.category && !vm.categories.includes(item.category)) {
+        vm.categories.push(item.category);
+      }
+    });
+    vm.categories = vm.categories
+      .sort();
+  }
+
+  function filter() {
     const params = {};
     let searchData = vm.all;
 
-    if (vm.contentSearch === 'stories') {
-      console.log('storrrrrries');
-      searchData = vm.stories;
-    } else if (vm.contentSearch === 'places') {
-      searchData = vm.places;
-    }
+    if (vm.contentSearch === 'stories') searchData = vm.stories;
+    else if (vm.contentSearch === 'places') searchData = vm.places;
 
-    if (vm.countrySearch) {
-      params.country = vm.countrySearch;
-    }
-
-    if (vm.categorySearch) {
-      params.category = vm.categorySearch;
-    }
-
-    if (vm.nameSearch) {
-      params.name = vm.nameSearch;
-    }
+    if (vm.countrySearch) params.country = vm.countrySearch;
+    if (vm.categorySearch) params.category = vm.categorySearch;
+    if (vm.nameSearch) params.name = vm.nameSearch;
 
     vm.filtered = filterFilter(searchData, params);
-    if (vm.countrySearch === null && vm.categorySearch === null && vm.nameSearch === null) {
-      console.log('shit be null');
-      vm.filtered = searchData;
-    }
+    if (vm.countrySearch === null && vm.categorySearch === null && vm.nameSearch === null) vm.filtered = searchData;
   }
 
   $scope.$watchGroup([
@@ -110,29 +102,6 @@ function MainIndexCtrl($state, $scope, filterFilter, Place, Story) {
     () => vm.categorySearch,
     () => vm.contentSearch,
     () => vm.nameSearch
-  ], filterPlaces);
+  ], filter);
 
-  //
-  // mix(vm.all);
-  //
-  // function mix(alli) {
-  //   var m = alli.length, t, i;
-  //
-  //   // While there remain elements to shuffle
-  //   while (m) {
-  //     // Pick a remaining element…
-  //     i = Math.floor(Math.random() * m--);
-  //
-  //     // And swap it with the current element.
-  //     t = alli[m];
-  //     alli[m] = alli[i];
-  //     alli[i] = t;
-  //   }
-  //
-  //   return alli;
-  // }
-  //
-
-
-  // console.log(vm.all);
 }
