@@ -1,4 +1,4 @@
-<section class="hero is-primary is-medium" style="background-image: url('{{storiesShow.story.image}}'); background-size: cover">
+<section class="hero is-primary is-medium story-image" style="background-image: url('{{storiesShow.story.imageSRC}}')">
   <div class="hero-body">
     <div class="container has-text-centered">
       <h1 class="title is-2">
@@ -11,17 +11,20 @@
   <div class="container">
     <div class="columns is-mobile">
       <div class="column is-8 is-offset-2">
+
+
+      <a ui-sref="usersShow({ id: storiesShow.story.createdBy })"><strong>Created by: {{ storiesShow.story.createdBy }}</strong></a>
+<p>:---->{{ storiesShow.story.image }}</p>
         <div class="content blog-post section">
           <p>{{ storiesShow.story.text }}</p>
         </div>
+        <!-- <div ng-if="!main.isAuthenticated() && main.user.id === placesShow.place.createdBy"> -->
         <a class="button is-primary" ui-sref="storiesEdit({ id: storiesShow.story.id })">Edit</a>
         <button class="button is-danger" ng-click="storiesShow.delete()">Delete {{ storiesShow.story.name }}</button>
+      <!-- </div> -->
       </div>
     </div>
   </div>
 </section>
 <!-- add referenced places -->
-<!-- add created By user -->
 <!-- add map with places route  -->
-<!-- hide and show buttons if user  -->
-<!-- move style to style.css -->

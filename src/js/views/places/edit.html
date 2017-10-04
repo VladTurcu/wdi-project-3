@@ -1,9 +1,12 @@
 <div class="form">
-  <form name="placesEdit.form" ng-submit="placesEdit.update()">
+  <form name="placesEdit.form" ng-submit="placesEdit.update()" novalidate>
 
     <div class="field">
       <label class="label">Name</label>
-      <input class="input" type="text" name="name" ng-model="placesEdit.place.name" placeholder="name">
+      <input class="input" type="text" name="name" ng-model="placesEdit.place.name" placeholder="name" required>
+      <div class="form-validation"  ng-messages="placesEdit.form.name.$error" role="alert" ng-show="(placesEdit.form.$submitted || placesEdit.form.name.$touched) && placesEdit.form.name.$invalid">
+        <div ng-message="required">Please enter a value for this field.</div>
+      </div>
     </div>
 
     <div class="field">
@@ -21,7 +24,10 @@
 
       <div class="field">
         <label class="label">Description</label>
-        <textarea class="textarea" type="text" name="description" ng-model="placesEdit.place.description" placeholder="description" rows="5"></textarea>
+        <textarea class="textarea" type="text" name="description" ng-model="placesEdit.place.description" placeholder="description" rows="5" required></textarea>
+        <div class="form-validation"  ng-messages="placesEdit.form.description.$error" role="alert" ng-show="(placesEdit.form.$submitted || placesEdit.form.description.$touched) && placesEdit.form.description.$invalid">
+          <div ng-message="required">Please enter a value for this field.</div>
+        </div>
       </div>
 
       <label class="label">Image</label>
@@ -56,5 +62,5 @@
   </form>
 </div>
 
-<!-- add validation -->
+
 <!-- add map and fix map center -->

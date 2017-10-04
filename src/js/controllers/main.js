@@ -3,8 +3,8 @@ angular
   .controller('MainCtrl', MainCtrl)
   .controller('MainIndexCtrl', MainIndexCtrl);
 
-MainCtrl.$inject = ['$state', '$auth', 'User', '$rootScope'];
-function MainCtrl($state, $auth, User, $rootScope) {
+MainCtrl.$inject = ['$state', '$auth', 'User', '$rootScope', '$scope'];
+function MainCtrl($state, $auth, User, $rootScope, $scope) {
   const vm = this;
 
   // Function to show/hide registration form
@@ -14,6 +14,10 @@ function MainCtrl($state, $auth, User, $rootScope) {
     vm.registerHidden = !vm.registerHidden;
   }
 
+  $scope.isActive = false;
+  $scope.activeButton = function() {
+    $scope.isActive = !$scope.isActive;
+  };
   // Responds to users login/logout
   vm.isAuthenticated = $auth.isAuthenticated;
   $rootScope.$on('loggedIn', () => vm.user = User.get({ id: $auth.getPayload().userId }));

@@ -2,20 +2,29 @@
   <form name="storiesEdit.form" ng-submit="storiesEdit.update()">
     <div class="field">
       <label class="label">Name</label>
-      <input class="input" type="text" name="name" ng-model="storiesEdit.story.name" storyholder="name">
+      <input class="input" type="text" name="name" ng-model="storiesEdit.story.name" storyholder="name" required>
+      <div class="form-validation"  ng-messages="storiesEdit.form.name.$error" role="alert" ng-show="(storiesEdit.form.$submitted || storiesEdit.form.name.$touched) && storiesEdit.form.name.$invalid">
+        <div ng-message="required">Please enter a value for this field.</div>
+      </div>
     </div>
+
     <div class="field">
       <label class="label">Text</label>
-      <textarea class="textarea" type="text" name="text" ng-model="storiesEdit.story.text" storyholder="text" rows="10"></textarea>
+      <textarea class="textarea" type="text" name="text" ng-model="storiesEdit.story.text" storyholder="text" rows="5" required></textarea>
+      <div class="form-validation"  ng-messages="storiesEdit.form.text.$error" role="alert" ng-show="(storiesEdit.form.$submitted || storiesEdit.form.text.$touched) && storiesEdit.form.text.$invalid">
+        <div ng-message="required">Please enter a value for this field.</div>
+      </div>
     </div>
+
     <div class="field">
       <label class="label">Image</label>
       <input class="input" type="text" name="image" ng-model="storiesEdit.story.image" storyholder="image">
     </div>
+
     <button class="button is-primary">Create Place</button>
+
   </form>
 </div>
 
 <!-- <input type="text" name="places" ng-model="storiesEdit.story.places" storyholder="category"> -->
 <!-- Create select2 -->
-<!-- Add validation  -->

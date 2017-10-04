@@ -8,10 +8,15 @@
      </div>
    </section>
 
+
    <section class="section blog">
      <div class="container">
        <div class="columns is-mobile">
          <div class="column is-8 is-offset-2">
+
+           <a ui-sref="usersShow({ id: placesShow.place.createdBy })"><strong>Created by: {{ placesShow.place.createdBy }}</strong></a>
+
+
            <div class="content blog-post section">
              <p>{{ placesShow.place.description }}</p>
            </div>
@@ -23,4 +28,3 @@
        </div>
      </div>
    </section>
-<!-- Created by Username link -->
