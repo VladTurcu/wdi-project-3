@@ -11,8 +11,7 @@ function googleMap($window, $anchorScroll, $location) {
     template: '<div class="google-map">There should be a map here</div>',
     scope: {
       center: '=',
-      places: '=',
-      stories: '='
+      items: '='
     },
     link(scope, element) {
       const map = new $window.google.maps.Map(element[0], {
@@ -22,54 +21,48 @@ function googleMap($window, $anchorScroll, $location) {
         styles: mapStyle
       });
 
-      let markers = [];
+      let mapItems = [];
 
-      scope.$watch('places', () => {
-        markers.forEach(marker => marker.setMap(null));
-        if(!scope.places || scope.places.length === 0) return false;
+      scope.$watch('items', () => {
+        mapItems.forEach(mapItem => mapItem.setMap(null));
+        if(!scope.items || scope.items.length === 0) return false;
 
-        markers = scope.places.map(place => {
-          const marker = new $window.google.maps.Marker({
-            position: { lat: place.lat, lng: place.lng },
-            map: map,
-            icon: {
-              url: 'http://simpleicon.com/wp-content/uploads/map-marker-15-256x256.png',
-              scaledSize: new $window.google.maps.Size(20, 20)
-            }
-          });
-          marker.addListener('click', () => {
-            $location.hash(place.id);
+        mapItems = scope.items.map(item => {
+          let mapItem = null;
+          if (item.route) mapItem = newRoute(item);
+          else mapItem = newMarker(item);
+          mapItem.addListener('click', () => {
+            $location.hash(item.id);
             $anchorScroll();
           });
-
-          return markers;
+          return mapItem;
         });
 
       }, true);
 
-      let routes = [];
-
-      scope.$watch('stories', () => {
-        routes.forEach(route => route.setMap(null));
-        if(!scope.stories || scope.stories.length === 0) return false;
-
-        routes = scope.stories.map(story => {
-          const route = new $window.google.maps.Polyline({
-            path: story.route,
-            geodesic: true,
-            strokeColor: '#406e8e',
-            strokeOpacity: 1,
-            strokeWeight: 3
-          });
-          route.setMap(map);
-          route.addListener('click', () => {
-            $location.hash(story.id);
-            $anchorScroll();
-          });
-
-          return route;
+      function newRoute(item) {
+        const route = new $window.google.maps.Polyline({
+          path: item.route,
+          map: map,
+          geodesic: true,
+          strokeColor: '#406e8e',
+          strokeOpacity: 1,
+          strokeWeight: 3
         });
-      });
+        return route;
+      }
+
+      function newMarker(item) {
+        const marker = new $window.google.maps.Marker({
+          position: { lat: item.lat, lng: item.lng },
+          map: map,
+          icon: {
+            url: 'http://simpleicon.com/wp-content/uploads/map-marker-15-256x256.png',
+            scaledSize: new $window.google.maps.Size(20, 20)
+          }
+        });
+        return marker;
+      }
     }
   };
 }
