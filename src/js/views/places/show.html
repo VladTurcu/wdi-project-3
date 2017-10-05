@@ -20,7 +20,19 @@
            <div class="content blog-post section">
              <p>{{ placesShow.place.description }}</p>
            </div>
-           <!-- <div ng-if="main.isAuthenticated() && main.user.id === placesShow.place.createdBy"> -->
+
+           <div class="columns is-12 is-multiline">
+             <div class="column is-12">
+               {{ placesShow.place.name }} location:
+             </div>
+             <div class="column is-10">
+               <google-map center="{ lat: 45, lng: 5 }" items=""></google-map>
+             </div>
+           </div>
+
+           <!-- { lat: placesShow.place.lat, lng placesShow.place.lng } -->
+
+           <div ng-if="main.isAuthenticated() && main.user.id === placesShow.place.createdBy.id">
             <a class="button is-primary" ui-sref="placesEdit({ id: placesShow.place.id })">Edit</a>
             <button class="button is-danger" ng-click="placesShow.delete()">Delete {{ placesShow.place.name }}</button>
            <!-- </div> -->
