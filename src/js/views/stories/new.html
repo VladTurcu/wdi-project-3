@@ -8,17 +8,13 @@
       </div>
     </div>
 
-
-    <label>SELECT VLAD</label>
-    <input type="text" ng-model="storiesNew.q">
-    <div class="select-place">
-      <div ng-repeat="place in storiesNew.places | filter: { name: storiesNew.q }">
-        <p><input ng-click="storiesNew.togglePlace(place)" type="checkbox" ng-true-value="'{{ place.id }}'">{{place.name}}</p>
+    <label class="label">Places</label>
+    <p><input class="input" name="q" type="text" ng-model="storiesNew.q"></p>
+    <div class="select-place dropdown-content" ng-if="storiesNew.form.q.$dirty" >
+      <div class="dropdown-item" ng-show="storiesNew.form.q.$dirty" ng-hide="!storiesNew.form.q.$dirty" ng-repeat="place in storiesNew.places | filter: { name: storiesNew.q }">
+        <p><input  ng-click="storiesNew.togglePlace(place)" type="checkbox" ng-true-value="'{{ place.id }}'">{{place.name}}</p>
       </div>
     </div>
-
-
-
 
 
     <div class="field">

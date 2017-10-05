@@ -16,4 +16,11 @@ const placeSchema = new mongoose.Schema({
   timestamps: true
 });
 
+
+placeSchema
+  .virtual('stories', { //posts is the name of the virtual
+    ref: 'Story',  //Post is the name of the model
+    localField: '_id', // use the _id field from this schema
+    foreignField: 'stories'//to match up with the createdBy field in the Story schema
+  });
 module.exports = mongoose.model('Place', placeSchema);

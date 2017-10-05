@@ -70,12 +70,11 @@ h1 {
   display: block;
 }
 
-
 .blog{
   background-color: #ffffff;
-  width: 80%;
+  width: 90%;
   margin: 10px auto;
-  padding: 150px 20px;
+  padding-top: 50px;
 }
 
 .form {
@@ -102,7 +101,7 @@ h1 {
 
 .profile-media{
   max-width: 100%;
-  margin-bottom: -150px;
+  margin-bottom: -120px;
   .profile-img{
     border: 10px solid #406e8e;
     max-width: 250px;
@@ -145,8 +144,20 @@ h1 {
     border-radius: 50%;
     border: 1px solid black;
     position: relative;
-    left: 46px;
-    top: 40px;
+    // left: 5px;
+    // top: 5px;
+}
+
+.blog-thumbnail {
+    height: auto;
+    width: auto;
+    max-width: 60px;
+    background-size: contain;
+    border-radius: 50%;
+    border: 1px solid black;
+    position: relative;
+    // left: 5px;
+    // top: 5px;
 }
 
 .route-button {
@@ -173,11 +184,22 @@ h1 {
 }
 
 .select-place{
-  height: 100px;
-  overflow: hidden;
+  height: auto;
+
+
+  // overflow: hidden;
   border: 1px solid lightGrey;
 }
 .selected {
   border: 3px solid white;
 
+}
+
+.level {
+  border-bottom: 1px solid lightGrey;
+  padding: 5px;
+}
+
+.user-columns{
+  margin: 50px auto;
 }

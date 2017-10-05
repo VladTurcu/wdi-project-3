@@ -12,6 +12,7 @@ const storySchema = new mongoose.Schema({
   timestamps: true
 });
 
+
 //Image uploading virtuals
 storySchema
   .path('image')

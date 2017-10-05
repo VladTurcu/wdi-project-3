@@ -19,7 +19,27 @@
 </section>
 
 <section class="blog">
-  <div class="columns">
+  <nav class="level is-mobile">
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">{{ usersShow.profile.username }} stories created</p>
+        <p class="title">{{ profileShow.profile.stories.length }}</p>
+        </a>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Places created</p>
+        <p class="title">{{ profileShow.profile.places.length }}</p>
+      </div>
+    </div>
+  </nav>
+  <div class="columns user-columns">
     <div class="column is-half">
       <h1>Stories</h1><br>
       <div class="user-stories data" ng-repeat="story in profileShow.profile.stories">
