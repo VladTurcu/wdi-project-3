@@ -25,6 +25,7 @@ function PlacesShowCtrl($state, Place) {
   }
 }
 
+
 PlacesNewCtrl.$inject = ['$state', 'Place', '$http', '$scope', 'geocoder', 'restCountries'];
 function PlacesNewCtrl($state, Place, $http, $scope, geocoder, restCountries) {
   const vm  = this;
@@ -45,6 +46,7 @@ function PlacesNewCtrl($state, Place, $http, $scope, geocoder, restCountries) {
   }, true);
 
   vm.create = placesCreate;
+
   function placesCreate() {
     if (vm.place.address) {
       geocoder.geocode(vm.place.address)
@@ -66,6 +68,7 @@ function PlacesNewCtrl($state, Place, $http, $scope, geocoder, restCountries) {
   }
 
   function savePlace() {
+    console.log(vm.place);
     return Place
       .save(vm.place)
       .$promise

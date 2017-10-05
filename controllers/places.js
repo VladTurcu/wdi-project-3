@@ -22,6 +22,7 @@ function placesShow(req, res, next) {
 }
 
 function placesCreate(req, res, next) {
+  console.log(req.body, req.currentUser);
   req.body.createdBy = req.currentUser;
   Place
     .create(req.body)

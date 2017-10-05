@@ -167,10 +167,18 @@ h1 {
   line-height: 18px
 }
 
+
 .card {
   margin: 5px 0;
 }
 
 .no-overflow {
   overflow: hidden;
+}
+
+.select-place{
+
+  height: 100px;
+  overflow: hidden;
+  border: 1px solid lightGrey;
 }

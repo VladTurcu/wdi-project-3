@@ -7,6 +7,9 @@ MainCtrl.$inject = ['$state', '$auth', 'User', '$rootScope', '$scope', '$transit
 function MainCtrl($state, $auth, User, $rootScope, $scope, $transitions, $window) {
   const vm = this;
 
+
+
+
   // Function to show/hide registration form
   vm.registerHidden = true;
   vm.registerShow = registerShow;
