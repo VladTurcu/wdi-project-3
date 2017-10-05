@@ -47,7 +47,7 @@
 
   <div class="columns is-multiline">
     <div ng-repeat="item in mainIndex.filtered | orderBy:'name'" class="column is-one-third">
-      <card item="item"></card>
+      <card item="item" ng-class="{ selected: main.cardIsActive(item.id) }"></card>
     </div>
   </div>
 </section>

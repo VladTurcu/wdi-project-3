@@ -31,10 +31,6 @@ h1 {
   padding: 0;
   display: flex;
   justify-content: center;
-  .noDisplay {
-    display: none;
-    overflow: hidden;
-  }
   .splash {
     margin-top: 20px;
     display: flex;
@@ -177,8 +173,11 @@ h1 {
 }
 
 .select-place{
-
   height: 100px;
   overflow: hidden;
   border: 1px solid lightGrey;
+}
+.selected {
+  border: 3px solid white;
+
 }

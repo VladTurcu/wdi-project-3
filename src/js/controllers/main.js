@@ -3,8 +3,8 @@ angular
   .controller('MainCtrl', MainCtrl)
   .controller('MainIndexCtrl', MainIndexCtrl);
 
-MainCtrl.$inject = ['$state', '$auth', 'User', '$rootScope', '$scope', '$transitions', '$window'];
-function MainCtrl($state, $auth, User, $rootScope, $scope, $transitions, $window) {
+MainCtrl.$inject = ['$state', '$auth', 'User', '$rootScope', '$scope', '$transitions', '$window', '$location'];
+function MainCtrl($state, $auth, User, $rootScope, $scope, $transitions, $window, $location) {
   const vm = this;
 
 
@@ -21,6 +21,12 @@ function MainCtrl($state, $auth, User, $rootScope, $scope, $transitions, $window
   $scope.activeButton = function() {
     $scope.isActive = !$scope.isActive;
   };
+
+  function cardIsActive(id) {
+    return $location.hash() === id;
+  }
+
+  vm.cardIsActive = cardIsActive;
 
   // Responds to users login/logout
   vm.isAuthenticated = $auth.isAuthenticated;
