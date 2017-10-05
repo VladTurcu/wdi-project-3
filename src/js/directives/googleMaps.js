@@ -18,7 +18,7 @@ function googleMap($window, $anchorScroll, $location) {
       const map = new $window.google.maps.Map(element[0], {
         zoom: 3,
         minZoom: 2,
-        maxZoom: 13,
+        maxZoom: 10,
         center: scope.center,
         styles: mapStyle
       });
