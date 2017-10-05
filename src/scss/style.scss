@@ -26,6 +26,35 @@ h1 {
   color: #8ea8c3;
 }
 
+.splash-container {
+  height: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  .noDisplay {
+    display: none;
+    overflow: hidden;
+  }
+  .splash {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    z-index: 10;
+    background-color: rgba(50,50,50,0.6);
+    border-radius: 2%;
+    h1 {
+      font-size: 3em;
+      color: beige;
+    }
+    p {
+      color: white;
+      background-color: rgba(50,50,50,0.6);
+    }
+  }
+}
+
+
 .navbar {
   background-color: #23395b;
   a {
