@@ -111,6 +111,8 @@ h1 {
 
 .createdBy-thumbnail {
     height: 100px;
+    width: 100px;
+    background-size: contain;
     border-radius: 50%;
     border: 1px solid black;
     position: relative;

@@ -13,15 +13,14 @@
       <div class="column is-8 is-offset-2">
 
 
-      <a ui-sref="usersShow({ id: storiesShow.story.createdBy })"><strong>Created by: {{ storiesShow.story.createdBy }}</strong></a>
-<p>:---->{{ storiesShow.story.image }}</p>
+        <a ui-sref="usersShow({ id: storiesShow.story.createdBy.id })"><strong>Created by: {{ storiesShow.story.createdBy.username }}</strong></a>
         <div class="content blog-post section">
           <p>{{ storiesShow.story.text }}</p>
         </div>
-        <!-- <div ng-if="!main.isAuthenticated() && main.user.id === placesShow.place.createdBy"> -->
-        <a class="button is-primary" ui-sref="storiesEdit({ id: storiesShow.story.id })">Edit</a>
-        <button class="button is-danger" ng-click="storiesShow.delete()">Delete {{ storiesShow.story.name }}</button>
-      <!-- </div> -->
+        <div ng-if="main.isAuthenticated() && main.user.id === storiesShow.story.createdBy.id">
+          <a class="button is-primary" ui-sref="storiesEdit({ id: storiesShow.story.id })">Edit</a>
+          <button class="button is-danger" ng-click="storiesShow.delete()">Delete {{ storiesShow.story.name }}</button>
+        </div>
       </div>
     </div>
   </div>

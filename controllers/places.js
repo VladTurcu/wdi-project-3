@@ -3,6 +3,7 @@ const Place = require('../models/place');
 function placesIndex(req, res, next) {
   Place
     .find()
+    .populate('createdBy')
     .exec()
     .then(places => res.json(places))
     .catch(next);
@@ -11,6 +12,7 @@ function placesIndex(req, res, next) {
 function placesShow(req, res, next) {
   Place
     .findById(req.params.id)
+    .populate('createdBy')
     .exec()
     .then(place => {
       if(!place) res.notFound();

@@ -3,6 +3,7 @@ const Story = require('../models/story');
 function storiesIndex(req, res, next) {
   Story
     .find()
+    .populate('createdBy')
     .exec()
     .then(stories => res.json(stories))
     .catch(next);
@@ -11,6 +12,7 @@ function storiesIndex(req, res, next) {
 function storiesShow(req, res, next) {
   Story
     .findById(req.params.id)
+    .populate('createdBy')
     .exec()
     .then(story => res.json(story))
     .catch(next);

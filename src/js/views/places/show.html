@@ -14,13 +14,13 @@
        <div class="columns is-mobile">
          <div class="column is-8 is-offset-2">
 
-           <a ui-sref="usersShow({ id: placesShow.place.createdBy })"><strong>Created by: {{ placesShow.place.createdBy }}</strong></a>
+           <a ui-sref="usersShow({ id: placesShow.place.createdBy.id })"><strong>Created by: {{ placesShow.place.createdBy.username }}</strong></a>
 
 
            <div class="content blog-post section">
              <p>{{ placesShow.place.description }}</p>
            </div>
-           <div ng-if="main.isAuthenticated() && main.user.id === placesShow.place.createdBy">
+           <div ng-if="main.isAuthenticated() && main.user.id === placesShow.place.createdBy.id">
             <a class="button is-primary" ui-sref="placesEdit({ id: placesShow.place.id })">Edit</a>
             <button class="button is-danger" ng-click="placesShow.delete()">Delete {{ placesShow.place.name }}</button>
            </div>
