@@ -25,12 +25,13 @@ function StoriesShowCtrl($state, Story) {
   }
 }
 
-StoriesNewCtrl.$inject = ['$state', '$scope', 'Story'];
-function StoriesNewCtrl($state, $scope, Story) {
+StoriesNewCtrl.$inject = ['$state', '$scope', 'Story', 'Place'];
+function StoriesNewCtrl($state, $scope, Story, Place) {
   const vm  = this;
-  vm.story = {};
+  vm.story = { places: [] };
   vm.story.route = [];
   vm.center = { lat: 51.5264476, lng: -0.0969805 };
+  vm.places = Place.query();
 
   $scope.$watch(() => vm.center, () => {
     vm.story.testLat = vm.center.lat;
@@ -51,6 +52,14 @@ function StoriesNewCtrl($state, $scope, Story) {
         $state.go('index');
       });
   }
+
+  function togglePlace(place) {
+    const index = vm.story.places.indexOf(place.id);
+    if(index > -1) vm.story.places.splice(index, 1);
+    else vm.story.places.push(place.id);
+  }
+
+  vm.togglePlace = togglePlace;
 }
 
 StoriesEditCtrl.$inject = ['$state', 'Story'];
@@ -58,10 +67,8 @@ function StoriesEditCtrl($state, Story) {
   const vm = this;
   vm.story = {};
 
-  storiesShow();
-  function storiesShow(){
-    vm.story = Story.get($state.params);
-  }
+
+  vm.story = Story.get($state.params);
 
   vm.update = storiesUpdate;
   function storiesUpdate(){

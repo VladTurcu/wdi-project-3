@@ -8,7 +8,7 @@ const imageUpload = require('../lib/imageUpload');
 
 router.route('/places')
   .get(places.index)
-  .post(imageUpload, places.create);
+  .post(secureRoute, imageUpload, places.create);
 
 router.route('/places/:id')
   .get(places.show)

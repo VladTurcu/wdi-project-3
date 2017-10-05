@@ -8,7 +8,7 @@ function MainCtrl($state, $auth, User, $rootScope, $scope, $transitions, $window
   const vm = this;
 
 
-
+  console.log($auth.getPayload());
 
   // Function to show/hide registration form
   vm.registerHidden = true;
