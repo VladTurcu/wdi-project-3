@@ -107,10 +107,16 @@ h1 {
 
 .btn{
   margin: 10px 5px;
-
 }
 
-
+.createdBy-thumbnail {
+    height: 100px;
+    border-radius: 50%;
+    border: 1px solid black;
+    position: relative;
+    left: 46px;
+    top: 40px;
+}
 
 .route-button {
   top: 10px;
