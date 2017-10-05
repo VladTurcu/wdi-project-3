@@ -1,10 +1,12 @@
 .filter-bar {
+  display:block;
   background-color: rgba(255, 255, 255, 0.7);
   height:0px;
-  transition: 500ms;
   &.active {
-    height:100%;
+    animation: my_fade_animation 0.5s linear;
+    -webkit-animation: my_fade_animation 0.5s linear;
   }
+
 }
 .search-item{
   opacity: 0;
@@ -13,16 +15,17 @@
 
 
 
+
 .search-item.active {
   opacity: 1;
 }
 
-// @keyframes height {
-//   to{
-//     height: 100%;
-//   }
-//     0%   {height:   0%;}
-//     25%  {height: 25%;}
-//     50%  {height: 50%;}
-//     100% {height: 100%;}
-// }
+@keyframes my_fade_animation {
+  from { height:0px; }
+  to { height:100%; }
+}
+
+@-webkit-keyframes my_fade_animation {
+  from { height:0px; }
+  to { height:100%; }
+}
