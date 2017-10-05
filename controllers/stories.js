@@ -11,6 +11,7 @@ function storiesIndex(req, res, next) {
 function storiesShow(req, res, next) {
   Story
     .findById(req.params.id)
+    .populate('user')
     .exec()
     .then(story => res.json(story))
     .catch(next);
