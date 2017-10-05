@@ -1,27 +1,8 @@
 <nav class="navbar">
   <a class="navbar-item" ui-sref="index">Home</a>
 
-  <div class="dropdown is-hoverable">
-    <a class="navbar-item" ui-sref="placesIndex" aria-haspopup="true" aria-controls="dropdown-menu4">Places</a>
-    <div class="dropdown-menu" id="dropdown-menu3" role="menu" ng-if="main.isAuthenticated()">
-      <div class="dropdown-content">
-        <div class="dropdown-item">
-          <a class="navbar-item" ng-if="main.isAuthenticated()" ui-sref="placesNew">Add Place</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="dropdown is-hoverable">
-    <a class="navbar-item" ui-sref="placesIndex" aria-haspopup="true" aria-controls="dropdown-menu4">Stories</a>
-    <div class="dropdown-menu" id="dropdown-menu4" role="menu" ng-if="main.isAuthenticated()">
-      <div class="dropdown-content">
-        <div class="dropdown-item">
-          <a class="navbar-item" ng-if="main.isAuthenticated()" ui-sref="storiesNew">Add Story</a>
-        </div>
-      </div>
-    </div>
-  </div>
+          <a class="navbar-item" ng-if="main.isAuthenticated()" ui-sref="placesNew"><p class="add">+</p>Place</a>
+          <a class="navbar-item" ng-if="main.isAuthenticated()" ui-sref="storiesNew"><p class="add">+</p>Story</a>
 
   <div class="nav-right" ng-if="main.isAuthenticated()">
     <a class="navbar-item" ui-sref="userPage({ id: main.user.id })"><img class="profile-img" src="{{ main.user.imageSRC }}">  Hi {{main.user.username}}!  </a>
