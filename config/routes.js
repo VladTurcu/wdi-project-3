@@ -17,7 +17,7 @@ router.route('/places/:id')
 
 router.route('/stories')
   .get(stories.index)
-  .post(secureRoute, stories.create);
+  .post(secureRoute, imageUpload, stories.create);
 
 router.route('/stories/:id')
   .get(stories.show)

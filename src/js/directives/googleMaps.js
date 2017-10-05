@@ -100,7 +100,13 @@ function mapDrag($window) {
         scope.$apply();
       });
 
+      scope.$watch('center', () => {
+        map.setCenter(scope.center);
+        marker.setPosition(scope.center);
+      }, true);
+
       scope.$watch('route', () => {
+        if(!scope.route) return false;
         if (scope.route.length <= 1) {
           new $window.google.maps.Marker({
             position: scope.route[scope.route.length - 1],

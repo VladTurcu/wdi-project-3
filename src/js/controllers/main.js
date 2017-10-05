@@ -3,9 +3,12 @@ angular
   .controller('MainCtrl', MainCtrl)
   .controller('MainIndexCtrl', MainIndexCtrl);
 
-MainCtrl.$inject = ['$state', '$auth', 'User', '$rootScope', '$scope'];
-function MainCtrl($state, $auth, User, $rootScope, $scope) {
+MainCtrl.$inject = ['$state', '$auth', 'User', '$rootScope', '$scope', '$transitions', '$window'];
+function MainCtrl($state, $auth, User, $rootScope, $scope, $transitions, $window) {
   const vm = this;
+
+
+
 
   // Function to show/hide registration form
   vm.registerHidden = true;
@@ -31,6 +34,10 @@ function MainCtrl($state, $auth, User, $rootScope, $scope) {
     $state.go('index');
   }
 
+  $transitions.onSuccess({}, (transition) => {
+    vm.pageName = transition.$to().name;
+    $window.scrollTo(0, 0);
+  });
 }
 
 MainIndexCtrl.$inject = ['$state', '$scope', 'filterFilter', 'Place', 'Story', '$q'];

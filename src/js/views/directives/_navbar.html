@@ -5,7 +5,7 @@
           <a class="navbar-item" ng-if="main.isAuthenticated()" ui-sref="storiesNew"><p class="add">+</p>Story</a>
 
   <div class="nav-right" ng-if="main.isAuthenticated()">
-    <a class="navbar-item" ui-sref="userPage({ id: main.user.id })"><img class="profile-img" src="{{ main.user.imageSRC }}">  Hi {{main.user.username}}!  </a>
+    <a class="navbar-item" ui-sref="usersShow({ id: main.user.id })"><img class="profile-img" src="{{ main.user.imageSRC }}">  Hi {{main.user.username}}!  </a>
     <a class="navbar-item" ng-click="main.logout()" href="#">Logout</a>
   </div>
 

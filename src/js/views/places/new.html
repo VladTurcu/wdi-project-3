@@ -11,15 +11,15 @@
 
     <div class="field">
       <label class="label">Address</label>
-      <input class="input" type="text" name="address" ng-model="placesNew.place.address" placeholder="address">
+      <input autocomplete class="input" type="text" name="address" ng-model="placesNew.place.address" placeholder="address" lat="placesNew.place.lat" lng="placesNew.place.lng">
       <div class="form-validation"  ng-messages="placesNew.form.address.$error" role="alert" ng-show="(placesNew.form.$submitted || placesNew.form.address.$touched) && placesNew.form.address.$invalid">
         <div ng-message="required">Please enter a value for this field.</div>
       </div>
     </div>
 
     <div class="field latlng">
-      <input class="input" type="text"  data-method="ctrlFn"  name="lat" ng-model="placesNew.place.lat" placeholder="Latitude" ng-required="(placesNew.place.address || placesNew.place.lat && placesNew.place.lng)" required>
-      <input class="input" type="text" name="lng" ng-model="placesNew.place.lng" placeholder="Longitude" ng-required="(placesNew.place.address || placesNew.place.lat && placesNew.place.lng)" required>
+      <input class="input" type="text"  data-method="ctrlFn"  name="lat" ng-model="placesNew.place.lat" placeholder="Latitude" ng-required="(placesNew.place.address || placesNew.place.lat && placesNew.place.lng)" required disabled>
+      <input class="input" type="text" name="lng" ng-model="placesNew.place.lng" placeholder="Longitude" ng-required="(placesNew.place.address || placesNew.place.lat && placesNew.place.lng)" required disabled>
 
       <div class="form-validation"  ng-messages="placesNew.form.lat.$error" role="alert" ng-show="(placesNew.form.$submitted || placesNew.form.lat.$touched) && placesNew.form.lat.$invalid">
         <div ng-message="required">Please enter a latitude or longitude</div>

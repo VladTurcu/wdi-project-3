@@ -27,11 +27,6 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       templateUrl: '/js/views/places/edit.html',
       controller: 'PlacesEditCtrl as placesEdit'
     })
-    .state('userPage', {
-      url: '/users/:id',
-      templateUrl: '/js/views/users/show.html',
-      controller: 'UserShowCtrl as userShow'
-    })
     .state('register', {
       url: '/register',
       templateUrl: '/js/views/auth/register.html',
@@ -58,8 +53,8 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       controller: 'StoriesEditCtrl as storiesEdit'
     })
     .state('usersShow', {
-      url: '/profile/:id',
-      templateUrl: 'js/views/users/profile.html',
+      url: '/users/:id',
+      templateUrl: 'js/views/users/show.html',
       controller: 'ProfileShowCtrl as profileShow'
     });
 

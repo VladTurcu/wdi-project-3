@@ -36,6 +36,14 @@ function PlacesNewCtrl($state, Place, $http, $scope) {
     vm.place.lng = vm.center.lng;
   }, true);
 
+  $scope.$watchGroup([
+    () => vm.place.lat,
+    () => vm.place.lng
+  ], () => {
+    if(!vm.place.lat || !vm.place.lng) return false;
+    vm.center = { lat: Number(vm.place.lat), lng: Number(vm.place.lng) };
+  }, true);
+
   vm.create = placesCreate;
   function placesCreate() {
     if (vm.place.address) {
