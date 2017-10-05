@@ -9,10 +9,11 @@
 </section>
 <section class="section blog">
   <div class="container">
-    <div class="columns is-mobile is-multiline">
-      <div class="column is-8 is-offset-2">
+    <div class="columns is-mobile">
+      <div class="column is-8">
 
-        <a ui-sref="usersShow({ id: storiesShow.story.createdBy.id })"><strong>Created by: {{ storiesShow.story.createdBy.username }}</strong></a>
+
+      <a ui-sref="usersShow({ id: storiesShow.story.createdBy })"><strong>Created by: {{ storiesShow.story.createdBy.username }}</strong></a>
         <div class="content blog-post section">
           <p>{{ storiesShow.story.text }}</p>
         </div>
