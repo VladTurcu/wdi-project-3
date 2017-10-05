@@ -12,7 +12,7 @@ function storiesIndex(req, res, next) {
 function storiesShow(req, res, next) {
   Story
     .findById(req.params.id)
-    .populate('createdBy')
+    .populate('createdBy places')
     .exec()
     .then(story => res.json(story))
     .catch(next);
