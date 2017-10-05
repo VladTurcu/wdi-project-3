@@ -1,5 +1,6 @@
 <div class="card" id="{{ item.id }}">
 
+  <!-- Image and link if place -->
   <a ng-if="item.lat" ui-sref="placesShow({ id: item.id })">
     <div class="card-image">
       <figure class="image is-4by3">
@@ -8,6 +9,7 @@
     </div>
   </a>
 
+  <!-- Image and link if story -->
   <a ng-if="!item.lat" ui-sref="storiesShow({ id: item.id })">
     <div class="card-image">
       <figure class="image is-4by3">
@@ -25,15 +27,20 @@
         </figure>
       </div>
 
+      <!-- Name and link if place -->
       <div class="media-content">
         <a ng-if="item.lat" ui-sref="placesShow({ id: item.id })">
           <h2 class="title is-4">{{ item.name }}</h2>
         </a>
+        <!-- Name and link if story -->
         <a ng-if="!item.lat" ui-sref="storiesShow({ id: item.id })">
           <h2 class="title is-4">{{ item.name }}</h2>
         </a>
       </div>
+      <img class="createdBy-thumbnail" src="http://www.qygjxz.com/data/out/190/5691490-profile-pictures.png">
     </div>
+
+
   </div>
 </div>
 
