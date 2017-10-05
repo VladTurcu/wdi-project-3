@@ -11,7 +11,8 @@ function googleMap($window, $anchorScroll, $location) {
     template: '<div class="google-map">There should be a map here</div>',
     scope: {
       center: '=',
-      items: '='
+      items: '=?',
+      item: '=?'
     },
     link(scope, element) {
       const map = new $window.google.maps.Map(element[0], {
@@ -43,6 +44,23 @@ function googleMap($window, $anchorScroll, $location) {
 
       }, true);
 
+      scope.$watch('item', () => {
+        let mapItem = null;
+        mapItems.forEach(mapItem => mapItem.setMap(null));
+        if(!scope.item) return false;
+        if (scope.item.route) mapItem = newRoute(scope.item);
+        else mapItem = newMarker(scope.item);
+        mapItem.addListener('click', () => {
+          $location.hash(scope.item.id);
+          $anchorScroll();
+        });
+
+        mapItems.push(mapItem);
+
+        checkBounds();
+
+      }, true);
+
       function newRoute(item) {
         const route = new $window.google.maps.Polyline({
           path: item.route,
@@ -56,6 +74,7 @@ function googleMap($window, $anchorScroll, $location) {
       }
 
       function newMarker(item) {
+        console.log('creating new marker');
         const marker = new $window.google.maps.Marker({
           position: { lat: item.lat, lng: item.lng },
           map: map,
