@@ -1,20 +1,16 @@
 <google-map center="{ lat: 45, lng: 5 }" items="mainIndex.filtered" stories="mainIndex.stories"></google-map>
 
 <section class="column">
-
+<div class="mainSearch">
   <section ng-class="{'active': isActive}" class="filter-bar columns is-fullwidth">
 
-
-        <!-- <p><label class="label">Search by Name</label></p> -->
-
-        <div class="search-item field is-narrow column is-one-quarter">
+        <div ng-class="{'active': isActive}" class="search-item field is-narrow column is-one-quarter">
           <div class="control">
             <input class="input" type="text" placeholder="Search..." ng-model="mainIndex.nameSearch">
           </div>
           </div>
 
-        <!-- <p><label class="label">Search by Country</label></p> -->
-        <div class="search-item field is-narrow column is-one-quarter">
+        <div ng-class="{'active': isActive}" class="search-item field is-narrow column is-one-quarter">
           <div class="control">
             <div class="select is-fullwidth">
               <select ng-model="mainIndex.countrySearch" ng-options="country as country for country in mainIndex.countries">
@@ -24,9 +20,7 @@
           </div>
         </div>
 
-          <!-- <p><label class="label">Search by Category</label></p> -->
-
-        <div class="search-item field is-narrow column is-one-quarter">
+        <div ng-class="{'active': isActive}" class="search-item field is-narrow column is-one-quarter">
           <div class="control">
             <div class="select is-fullwidth">
               <select ng-model="mainIndex.categorySearch" ng-options="category as category for category in mainIndex.categories">
@@ -36,8 +30,7 @@
           </div>
         </div>
 
-          <!-- <p><label class="label">Search by Content</label></p> -->
-        <div class="search-item field is-narrow column is-one-quarter">
+        <div ng-class="{'active': isActive}" class="search-item field is-narrow column is-one-quarter">
           <div class="control">
             <div class="select is-fullwidth">
               <select ng-model="mainIndex.contentSearch">
@@ -48,12 +41,9 @@
             </div>
           </div>
         </div>
-
-      </div>
-    </div>
   </section>
-
- <button class="button is-fullwidth"  ng-click="activeButton()" type="button">Search</button>
+<button class="button is-fullwidth"  ng-click="activeButton()" type="button">Search</button>
+</div>
 
   <div class="columns is-multiline">
     <div ng-repeat="item in mainIndex.filtered" class="column is-one-third">
