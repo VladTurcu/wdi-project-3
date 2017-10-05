@@ -25,8 +25,8 @@ function PlacesShowCtrl($state, Place) {
   }
 }
 
-PlacesNewCtrl.$inject = ['$state', 'Place', '$http', '$scope'];
-function PlacesNewCtrl($state, Place, $http, $scope) {
+PlacesNewCtrl.$inject = ['$state', 'Place', '$http', '$scope', 'geocoder', 'restCountries'];
+function PlacesNewCtrl($state, Place, $http, $scope, geocoder, restCountries) {
   const vm  = this;
   vm.place = {};
   vm.center = { lat: 45, lng: 5 };
@@ -47,8 +47,19 @@ function PlacesNewCtrl($state, Place, $http, $scope) {
   vm.create = placesCreate;
   function placesCreate() {
     if (vm.place.address) {
-      geocode(vm.place.address)
-        .then(savePlace);
+      geocoder.geocode(vm.place.address)
+        .then(response => {
+          vm.place.country = response.data.results[0].address_components.find(component => component.types.includes('country')).short_name;
+          vm.place.lat = response.data.results[0].geometry.location.lat;
+          vm.place.lng = response.data.results[0].geometry.location.lng;
+
+          restCountries.getFlag(vm.place.country)
+            .then((url) => {
+              vm.place.flag = url;
+              savePlace();
+            });
+        });
+
     } else {
       savePlace();
     }
@@ -61,35 +72,6 @@ function PlacesNewCtrl($state, Place, $http, $scope) {
       .then(() => $state.go('index'));
   }
 
-  function geocode(address) {
-    return $http({
-      method: 'GET',
-      url: 'https://maps.googleapis.com/maps/api/geocode/json',
-      params: {
-        address: address,
-        key: 'AIzaSyAKoE_jY6PNxyupg_GsKz80YLv0wfChnGs'
-      },
-      skipAuthorization: true
-    })
-      .then(data => {
-        console.log(data);
-        vm.place.country = data.data.results[0].address_components.reverse()[1].short_name;
-        vm.place.lat = data.data.results[0].geometry.location.lat;
-        vm.place.lng = data.data.results[0].geometry.location.lng;
-        return getCountryData();
-      });
-  }
-
-  function getCountryData() {
-    return $http({
-      method: 'GET',
-      url: `https://restcountries.eu/rest/v2/alpha/${vm.place.country}`,
-      skipAuthorization: true
-    })
-      .then(countryData => {
-        vm.place.flag = countryData.data.flag;
-      });
-  }
 }
 
 PlacesEditCtrl.$inject = ['$state', 'Place'];
