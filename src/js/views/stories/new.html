@@ -17,7 +17,6 @@
     <div class="field">
       <label class="label">Image</label>
       <input class="input"  base64 type="file" name="base64" id="image" ng-model="storiesNew.story.base64" placeholder="image">
-<!-- <input base64 type="file" class="input" name="base64" id="image" ng-model="storiesNew.story.base64" placeholder="Image"> -->
 
       <div class="form-validation"  ng-messages="storiesNew.form.image.$error" role="alert" ng-show="(storiesNew.form.$submitted || storiesNew.form.image.$touched) && storiesNew.form.image.$invalid">
         <div ng-message="required">Please enter a value for this field.</div>

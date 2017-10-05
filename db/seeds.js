@@ -21,7 +21,7 @@ const userData = [{
   password: '1234567890abcd',
   passwordConfirmation: '1234567890abcd',
   countries: ['Greece'],
-  image: 'https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAASSAAAAJDg1ZjlhYTIzLTQ4MmUtNDE1Yi05MWIzLTk2ZGZkYjFjODI0Mg.jpg',
+  image: 'https://s3-eu-west-1.amazonaws.com/vladturcu-wdi/3392d090-a84c-11e7-835b-2f57d73558b0.jpeg',
   coverPicture: 'http://www.matthewwilliams-ellis.com/wp-content/uploads/2016/10/Romania-Transylvania-Travel-and-Landscape-Photography-Workshop-Holiday-Summer-2018-_011.jpg'
 }, {
   username: 'Josh',
@@ -255,7 +255,7 @@ User
             places[1], places[4]
           ],
           route: [
-            
+
           ]
         }, {
           name: 'Bill and Ted\'s Bogus Adventure',

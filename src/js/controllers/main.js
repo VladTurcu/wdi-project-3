@@ -7,9 +7,6 @@ MainCtrl.$inject = ['$state', '$auth', 'User', '$rootScope', '$scope', '$transit
 function MainCtrl($state, $auth, User, $rootScope, $scope, $transitions, $window) {
   const vm = this;
 
-
-
-
   // Function to show/hide registration form
   vm.registerHidden = true;
   vm.registerShow = registerShow;
@@ -21,6 +18,7 @@ function MainCtrl($state, $auth, User, $rootScope, $scope, $transitions, $window
   $scope.activeButton = function() {
     $scope.isActive = !$scope.isActive;
   };
+
   // Responds to users login/logout
   vm.isAuthenticated = $auth.isAuthenticated;
   $rootScope.$on('loggedIn', () => vm.user = User.get({ id: $auth.getPayload().userId }));

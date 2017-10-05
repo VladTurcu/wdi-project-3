@@ -113,8 +113,9 @@ h1 {
 }
 
 .createdBy-thumbnail {
-    height: 100px;
-    width: 100px;
+    height: auto;
+    width: auto;
+    max-width: 90px;
     background-size: contain;
     border-radius: 50%;
     border: 1px solid black;
@@ -127,21 +128,20 @@ h1 {
   top: 10px;
 }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 62c03ae887457248984432f4b2a0956d1fd1b1c0
 .place-viewer {
   height: 62vh;
   overflow: scroll;
 }
 
-<<<<<<< HEAD
-.add{
-
-=======
 .add {
->>>>>>> 62c03ae887457248984432f4b2a0956d1fd1b1c0
   font-size: 20px;
   line-height: 18px
+}
+
+.card {
+  margin: 5px 0;
+}
+
+.no-overflow {
+  overflow: hidden;
 }

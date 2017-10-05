@@ -8,10 +8,18 @@ StoriesShowCtrl.$inject = ['$state', 'Story'];
 function StoriesShowCtrl($state, Story) {
   const vm = this;
   vm.story = {};
+  vm.items = [];
 
   storiesShow();
   function storiesShow() {
-    vm.story = Story.get($state.params);
+    Story.get($state.params)
+      .$promise
+      .then((story) => {
+        vm.story = story;
+        vm.items = [];
+        story.places.forEach(place => vm.items.push(place));
+        vm.items.push({ route: story.route });
+      });
   }
 
   vm.delete = storiesDelete;

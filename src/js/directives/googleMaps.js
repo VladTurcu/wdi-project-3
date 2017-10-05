@@ -16,7 +16,8 @@ function googleMap($window, $anchorScroll, $location) {
     link(scope, element) {
       const map = new $window.google.maps.Map(element[0], {
         zoom: 3,
-        minZoom: 1,
+        minZoom: 2,
+        maxZoom: 13,
         center: scope.center,
         styles: mapStyle
       });
@@ -37,6 +38,8 @@ function googleMap($window, $anchorScroll, $location) {
           });
           return mapItem;
         });
+
+        checkBounds();
 
       }, true);
 
@@ -62,6 +65,17 @@ function googleMap($window, $anchorScroll, $location) {
           }
         });
         return marker;
+      }
+
+      function checkBounds() {
+        const bounds = new $window.google.maps.LatLngBounds();
+        mapItems.forEach(item => {
+          // console.log('item', item);
+          if(!item.position) return false;
+          const latLng = { lat: item.position.lat(), lng: item.position.lng() };
+          bounds.extend(latLng);
+        });
+        map.fitBounds(bounds);
       }
     }
   };
