@@ -104,9 +104,12 @@ h1 {
       margin-left: 10px;
   }
 }
+.nav-right{
+  padding: 10px 0;
+}
 
 .btn{
-  margin: 10px 5px;
+  margin: 0 5px;
 }
 
 .createdBy-thumbnail {
@@ -120,4 +123,8 @@ h1 {
 
 .route-button {
   top: 10px;
+}
+.add{
+  font-size: 20px;
+  line-height: 18px
 }
