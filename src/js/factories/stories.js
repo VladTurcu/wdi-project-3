@@ -4,7 +4,7 @@ angular
 
 Story.$inject = ['$resource'];
 function Story($resource){
-  return $resource('/stories/:id', { id: '@id'}, {
+  return $resource('/api/stories/:id', { id: '@id'}, {
     'update': { method: 'PUT' }
   });
 }
