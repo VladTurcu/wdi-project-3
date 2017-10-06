@@ -2,9 +2,9 @@ angular
   .module('bemoApp')
   .factory('Place', Place);
 
-Place.$inject = ['$resource', 'API'];
-function Place($resource, API){
-  return $resource(`${API}/places/:id`, { id: '@id'}, {
+Place.$inject = ['$resource'];
+function Place($resource){
+  return $resource('/places/:id', { id: '@id'}, {
     'update': { method: 'PUT' }
   });
 }
