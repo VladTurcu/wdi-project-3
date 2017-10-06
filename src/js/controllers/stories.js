@@ -70,16 +70,40 @@ function StoriesNewCtrl($state, $scope, Story, Place) {
   vm.togglePlace = togglePlace;
 }
 
-StoriesEditCtrl.$inject = ['$state', 'Story'];
-function StoriesEditCtrl($state, Story) {
+StoriesEditCtrl.$inject = ['$state', 'Story', 'Place', '$scope'];
+function StoriesEditCtrl($state, Story, Place, $scope) {
   const vm = this;
   vm.story = {};
+  vm.center = { lat: 51.5264476, lng: -0.0969805 };
+  vm.places = Place.query();
+  vm.newEdit = true;
 
 
-  vm.story = Story.get($state.params);
+  Story.get($state.params)
+    .$promise
+    .then((story) => {
+      vm.story = story;
+      console.log(vm.story.route);
+      vm.story.places = vm.story.places.map((place) => place.id);
+    });
+
+  $scope.$watch(() => vm.center, () => {
+    vm.story.testLat = vm.center.lat;
+    vm.story.testLng = vm.center.lng;
+  }, true);
+
+  vm.nextLeg = nextLeg;
+  function nextLeg() {
+    if (vm.newEdit) {
+      vm.story.route = [];
+      vm.newEdit = false;
+    }
+    vm.story.route.push({ lat: vm.story.testLat, lng: vm.story.testLng });
+  }
 
   vm.update = storiesUpdate;
   function storiesUpdate(){
+    console.log(vm.story);
     Story
       .update($state.params, vm.story)
       .$promise
@@ -87,5 +111,13 @@ function StoriesEditCtrl($state, Story) {
         $state.go('storiesShow', $state.params);
       });
   }
+
+  function togglePlace(place) {
+    const index = vm.story.places.indexOf(place.id);
+    if(index > -1) vm.story.places.splice(index, 1);
+    else vm.story.places.push(place.id);
+  }
+
+  vm.togglePlace = togglePlace;
 
 }

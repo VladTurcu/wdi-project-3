@@ -8,6 +8,15 @@
       </div>
     </div>
 
+    <label class="label">Places</label>
+    <p><input class="input" name="q" type="text" ng-model="storiesEdit.q"></p>
+    <div ng-repeat="place in storiesEdit.story.place">{{ place }}</div>
+    <div class="select-place dropdown-content" ng-if="storiesEdit.form.q.$dirty">
+      <div class="dropdown-item" ng-show="storiesEdit.form.q.$dirty" ng-hide="!storiesEdit.form.q.$dirty" ng-repeat="place in storiesEdit.places | filter: { name: storiesEdit.q }">
+        <p><input ng-click="storiesEdit.togglePlace(place)" type="checkbox" ng-true-value="'{{ place.id }}'" ng-checked="{{ storiesEdit.story.places.includes(place.id) }}">{{place.name}}</p>
+      </div>
+    </div>
+
     <div class="field">
       <label class="label">Text</label>
       <textarea class="textarea" type="text" name="text" ng-model="storiesEdit.story.text" storyholder="text" rows="5" required></textarea>
@@ -18,10 +27,20 @@
 
     <div class="field">
       <label class="label">Image</label>
-      <input class="input" type="text" name="image" ng-model="storiesEdit.story.image" storyholder="image">
+      <input class="input"  base64 type="file" name="base64" id="image" ng-model="storiesEdit.story.base64" placeholder="image">
     </div>
 
-    <button class="button is-primary">Create Place</button>
+    <div class="field latlng">
+      <label class="label">Route Points</label>
+      <input class="input" type="text"  data-method="ctrlFn"  name="testLat" ng-model="storiesEdit.story.testLat" placeholder="Latitude" disabled>
+      <input class="input" type="text" name="testLng" ng-model="storiesEdit.story.testLng" placeholder="Longitude" disabled>
+      <a class="button route-button" ng-click="storiesEdit.nextLeg()">+</a>
+    </div>
+
+    <p>Click and drag the bemo icon to find to show us your story route, press the + button to add waypoints.</p>
+    <map-drag center="storiesEdit.center" route="storiesEdit.story.route"></map-drag>
+
+    <button class="button is-primary">Edit Place</button>
 
   </form>
 </div>

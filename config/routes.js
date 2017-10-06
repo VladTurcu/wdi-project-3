@@ -21,7 +21,7 @@ router.route('/stories')
 
 router.route('/stories/:id')
   .get(stories.show)
-  .put(secureRoute, stories.update)
+  .put(secureRoute, imageUpload, stories.update)
   .delete(stories.delete);
 
 router.route('/register')

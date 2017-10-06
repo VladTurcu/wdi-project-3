@@ -8,7 +8,7 @@
       </div>
     </div>
 
-    <label class="label">Places(SelectVlad)</label>
+    <label class="label">Places</label>
     <p><input class="input" name="q" type="text" ng-model="storiesNew.q"></p>
     <div ng-repeat="place in storiesNew.story.place">{{ place }}</div>
     <div class="select-place dropdown-content" ng-if="storiesNew.form.q.$dirty">
@@ -36,11 +36,11 @@
 
     <div class="field latlng">
       <label class="label">Route Points</label>
-      <input class="input" type="text"  data-method="ctrlFn"  name="testLat" ng-model="storiesNew.story.testLat" placeholder="Latitude">
-      <input class="input" type="text" name="testLng" ng-model="storiesNew.story.testLng" placeholder="Longitude">
+      <input class="input" type="text"  data-method="ctrlFn"  name="testLat" ng-model="storiesNew.story.testLat" placeholder="Latitude" disabled>
+      <input class="input" type="text" name="testLng" ng-model="storiesNew.story.testLng" placeholder="Longitude" disabled>
       <a class="button route-button" ng-click="storiesNew.nextLeg()">+</a>
     </div>
-    <p>Click and drag the bemo icon to find to show us your places location.</p>
+    <p>Click and drag the bemo icon to find to show us your story route, press the + button to add waypoints.</p>
     <map-drag center="storiesNew.center" route="storiesNew.story.route"></map-drag>
 
     <button class="button is-primary">Create Story</button>
