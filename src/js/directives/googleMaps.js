@@ -101,15 +101,16 @@ function googleMap($window, $anchorScroll, $location) {
 }
 
 // Map for new place and story pages
-mapDrag.$inject = ['$window'];
-function mapDrag($window) {
+mapDrag.$inject = ['$window', 'geocoder'];
+function mapDrag($window, geocoder) {
   return {
     restrict: 'E',
     replace: true,
     template: '<div class="google-map">There should be a map here</div>',
     scope: {
       center: '=',
-      route: '='
+      route: '=',
+      address: '=?'
     },
     link(scope, element) {
       const map = new $window.google.maps.Map(element[0], {
@@ -130,7 +131,10 @@ function mapDrag($window) {
 
       marker.addListener('dragend', (e) => {
         scope.center = e.latLng.toJSON();
-        scope.$apply();
+        geocoder.geocode({ latlng: `${scope.center.lat},${scope.center.lng}` })
+          .then(response => {
+            scope.address = response.data.results[0].formatted_address;
+          });
       });
 
       scope.$watch('center', () => {

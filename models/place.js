@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const s3 = require('../lib/s3');
 
 const placeSchema = new mongoose.Schema({
   name: { type: String, required: true },
@@ -16,11 +17,32 @@ const placeSchema = new mongoose.Schema({
   timestamps: true
 });
 
+//Image uploading virtuals
+placeSchema
+  .path('image')
+  .set(function getPreviousImage(image) {
+    this._image = this.image;
+    return image;
+  });
 
 placeSchema
-  .virtual('stories', { //posts is the name of the virtual
-    ref: 'Story',  //Post is the name of the model
-    localField: '_id', // use the _id field from this schema
-    foreignField: 'stories'//to match up with the createdBy field in the Story schema
+  .virtual('imageSRC')
+  .get(function getImageSRC() {
+    if(!this.image) return null;
+    if(this.image.match(/^http/)) return this.image;
+    return `https://s3-eu-west-1.amazonaws.com/${process.env.AWS_BUCKET_NAME}/${this.image}`;
   });
+
+placeSchema.pre('save', function checkPreviousImage(next) {
+  if(this.isModified('image') && this._image && !this._image.match(/^http/)) {
+    return s3.deleteObject({ Key: this._image }, next);
+  }
+  next();
+});
+
+placeSchema.pre('remove', function removeImage(next) {
+  if(this.image && !this.image.match(/^http/)) s3.deleteObject({ Key: this.image }, next);
+  next();
+});
+
 module.exports = mongoose.model('Place', placeSchema);

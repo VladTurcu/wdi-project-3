@@ -30,7 +30,7 @@
     </div>
 
     <p>Click and drag the bemo icon to find to show us your places location.</p>
-    <map-drag center="placesNew.center"></map-drag>
+    <map-drag center="placesNew.center" address="placesNew.place.address"></map-drag>
 
     <div class="field">
       <label class="label">Description</label>
@@ -52,7 +52,7 @@
 
     <div class="field">
       <label class="label">Image</label>
-      <input class="input" type="text" name="image" ng-model="placesNew.place.image" placeholder="image" required>
+      <input class="input" base64 type="file" name="base64" id="image" ng-model="placesNew.place.base64"placeholder="image" required>
       <div class="form-validation"  ng-messages="placesNew.form.image.$error" role="alert" ng-show="(placesNew.form.$submitted || placesNew.form.image.$touched) && placesNew.form.image.$invalid">
         <div ng-message="required">Please enter a value for this field.</div>
       </div>

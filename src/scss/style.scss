@@ -82,6 +82,8 @@ h1 {
   width: 50%;
   margin: 10px auto;
   padding: 20px;
+  border: 1px solid #406e8e;
+
   .input{
     margin: 10px auto;
   }
@@ -202,4 +204,14 @@ h1 {
 
 .user-columns{
   margin: 50px auto;
+}
+
+.select-place {
+  max-height: 110px;
+  overflow: hidden;
+  .dropdown-item {
+    display: inline-block;
+    width: 50%;
+
+  }
 }

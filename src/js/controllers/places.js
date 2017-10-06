@@ -49,7 +49,7 @@ function PlacesNewCtrl($state, Place, $http, $scope, geocoder, restCountries) {
 
   function placesCreate() {
     if (vm.place.address) {
-      geocoder.geocode(vm.place.address)
+      geocoder.geocode({ address: vm.place.address })
         .then(response => {
           vm.place.country = response.data.results[0].address_components.find(component => component.types.includes('country')).short_name;
           vm.place.lat = response.data.results[0].geometry.location.lat;

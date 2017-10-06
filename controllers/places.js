@@ -22,7 +22,7 @@ function placesShow(req, res, next) {
 }
 
 function placesCreate(req, res, next) {
-  console.log(req.body, req.currentUser);
+  if(req.file) req.body.image = req.file.filename;
   req.body.createdBy = req.currentUser;
   Place
     .create(req.body)
@@ -33,6 +33,7 @@ function placesCreate(req, res, next) {
 }
 
 function placesUpdate(req, res, next) {
+  if(req.file) req.body.image = req.file.filename;
   Place
     .findById(req.params.id)
     .exec()
