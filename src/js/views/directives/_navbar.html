@@ -1,16 +1,23 @@
-<nav class="navbar">
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-menu" id="navMenu" ng-class="{'is-active': isActiveNav}">
   <a class="navbar-item" ui-sref="index">Home</a>
 
-          <a class="navbar-item" ng-if="main.isAuthenticated()" ui-sref="placesNew"><p class="add">+</p>Place</a>
-          <a class="navbar-item" ng-if="main.isAuthenticated()" ui-sref="storiesNew"><p class="add">+</p>Story</a>
+          <a class="navbar-item" ng-if="main.isAuthenticated()" ui-sref="placesNew"><span class="add">+</span>Place</a>
+          <a class="navbar-item" ng-if="main.isAuthenticated()" ui-sref="storiesNew"><span class="add">+</span>Story</a>
 
   <div class="nav-right" ng-if="main.isAuthenticated()">
     <a class="navbar-item" ui-sref="usersShow({ id: main.user.id })"><img class="profile-img" src="{{ main.user.imageSRC }}">  Hi {{main.user.username}}!  </a>
-    <a class="navbar-item" ng-click="main.logout()" href="#">Logout</a>
+    <a class="navbar-item logout" ng-click="main.logout()" href="#">Logout</a>
   </div>
 
   <div class="nav-right" ng-if="!main.isAuthenticated()">
     <login></login>
     <a class="button is-secondary btn" ng-if="!main.isAuthenticated()" ng-click="main.registerShow()">Register</a>
   </div>
+</div>
+<button class="button navbar-burger" data-target="navMenu" ng-class="{'is-active': isActiveNav}" ng-click="activeBurger()">
+  <span></span>
+  <span></span>
+  <span></span>
+ </button>
 </nav>

@@ -13,17 +13,24 @@ function MainCtrl($state, $auth, User, $rootScope, $scope, $transitions, $window
   function registerShow() {
     vm.registerHidden = !vm.registerHidden;
   }
-
+  // Search button class toggle
   $scope.isActive = false;
   $scope.activeButton = function() {
     $scope.isActive = !$scope.isActive;
   };
+  //Navbar burger button class toggle
+  $scope.isActiveNav = false;
+  $scope.activeBurger = function() {
+    $scope.isActiveNav = !$scope.isActiveNav;
+  };
+
 
   function cardIsActive(id) {
     return $location.hash() === id;
   }
 
   vm.cardIsActive = cardIsActive;
+
 
   // Responds to users login/logout
   vm.isAuthenticated = $auth.isAuthenticated;
@@ -42,7 +49,9 @@ function MainCtrl($state, $auth, User, $rootScope, $scope, $transitions, $window
     vm.pageName = transition.$to().name;
     $window.scrollTo(0, 0);
   });
+
 }
+
 
 MainIndexCtrl.$inject = ['$state', '$scope', 'filterFilter', 'Place', 'Story', '$q'];
 function MainIndexCtrl($state, $scope, filterFilter, Place, Story, $q) {
