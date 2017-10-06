@@ -11,12 +11,14 @@ function googleMap($window, $anchorScroll, $location) {
     template: '<div class="google-map">There should be a map here</div>',
     scope: {
       center: '=',
-      items: '='
+      items: '=?',
+      item: '=?'
     },
     link(scope, element) {
       const map = new $window.google.maps.Map(element[0], {
         zoom: 3,
-        minZoom: 1,
+        minZoom: 2,
+        maxZoom: 10,
         center: scope.center,
         styles: mapStyle
       });
@@ -38,6 +40,25 @@ function googleMap($window, $anchorScroll, $location) {
           return mapItem;
         });
 
+        checkBounds();
+
+      }, true);
+
+      scope.$watch('item', () => {
+        let mapItem = null;
+        mapItems.forEach(mapItem => mapItem.setMap(null));
+        if(!scope.item) return false;
+        if (scope.item.route) mapItem = newRoute(scope.item);
+        else mapItem = newMarker(scope.item);
+        mapItem.addListener('click', () => {
+          $location.hash(scope.item.id);
+          $anchorScroll();
+        });
+
+        mapItems.push(mapItem);
+
+        checkBounds();
+
       }, true);
 
       function newRoute(item) {
@@ -53,6 +74,7 @@ function googleMap($window, $anchorScroll, $location) {
       }
 
       function newMarker(item) {
+        console.log('creating new marker');
         const marker = new $window.google.maps.Marker({
           position: { lat: item.lat, lng: item.lng },
           map: map,
@@ -63,20 +85,32 @@ function googleMap($window, $anchorScroll, $location) {
         });
         return marker;
       }
+
+      function checkBounds() {
+        const bounds = new $window.google.maps.LatLngBounds();
+        mapItems.forEach(item => {
+          // console.log('item', item);
+          if(!item.position) return false;
+          const latLng = { lat: item.position.lat(), lng: item.position.lng() };
+          bounds.extend(latLng);
+        });
+        map.fitBounds(bounds);
+      }
     }
   };
 }
 
 // Map for new place and story pages
-mapDrag.$inject = ['$window'];
-function mapDrag($window) {
+mapDrag.$inject = ['$window', 'geocoder'];
+function mapDrag($window, geocoder) {
   return {
     restrict: 'E',
     replace: true,
     template: '<div class="google-map">There should be a map here</div>',
     scope: {
       center: '=',
-      route: '='
+      route: '=',
+      address: '=?'
     },
     link(scope, element) {
       const map = new $window.google.maps.Map(element[0], {
@@ -97,7 +131,10 @@ function mapDrag($window) {
 
       marker.addListener('dragend', (e) => {
         scope.center = e.latLng.toJSON();
-        scope.$apply();
+        geocoder.geocode({ latlng: `${scope.center.lat},${scope.center.lng}` })
+          .then(response => {
+            scope.address = response.data.results[0].formatted_address;
+          });
       });
 
       scope.$watch('center', () => {

@@ -8,17 +8,14 @@
       </div>
     </div>
 
-
-    <label>SELECT VLAD</label>
-    <input type="text" ng-model="storiesNew.q">
-    <div class="select-place">
-      <div ng-repeat="place in storiesNew.places | filter: { name: storiesNew.q }">
-        <p><input ng-click="storiesNew.togglePlace(place)" type="checkbox" ng-true-value="'{{ place.id }}'">{{place.name}}</p>
+    <label class="label">Places(SelectVlad)</label>
+    <p><input class="input" name="q" type="text" ng-model="storiesNew.q"></p>
+    <div ng-repeat="place in storiesNew.story.place">{{ place }}</div>
+    <div class="select-place dropdown-content" ng-if="storiesNew.form.q.$dirty">
+      <div class="dropdown-item" ng-show="storiesNew.form.q.$dirty" ng-hide="!storiesNew.form.q.$dirty" ng-repeat="place in storiesNew.places | filter: { name: storiesNew.q }">
+        <p><input ng-click="storiesNew.togglePlace(place)" type="checkbox" ng-true-value="'{{ place.id }}'" ng-checked="{{ storiesNew.story.places.includes(place.id) }}">{{place.name}}</p>
       </div>
     </div>
-
-
-
 
 
     <div class="field">
@@ -31,7 +28,6 @@
     <div class="field">
       <label class="label">Image</label>
       <input class="input"  base64 type="file" name="base64" id="image" ng-model="storiesNew.story.base64" placeholder="image">
-      <!-- <input base64 type="file" class="input" name="base64" id="image" ng-model="storiesNew.story.base64" placeholder="Image"> -->
 
       <div class="form-validation"  ng-messages="storiesNew.form.image.$error" role="alert" ng-show="(storiesNew.form.$submitted || storiesNew.form.image.$touched) && storiesNew.form.image.$invalid">
         <div ng-message="required">Please enter a value for this field.</div>
@@ -44,11 +40,10 @@
       <input class="input" type="text" name="testLng" ng-model="storiesNew.story.testLng" placeholder="Longitude">
       <a class="button route-button" ng-click="storiesNew.nextLeg()">+</a>
     </div>
-
+    <p>Click and drag the bemo icon to find to show us your places location.</p>
     <map-drag center="storiesNew.center" route="storiesNew.story.route"></map-drag>
 
     <button class="button is-primary">Create Story</button>
   </form>
 </div>
-<!-- add instructions for the map -->
 <!-- add field to referenced places -->

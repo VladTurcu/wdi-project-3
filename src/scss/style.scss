@@ -27,6 +27,29 @@ h1 {
   color: #8ea8c3;
 }
 
+.splash-container {
+  height: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  .splash {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    z-index: 10;
+    background-color: rgba(50,50,50,0.6);
+    border-radius: 2%;
+    h1 {
+      font-size: 3em;
+      color: beige;
+    }
+    p {
+      color: white;
+      background-color: rgba(50,50,50,0.6);
+    }
+  }
+}
 
 
 
@@ -43,12 +66,11 @@ h1 {
   display: block;
 }
 
-
 .blog{
   background-color: #ffffff;
-  width: 80%;
+  width: 90%;
   margin: 10px auto;
-  padding: 150px 20px;
+  padding-top: 50px;
 }
 
 .form {
@@ -56,6 +78,8 @@ h1 {
   width: 50%;
   margin: 10px auto;
   padding: 20px;
+  border: 1px solid #406e8e;
+
   .input{
     margin: 10px auto;
   }
@@ -75,7 +99,7 @@ h1 {
 
 .profile-media{
   max-width: 100%;
-  margin-bottom: -150px;
+  margin-bottom: -120px;
   .profile-img{
     border: 10px solid #406e8e;
     max-width: 250px;
@@ -109,14 +133,27 @@ h1 {
 }
 
 .createdBy-thumbnail {
-    height: 100px;
-    width: 100px;
+    height: auto;
+    width: auto;
+    max-width: 90px;
     background-size: contain;
     border-radius: 50%;
     border: 1px solid black;
     position: relative;
-    left: 46px;
-    top: 40px;
+    // left: 5px;
+    // top: 5px;
+}
+
+.blog-thumbnail {
+    height: auto;
+    width: auto;
+    max-width: 60px;
+    background-size: contain;
+    border-radius: 50%;
+    border: 1px solid black;
+    position: relative;
+    // left: 5px;
+    // top: 5px;
 }
 
 .route-button {
@@ -129,13 +166,48 @@ h1 {
 }
 
 .add{
-
   font-size: 20px;
   line-height: 18px
 }
 
-.select-place{
-  height: 100px;
+
+
+.card {
+  margin: 5px 0;
+}
+
+.no-overflow {
+
   overflow: hidden;
+}
+
+.select-place{
+  height: auto;
+
+
+  // overflow: hidden;
   border: 1px solid lightGrey;
+}
+.selected {
+  border: 3px solid white;
+
+}
+
+.level {
+  border-bottom: 1px solid lightGrey;
+  padding: 5px;
+}
+
+.user-columns{
+  margin: 50px auto;
+}
+
+.select-place {
+  max-height: 110px;
+  overflow: hidden;
+  .dropdown-item {
+    display: inline-block;
+    width: 50%;
+
+  }
 }

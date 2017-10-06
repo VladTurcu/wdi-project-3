@@ -3,8 +3,8 @@ angular
   .controller('MainCtrl', MainCtrl)
   .controller('MainIndexCtrl', MainIndexCtrl);
 
-MainCtrl.$inject = ['$state', '$auth', 'User', '$rootScope', '$scope', '$transitions', '$window'];
-function MainCtrl($state, $auth, User, $rootScope, $scope, $transitions, $window) {
+MainCtrl.$inject = ['$state', '$auth', 'User', '$rootScope', '$scope', '$transitions', '$window', '$location'];
+function MainCtrl($state, $auth, User, $rootScope, $scope, $transitions, $window, $location) {
   const vm = this;
 
   // Function to show/hide registration form
@@ -18,12 +18,20 @@ function MainCtrl($state, $auth, User, $rootScope, $scope, $transitions, $window
   $scope.activeButton = function() {
     $scope.isActive = !$scope.isActive;
   };
-
-  // Navbar burger button class toggle
+  //Navbar burger button class toggle
   $scope.isActiveNav = false;
   $scope.activeBurger = function() {
     $scope.isActiveNav = !$scope.isActiveNav;
   };
+
+
+  function cardIsActive(id) {
+    return $location.hash() === id;
+  }
+
+  vm.cardIsActive = cardIsActive;
+
+
   // Responds to users login/logout
   vm.isAuthenticated = $auth.isAuthenticated;
   $rootScope.$on('loggedIn', () => vm.user = User.get({ id: $auth.getPayload().userId }));
@@ -43,6 +51,7 @@ function MainCtrl($state, $auth, User, $rootScope, $scope, $transitions, $window
   });
 
 }
+
 
 MainIndexCtrl.$inject = ['$state', '$scope', 'filterFilter', 'Place', 'Story', '$q'];
 function MainIndexCtrl($state, $scope, filterFilter, Place, Story, $q) {
