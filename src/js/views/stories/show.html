@@ -14,7 +14,7 @@
       <div>
         <p class="heading">Created by</p>
         <a ui-sref="usersShow({ id: storiesShow.story.createdBy.id })">
-        <p class="title"><img class="blog-thumbnail" src="{{ storiesShow.story.createdBy.imageSRC }}" alt="{{ item.createdBy.username }}"></p>
+          <p class="title"><img class="blog-thumbnail" src="{{ storiesShow.story.createdBy.imageSRC }}" alt="{{ item.createdBy.username }}"></p>
         </a>
         <p class="heading"><a ui-sref="usersShow({ id: storiesShow.story.createdBy.id })">{{ storiesShow.story.createdBy.username }}</a></p>
 
@@ -22,20 +22,18 @@
     </div>
     <div class="level-item has-text-centered">
       <div>
-        <p class="heading"><a ui-sref="usersShow({ id: storiesShow.story.createdBy.id })">{{ storiesShow.story.createdBy.username }}</a> created
-        <a ui-sref="usersShow({ id: storiesShow.story.createdBy.id })">
-        <p class="title is-1">4</p>
+        <p class="heading">This story is connected to
+          <p class="title is-1">{{ storiesShow.story.places.length }}</p>
         </a>
-        <p class="heading">stories</p>
+        <p class="heading">places</p>
       </div>
     </div>
     <div class="level-item has-text-centered">
-      <div>
-        <p class="heading"><a ui-sref="usersShow({ id: storiesShow.story.createdBy.id })">{{ storiesShow.story.createdBy.username }}</a> has been in
-        <a ui-sref="usersShow({ id: storiesShow.story.createdBy.id })">
-        <p class="title is-1">10</p>
-        </a>
-        <p class="heading">places</p>
+      <div ng-if="storiesShow.story.route.length >= 2">
+        <p class="heading">The route on this story has</p>
+          <p class="title is-1">{{ storiesShow.story.route.length - 1 }}</p>
+        <p ng-if="storiesShow.story.route.length > 2"class="heading">legs</p>
+        <p ng-if="storiesShow.story.route.length <= 2"class="heading">leg</p>
       </div>
     </div>
   </nav>
@@ -51,28 +49,26 @@
     </div>
 
 
-      <div class="columns is-12 is-multiline">
-        <div class="column is-12">
-          {{ storiesShow.story.name }} route & places:
-        </div>
-        <div class="column is-4 is-multiline place-viewer">
-          <card item="place" ng-repeat="place in storiesShow.story.places"></card>
-        </div>
-        <div class="column is-7">
-          <google-map center="{ lat: 45, lng: 5 }" items="storiesShow.items"></google-map>
-        </div>
+    <div class="columns is-12 is-multiline">
+      <div class="column is-12">
+        {{ storiesShow.story.name }} route & places:
       </div>
+      <div class="column is-4 is-multiline place-viewer">
+        <card item="place" ng-repeat="place in storiesShow.story.places"></card>
+      </div>
+      <div class="column is-7">
+        <google-map center="{ lat: 45, lng: 5 }" items="storiesShow.items"></google-map>
+      </div>
+    </div>
 
-      <div class="columns is-12 is-multiline">
-        <div class="column is-12">
-  <center><div ng-if="main.isAuthenticated() && main.user.id === storiesShow.story.createdBy.id">
-                    <a class="button is-primary" ui-sref="storiesEdit({ id: storiesShow.story.id })">Edit</a>
-                    <button class="button is-danger" ng-click="storiesShow.delete()">Delete {{ storiesShow.story.name }}</button>
-                  </div></center>
-        </div>
+    <div class="columns is-12 is-multiline">
+      <div class="column is-12">
+        <center><div ng-if="main.isAuthenticated() && main.user.id === storiesShow.story.createdBy.id">
+          <a class="button is-primary" ui-sref="storiesEdit({ id: storiesShow.story.id })">Edit</a>
+          <button class="button is-danger" ng-click="storiesShow.delete()">Delete {{ storiesShow.story.name }}</button>
+        </div></center>
       </div>
+    </div>
 
   </div>
 </section>
-<!-- add referenced places -->
-<!-- add map with places route  -->
