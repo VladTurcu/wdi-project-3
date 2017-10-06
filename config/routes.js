@@ -12,7 +12,7 @@ router.route('/places')
 
 router.route('/places/:id')
   .get(places.show)
-  .put(imageUpload, places.update)
+  .put(secureRoute, imageUpload, places.update)
   .delete(places.delete);
 
 router.route('/stories')
@@ -21,7 +21,7 @@ router.route('/stories')
 
 router.route('/stories/:id')
   .get(stories.show)
-  .put(stories.update)
+  .put(secureRoute, stories.update)
   .delete(stories.delete);
 
 router.route('/register')

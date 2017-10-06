@@ -34,6 +34,7 @@ function placesCreate(req, res, next) {
 
 function placesUpdate(req, res, next) {
   if(req.file) req.body.image = req.file.filename;
+  req.body.createdBy = req.currentUser;
   Place
     .findById(req.params.id)
     .exec()

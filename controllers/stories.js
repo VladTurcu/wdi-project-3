@@ -31,6 +31,7 @@ function storiesCreate(req, res, next) {
 
 function storiesUpdate(req, res, next) {
   if(req.file) req.body.image = req.file.filename;
+  req.body.createdBy = req.currentUser;
   Story
     .findById(req.params.id)
     .exec()

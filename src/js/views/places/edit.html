@@ -16,11 +16,11 @@
 
     <div class="field">
       <div class="field latlng">
-        <input class="input" type="text" name="lat" ng-model="placesEdit.place.lat" placeholder="Latitude">
-        <input class="input" type="text" name="lng" ng-model="placesEdit.place.lng" placeholder="Longitude">
+        <input class="input" type="text" name="lat" ng-model="placesEdit.place.lat" placeholder="Latitude" disabled>
+        <input class="input" type="text" name="lng" ng-model="placesEdit.place.lng" placeholder="Longitude" disabled>
       </div>
 
-    <map-drag center="placesEdit.place.center"></map-drag>
+    <map-drag center="placesEdit.center" address="placesEdit.place.address"></map-drag>
 
       <div class="field">
         <label class="label">Description</label>
@@ -30,9 +30,10 @@
         </div>
       </div>
 
-      <label class="label">Image</label>
-      <input class="input" type="text" name="image" ng-model="placesEdit.place.image" placeholder="image">
-    </div>
+      <div class="field">
+        <label class="label">Image</label>
+        <input class="input" base64 type="file" name="base64" id="image" ng-model="placesEdit.place.base64" placeholder="image">
+      </div>
 
     <label class="label">Category</label>
     <div class="select">

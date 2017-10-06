@@ -77,14 +77,25 @@ function PlacesNewCtrl($state, Place, $http, $scope, geocoder, restCountries) {
 
 }
 
-PlacesEditCtrl.$inject = ['$state', 'Place'];
-function PlacesEditCtrl($state, Place) {
+PlacesEditCtrl.$inject = ['$state', 'Place', '$scope'];
+function PlacesEditCtrl($state, Place, $scope) {
   const vm = this;
   vm.place = {};
 
+  $scope.$watch(() => vm.center, () => {
+    if(!vm.center) return false;
+    vm.place.lat = vm.center.lat;
+    vm.place.lng = vm.center.lng;
+  }, true);
+
   placesShow();
   function placesShow(){
-    vm.place = Place.get($state.params);
+    Place.get($state.params)
+      .$promise
+      .then(place => {
+        vm.center = { lat: place.lat, lng: place.lng };
+        vm.place = place;
+      });
   }
 
   vm.update = placesUpdate;
