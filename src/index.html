@@ -18,19 +18,6 @@
 </head>
 <body ng-controller="MainCtrl as main" ng-click="main.hideWelcome = true">
   <navbar></navbar>
-  <div class="column splash-container" ng-hide="main.hideWelcome">
-    <div class="splash column columns is-6 is-multiline">
-
-        <img src="/images/bemo-logo.png">
-
-      <div class="column is-12">
-        <h1>Bemo.</h1>
-      </div>
-      <div class="column is-12">
-        <p>Welcome to Bemo, the social travel app.  Browse the site and check out cool trips and places our users have been.  Sign up to start posting about your own!</p>
-      </div>
-    </div>
-  </div>
     <div>
       <aside ng-class="{ hidden: main.registerHidden }">
         <register></register>
