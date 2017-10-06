@@ -1,6 +1,7 @@
 // Import all of your scss files here
 @import 'search';
 @import 'story';
+@import 'navbar';
 
 body {
   background-color: #406e8e;
@@ -26,12 +27,9 @@ h1 {
   color: #8ea8c3;
 }
 
-.navbar {
-  background-color: #23395b;
-  a {
-    color: #8ea8c3;
-  }
-}
+
+
+
 
 .card {
   border: 1px solid #23395b;
@@ -104,9 +102,7 @@ h1 {
       margin-left: 10px;
   }
 }
-.nav-right{
-  padding: 10px 0;
-}
+
 
 .btn{
   margin: 0 5px;
@@ -127,8 +123,6 @@ h1 {
   top: 10px;
 }
 
-
-
 .place-viewer {
   height: 62vh;
   overflow: scroll;
@@ -141,7 +135,6 @@ h1 {
 }
 
 .select-place{
-
   height: 100px;
   overflow: hidden;
   border: 1px solid lightGrey;
