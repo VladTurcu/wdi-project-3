@@ -1,7 +1,7 @@
-# GA WDI Project 1 - Shapes
-[Premise](#premise "premise") - [Brief](#brief "brief") - [Approach](#approach "approach") - [Technologies](#technologies-used "technologies") - [Features](#features "features") - [Challenges](#challenges "challenges") - [Successes](#successes "successes") - [Improvements](#improvements "improvements") - [Shapes](https://shapes-app.herokuapp.com/ "Shapes")
+# GA WDI Project 3 - Bemo
+[Premise](#premise "premise") - [Brief](#brief "brief") - [Approach](#approach "approach") - [Technologies](#technologies-used "technologies") - [Features](#features "features") - [Challenges](#challenges "challenges") - [Successes](#successes "successes") - [Improvements](#improvements "improvements") - [Bemo](https://bemo-app.herokuapp.com "Bemo")
 
-<img src="" alt="bemo home page">
+<img src="https://i.imgur.com/YSZG3q9.png" alt="bemo home page">
 
 ## Premise
 
@@ -12,7 +12,8 @@
 ## Technologies used
 * HTML5
 * CSS, SCSS, Bulma
-* JavaScript, **Angular**
+* JavaScript, **Angular** (ui-router, ngResource)
+Other: MongoDB, Gulp, Yarn, Insomnia
 
 ## Features
 
