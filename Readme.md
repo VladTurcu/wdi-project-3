@@ -28,6 +28,7 @@ There were several challenging aspects to this project, one of these was managin
 
 More technical challenges included managing data flow with the integration of the GoogleMaps API, and creating a replacement for the Select2 plugin after discovering this was not compatible with our stack.  In response to the Select2 issue we coded out what we called 'selectVlad', this revolved around a text input filtering places from our database and printing the available options with checkboxes to a `<div>` below with `overflow: hidden;` applied.  This solution both met the technical need for our app as well maintaining good UX.
 
+<img src="https://i.imgur.com/h43yFTW.png" alt="selectVlad">
 ```
 <label class="label">Places</label>
     <p><input class="input" name="q" type="text" ng-model="storiesEdit.q"></p>
