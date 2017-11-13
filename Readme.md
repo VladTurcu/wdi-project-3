@@ -44,7 +44,7 @@ More technical challenges included managing data flow with the integration of th
 ## Successes
 Particular successes of this project include the versatile [GoogleMap directive](https://github.com/jdLYNC/wdi-project-3/blob/master/src/js/directives/googleMaps.js "GoogleMap directive file") that was widely used throughout the app to display or collect different bits of data.  The UX of the create forms including 'selectVlad', the data bound GoogleMap and GooglePlaces on the new place form, and the drawing polylines on the new story form.  The user profile pages are also a particular success with the use of virtuals to display user contributions to the site.
 
-<img src="https://i.imgur.com/iZ0uDpY.png" alt="polyline map">
+<img src="https://i.imgur.com/VxBMNgd.png" alt="polyline map and data bound map">
 
 ## Improvements
 Given more time there are some additions/improvements we would like to make for Bemo.
