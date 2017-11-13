@@ -42,6 +42,7 @@ More technical challenges included managing data flow with the integration of th
 ```
 
 ## Successes
+Particular successes of this project include the versatile [GoogleMap directive](https://github.com/jdLYNC/wdi-project-3/blob/master/src/js/directives/googleMaps.js "GoogleMap directive file") that was widely used throughout the app to display or collect different bits of data.
 
 ## Improvements
 
